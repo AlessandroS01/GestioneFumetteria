@@ -4,7 +4,6 @@ from GestioneMagazzino.Magazzino import Magazzino
 class Amministratore:
 
     def __init__(self):
-
         self.nomeUtente = "utente"
         self.password = "password"
 

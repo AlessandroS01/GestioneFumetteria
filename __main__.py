@@ -1,5 +1,13 @@
-from Grafica.GestioneLogin import LoginAmministratore
+from pyqt5_plugins.examplebutton import QtWidgets
+
+from Grafica.GestioneLogin.LoginAmministratore import LoginAmministratore
 
 if __name__ == "__main__":
-    login = LoginAmministratore
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Frame = QtWidgets.QFrame()
+    ui = LoginAmministratore()
+    ui.setupUi(Frame)
+    Frame.show()
+    sys.exit(app.exec_())
 
