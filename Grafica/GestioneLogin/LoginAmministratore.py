@@ -99,7 +99,7 @@ if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     Frame = QtWidgets.QFrame()
-    ui = Ui_Frame()
+    ui = LoginAmministratore()
     ui.setupUi(Frame)
     Frame.show()
     sys.exit(app.exec_())
