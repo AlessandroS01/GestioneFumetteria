@@ -1,4 +1,4 @@
-from pyqt5_plugins.examplebutton import QtWidgets
+from PyQt5 import QtWidgets
 
 from Grafica.GestioneLogin.LoginAmministratore import LoginAmministratore
 

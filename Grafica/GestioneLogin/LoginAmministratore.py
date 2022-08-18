@@ -10,6 +10,8 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+from Amministratore.Amministratore import Amministratore
+
 
 class LoginAmministratore(object):
 
@@ -26,12 +28,12 @@ class LoginAmministratore(object):
         self.lineEdit = QtWidgets.QLineEdit(Frame)
         self.lineEdit.setGeometry(QtCore.QRect(20, 150, 451, 31))
         self.lineEdit.setStyleSheet("border: 1px solid black;\n"
-        "border-radius: 10px;")
+                                    "border-radius: 10px;")
         self.lineEdit.setObjectName("lineEdit")
         self.lineEdit_2 = QtWidgets.QLineEdit(Frame)
         self.lineEdit_2.setGeometry(QtCore.QRect(20, 220, 451, 31))
         self.lineEdit_2.setStyleSheet("border: 1px solid black;\n"
-        "border-radius: 10px;")
+                                      "border-radius: 10px;")
         self.lineEdit_2.setObjectName("lineEdit_2")
         self.label = QtWidgets.QLabel(Frame)
         self.label.setGeometry(QtCore.QRect(20, 120, 111, 21))
@@ -68,7 +70,7 @@ class LoginAmministratore(object):
         self.label_4 = QtWidgets.QLabel(Frame)
         self.label_4.setGeometry(QtCore.QRect(50, 70, 371, 31))
         self.label_4.setStyleSheet("border: 1px solid black;\n"
-        "border-radius:10px;")
+                                   "border-radius:10px;")
         self.label_4.setObjectName("label_4")
         self.pushButton = QtWidgets.QPushButton(Frame)
         self.pushButton.setGeometry(QtCore.QRect(20, 270, 451, 41))
@@ -79,10 +81,10 @@ class LoginAmministratore(object):
         font.setWeight(75)
         self.pushButton.setFont(font)
         self.pushButton.setStyleSheet("border: 2px solid black;\n"
-        "border-radius: 10px;\n"
-        "")
+                                      "border-radius: 10px;\n"
+                                      "")
         self.pushButton.setObjectName("pushButton")
-
+        self.pushButton.clicked.connect(self.clickButton)
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
 
@@ -92,7 +94,19 @@ class LoginAmministratore(object):
         self.label.setText(_translate("Frame", "USERNAME:"))
         self.label_2.setText(_translate("Frame", "PASSWORD:"))
         self.label_3.setText(_translate("Frame", "FUMETTERIA"))
-        self.label_4.setText(_translate("Frame", "Iserisci le credenziali per effettuare il login e inizare a utilizzare il programma"))
+        self.label_4.setText(
+            _translate("Frame", "Iserisci le credenziali per effettuare il login e inizare a utilizzare il programma"))
         self.pushButton.setText(_translate("Frame", "Login"))
+
+
+    def clickButton(self):
+        amministratore = Amministratore()
+        print(amministratore.getPassword() + amministratore.getNomeUtente())
+
+        nomeUtente = self.lineEdit.text()
+        password = self.lineEdit_2.text()
+
+        if amministratore.controlloCredenziali(nomeUtente, password):
+            print("AAAAAAAAAAAAAAAAAAa")
 
 

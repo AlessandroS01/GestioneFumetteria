@@ -24,6 +24,8 @@ class Amministratore:
         magazzino = Magazzino()
         return magazzino
 
-    def aggiungiOffertaProdotto(self, codiceSeriale):
-
-        return None
+    def controlloCredenziali(self, utente, password):
+        if self.nomeUtente == utente and self.password == password:
+            return True
+        else:
+            return False
