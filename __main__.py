@@ -1,7 +1,10 @@
-class LoginAmministratore:
-    pass
+import sys
 
+from PyQt5.QtWidgets import QApplication
 
-login = LoginAmministratore()
+from Grafica.GestioneLogin.LoginAmministratore import Ui_Login
 
-
+if __name__ == "__main__":
+    app = QApplication(sys.argv)
+    login = Ui_Login()
+    app.exec()
