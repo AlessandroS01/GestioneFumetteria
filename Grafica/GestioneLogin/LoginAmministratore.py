@@ -85,6 +85,13 @@ class LoginAmministratore(object):
                                       "")
         self.pushButton.setObjectName("pushButton")
         self.pushButton.clicked.connect(self.clickButton)
+        if self.clickButton() is False :
+            self.label_5 = QtWidgets.QLabel(Frame)
+            self.label_5.setGeometry(QtCore.QRect(140, 270, 221, 16))
+            font = QtGui.QFont()
+            font.setPointSize(10)
+            self.label_5.setFont(font)
+            self.label_5.setObjectName("label_5")
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
 
@@ -95,18 +102,24 @@ class LoginAmministratore(object):
         self.label_2.setText(_translate("Frame", "PASSWORD:"))
         self.label_3.setText(_translate("Frame", "FUMETTERIA"))
         self.label_4.setText(
-            _translate("Frame", "Iserisci le credenziali per effettuare il login e inizare a utilizzare il programma"))
+            _translate("Frame", "Iserisci le credenziali per effettuare il login e iniziare ad utilizzare il programma"))
         self.pushButton.setText(_translate("Frame", "Login"))
-
+        self.label_5.setText(_translate("Frame", "Username o password errati"))
 
     def clickButton(self):
         amministratore = Amministratore()
-        print(amministratore.getPassword() + amministratore.getNomeUtente())
 
         nomeUtente = self.lineEdit.text()
         password = self.lineEdit_2.text()
 
         if amministratore.controlloCredenziali(nomeUtente, password):
-            print("AAAAAAAAAAAAAAAAAAa")
+            print("T")
+            #   compare la finestra per la gestione della fumetteria
+            return True
+
+        else:
+            print("S")
+            return False
+
 
 
