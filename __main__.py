@@ -1,0 +1,6 @@
+class LoginAmministratore:
+
+
+login = LoginAmministratore
+
+
