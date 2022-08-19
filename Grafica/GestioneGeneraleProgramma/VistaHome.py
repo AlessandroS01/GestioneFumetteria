@@ -11,6 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 from Grafica.GestioneAccount.GestioneAccountPrincipale import GestioneAccountPrincipale
+from Grafica.GestioneMagazzino.GestioneMagazzinoPrincipale import GestioneMagazzinoPrincipale
 
 
 class VistaHome(object):
@@ -21,17 +22,17 @@ class VistaHome(object):
         Frame.setStyleSheet("QFrame{\n"
                             "background-color: rgb(255, 255, 255);\n"
                             "}")
-        self.pushButton = QtWidgets.QPushButton(Frame)
+        self.pushButtonGestioneMagazzino = QtWidgets.QPushButton(Frame)
         self.frame = Frame
-        self.pushButton.setGeometry(QtCore.QRect(30, 140, 161, 51))
+        self.pushButtonGestioneMagazzino.setGeometry(QtCore.QRect(30, 140, 161, 51))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton.setFont(font)
-        self.pushButton.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton.setStyleSheet("QPushButton{\n"
+        self.pushButtonGestioneMagazzino.setFont(font)
+        self.pushButtonGestioneMagazzino.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonGestioneMagazzino.setStyleSheet("QPushButton{\n"
                                       "border: 2px solid black;\n"
                                       "border-radius: 10px;\n"
                                       "}\n"
@@ -40,7 +41,7 @@ class VistaHome(object):
                                       "background-color: #14626c;\n"
                                       "color:white;\n"
                                       "}")
-        self.pushButton.setObjectName("pushButton")
+        self.pushButtonGestioneMagazzino.setObjectName("pushButton")
         self.pushButton_2 = QtWidgets.QPushButton(Frame)
         self.pushButton_2.setGeometry(QtCore.QRect(220, 140, 161, 51))
         font = QtGui.QFont()
@@ -148,7 +149,8 @@ class VistaHome(object):
         self.pushButtonLogout.setCheckable(False)
         self.pushButtonLogout.setObjectName("pushButton_5")
         self.pushButtonLogout.clicked.connect(self.openLogin)
-        self.pushButtonGestioneAccount.clicked.connect(self.buttonGestioneAccount)
+        self.pushButtonGestioneAccount.clicked.connect(self.openGestioneAccount)
+        self.pushButtonGestioneMagazzino.clicked.connect(self.openGestioneMagazzino)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -156,7 +158,7 @@ class VistaHome(object):
     def retranslateUi(self, frame):
         _translate = QtCore.QCoreApplication.translate
         frame.setWindowTitle(_translate("frame", "Fumetteria - Home"))
-        self.pushButton.setText(_translate("frame", "Gestione\n"
+        self.pushButtonGestioneMagazzino.setText(_translate("frame", "Gestione\n"
                                                     "  Magazzino"))
         self.pushButton_2.setText(_translate("frame", "Gestione \n"
                                                       " Abbonamenti"))
@@ -178,9 +180,18 @@ class VistaHome(object):
         self.login.show()
         self.frame.close()
 
-    def buttonGestioneAccount(self):
+    # permette di entrare nella gestione dell'account
+    def openGestioneAccount(self):
         self.gestioneAccount = QtWidgets.QFrame()
         self.ui = GestioneAccountPrincipale()
         self.ui.setupUi(self.gestioneAccount)
         self.gestioneAccount.show()
+        self.frame.close()  # hide serve a fare l'hide della schermata precedente
+
+    # permette di gestire il funzionamento del magazzino
+    def openGestioneMagazzino(self):
+        self.gestioneMagazzino = QtWidgets.QFrame()
+        self.ui = GestioneMagazzinoPrincipale()
+        self.ui.setupUi(self.gestioneMagazzino)
+        self.gestioneMagazzino.show()
         self.frame.close()  # hide serve a fare l'hide della schermata precedente

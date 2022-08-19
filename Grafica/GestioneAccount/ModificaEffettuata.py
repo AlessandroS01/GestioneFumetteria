@@ -75,7 +75,7 @@ class ModificaEffetuata(object):
 
     def retranslateUi(self, Frame):
         _translate = QtCore.QCoreApplication.translate
-        Frame.setWindowTitle(_translate("Frame", "Fumetteria - Modifica Password"))
+        Frame.setWindowTitle(_translate("Frame", "Fumetteria - Modifica Effettuata"))
         self.label_4.setText(_translate("Frame", "CREDENZIALI MODIFICATE"))
         self.pushButtonHome.setText(_translate("Frame", "Home"))
         self.label_5.setText(_translate("Frame", "Le credenziali sono state modificate con successo.\n"
