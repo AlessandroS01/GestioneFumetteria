@@ -168,3 +168,12 @@ class ModificaUtente(object):
         self.pushButton_5.setText(_translate("Frame", " Logout"))
         self.pushButton_6.setText(_translate("Frame", "Modifica"))
         self.pushButton_4.setText(_translate("Frame", " Indietro"))
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Frame = QtWidgets.QFrame()
+    ui = ModificaUtente()
+    ui.setupUi(Frame)
+    Frame.show()
+    sys.exit(app.exec_())

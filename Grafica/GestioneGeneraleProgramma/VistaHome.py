@@ -95,7 +95,7 @@ class VistaHome(object):
                                         "}")
         self.pushButton_4.setObjectName("pushButton_4")
         self.label = QtWidgets.QLabel(frame)
-        self.label.setGeometry(QtCore.QRect(20, 70, 371, 41))
+        self.label.setGeometry(QtCore.QRect(20, 70, 381, 41))
         self.label.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label.setStyleSheet("QLabel{\n"
                                  "font-family: Helvetica, sans-serif;\n"
@@ -163,3 +163,13 @@ class VistaHome(object):
                                                "e scegli l\'attività che vuoi eseguirei"))
         self.label_2.setText(_translate("frame", "HOME"))
         self.pushButton_5.setText(_translate("frame", " Logout"))
+
+
+if __name__ == "__main__":
+    import sys
+    app = QtWidgets.QApplication(sys.argv)
+    Frame = QtWidgets.QFrame()
+    ui = VistaHome()
+    ui.setupUi(Frame)
+    Frame.show()
+    sys.exit(app.exec_())
