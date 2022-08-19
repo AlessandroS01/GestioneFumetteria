@@ -9,6 +9,7 @@
 import sys
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMessageBox
 
 from Amministratore.Amministratore import Amministratore
 
@@ -80,9 +81,7 @@ class LoginAmministratore(object):
         font.setBold(True)
         font.setWeight(75)
         self.pushButton.setFont(font)
-        self.pushButton.setStyleSheet("border: 2px solid black;\n"
-                                      "border-radius: 10px;\n"
-                                      "")
+        self.pushButton.setStyleSheet("QPushButton{border: 2px solid black; border-radius: 10px;}QPushButton:hover{background-color: #14626c;color:white;}")
         self.pushButton.setObjectName("pushButton")
         self.pushButton.clicked.connect(self.clickButton)
         self.retranslateUi(Frame)
@@ -110,8 +109,16 @@ class LoginAmministratore(object):
             return True
 
         else:
+            self.ErrorMessage()
             print("F")
             return False
+
+    def ErrorMessage(self):
+        self.ErrorBox = QMessageBox()
+        self.ErrorBox.setWindowTitle("Errore")
+        self.ErrorBox.setText("Email o password errati")
+        self.ErrorBox.setStyleSheet("QLabel{min-width:200 px; font-size: 16px; font-family: Helvetica, Sans-Serif; } QPushButton:hover{background-color: #14626c;color:white; }QPushButton{ width:40px; height:20px; font-size: 10px; font-family: Helvetica, Sans-Serif; border: 1px solid black; border-radius: 5px; }")
+        self.ErrorBox.exec()
 
 
 
