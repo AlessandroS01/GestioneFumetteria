@@ -3,9 +3,10 @@ from GestioneMagazzino.Magazzino import Magazzino
 
 class Amministratore:
 
+    # le credenziali è meglio farle su file
     def __init__(self):
-        self.nomeUtente = "utente"
-        self.password = "password"
+        self.nomeUtente = "f"
+        self.password = "f"
 
     def getNomeUtente(self):
         return self.nomeUtente

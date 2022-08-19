@@ -27,6 +27,7 @@ class LoginAmministratore(object):
         font.setWeight(50)
         Frame.setFont(font)
         Frame.setStyleSheet("background-color: rgb(255, 255, 255);")
+        self.frame = Frame
         self.lineEdit = QtWidgets.QLineEdit(Frame)
         self.lineEdit.setGeometry(QtCore.QRect(20, 150, 451, 31))
         self.lineEdit.setStyleSheet("border: 1px solid black;\n"
@@ -82,9 +83,11 @@ class LoginAmministratore(object):
         font.setBold(True)
         font.setWeight(75)
         self.pushButton.setFont(font)
-        self.pushButton.setStyleSheet("QPushButton{border: 2px solid black; border-radius: 10px;}QPushButton:hover{background-color: #14626c;color:white;}")
+        self.pushButton.setStyleSheet(
+            "QPushButton{border: 2px solid black; border-radius: 10px;}QPushButton:hover{background-color: "
+            "#14626c;color:white;}")
         self.pushButton.setObjectName("pushButton")
-        self.pushButton.clicked.connect(self.clickButton)
+        self.pushButton.clicked.connect(self.clickLogin)
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
 
@@ -95,10 +98,11 @@ class LoginAmministratore(object):
         self.label_2.setText(_translate("Frame", "PASSWORD:"))
         self.label_3.setText(_translate("Frame", "FUMETTERIA"))
         self.label_4.setText(
-            _translate("Frame", "Iserisci le credenziali per effettuare il login e iniziare ad utilizzare il programma"))
+            _translate("Frame",
+                       "Iserisci le credenziali per effettuare il login e iniziare ad utilizzare il programma"))
         self.pushButton.setText(_translate("Frame", "Login"))
 
-    def clickButton(self):
+    def clickLogin(self):
         amministratore = Amministratore()
 
         nomeUtente = self.lineEdit.text()
@@ -110,19 +114,20 @@ class LoginAmministratore(object):
         else:
             self.ErrorMessage()
 
-
     def ErrorMessage(self):
         self.ErrorBox = QMessageBox()
         self.ErrorBox.setWindowTitle("Errore")
-        self.ErrorBox.setText("Email o password errati")
-        self.ErrorBox.setStyleSheet("QLabel{min-width:200 px; font-size: 16px; font-family: Helvetica, Sans-Serif; } QPushButton:hover{background-color: #14626c;color:white; }QPushButton{ width:40px; height:20px; font-size: 10px; font-family: Helvetica, Sans-Serif; border: 1px solid black; border-radius: 5px; }")
+        self.ErrorBox.setText("Nome utente o password errati")
+        self.ErrorBox.setStyleSheet(
+            "QLabel{min-width:200 px; font-size: 16px; font-family: Helvetica, Sans-Serif; } QPushButton:hover{"
+            "background-color: #14626c;color:white; }QPushButton{ width:40px; height:20px; font-size: 10px; "
+            "font-family: Helvetica, Sans-Serif; border: 1px solid black; border-radius: 5px; }")
         self.ErrorBox.exec()
 
+    # serve ad aprire la schermata successiva una volta cliccato il pulsante
     def openHome(self):
         self.home = QtWidgets.QFrame()
         self.ui = VistaHome()
         self.ui.setupUi(self.home)
         self.home.show()
-
-
-
+        self.frame.close()  # hide serve a fare l'hide della schermata precedente

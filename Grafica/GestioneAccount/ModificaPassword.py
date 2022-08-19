@@ -124,8 +124,7 @@ class ModificaPassword(object):
                                         "}")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(
-            "C:\\Users\\Lenovo\\Desktop\\University\\MATERIE\\2°ANNO 2° SEMESTRE\\INGEGNERIA DEL "
-            "SOFTWARE\\Mockup\\../../../../../Mockup/log.png"),
+            "Images\\log.png"),
                        QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_7.setIcon(icon)
         self.pushButton_7.setCheckable(False)
@@ -150,8 +149,7 @@ class ModificaPassword(object):
                                         "}")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(
-            "C:\\Users\\Lenovo\\Desktop\\University\\MATERIE\\2°ANNO 2° SEMESTRE\\INGEGNERIA DEL "
-            "SOFTWARE\\Mockup\\../../../../../Mockup/left.png"),
+            "Images\\left.png"),
                         QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_5.setIcon(icon1)
         self.pushButton_5.setObjectName("pushButton_5")

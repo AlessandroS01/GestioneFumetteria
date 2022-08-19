@@ -2,6 +2,7 @@ import sys
 
 from PyQt5 import QtWidgets
 
+from Amministratore.Amministratore import Amministratore
 from Grafica.GestioneLogin.LoginAmministratore import LoginAmministratore
 
 if __name__ == "__main__":

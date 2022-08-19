@@ -10,15 +10,20 @@
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+from Grafica.GestioneAccount.GestioneAccountPrincipale import GestioneAccountPrincipale
+from Grafica.GestioneLogin import LoginAmministratore
+
 
 class VistaHome(object):
-    def setupUi(self, frame):
-        frame.setObjectName("frame")
-        frame.resize(413, 364)
-        frame.setStyleSheet("QFrame{\n"
+
+    def setupUi(self, Frame):
+        Frame.setObjectName("frame")
+        Frame.resize(413, 364)
+        Frame.setStyleSheet("QFrame{\n"
                             "background-color: rgb(255, 255, 255);\n"
                             "}")
-        self.pushButton = QtWidgets.QPushButton(frame)
+        self.pushButton = QtWidgets.QPushButton(Frame)
+        self.frame = Frame
         self.pushButton.setGeometry(QtCore.QRect(30, 140, 161, 51))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
@@ -37,7 +42,7 @@ class VistaHome(object):
                                       "color:white;\n"
                                       "}")
         self.pushButton.setObjectName("pushButton")
-        self.pushButton_2 = QtWidgets.QPushButton(frame)
+        self.pushButton_2 = QtWidgets.QPushButton(Frame)
         self.pushButton_2.setGeometry(QtCore.QRect(220, 140, 161, 51))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
@@ -56,7 +61,7 @@ class VistaHome(object):
                                         "color:white;\n"
                                         "}")
         self.pushButton_2.setObjectName("pushButton_2")
-        self.pushButton_3 = QtWidgets.QPushButton(frame)
+        self.pushButton_3 = QtWidgets.QPushButton(Frame)
         self.pushButton_3.setGeometry(QtCore.QRect(30, 220, 161, 51))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
@@ -75,16 +80,16 @@ class VistaHome(object):
                                         "color:white;\n"
                                         "}")
         self.pushButton_3.setObjectName("pushButton_3")
-        self.pushButton_4 = QtWidgets.QPushButton(frame)
-        self.pushButton_4.setGeometry(QtCore.QRect(220, 220, 161, 51))
+        self.pushButtonGestioneAccount = QtWidgets.QPushButton(Frame)
+        self.pushButtonGestioneAccount.setGeometry(QtCore.QRect(220, 220, 161, 51))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_4.setFont(font)
-        self.pushButton_4.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_4.setStyleSheet("QPushButton{\n"
+        self.pushButtonGestioneAccount.setFont(font)
+        self.pushButtonGestioneAccount.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonGestioneAccount.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -93,8 +98,8 @@ class VistaHome(object):
                                         "background-color: #14626c;\n"
                                         "color:white;\n"
                                         "}")
-        self.pushButton_4.setObjectName("pushButton_4")
-        self.label = QtWidgets.QLabel(frame)
+        self.pushButtonGestioneAccount.setObjectName("pushButton_4")
+        self.label = QtWidgets.QLabel(Frame)
         self.label.setGeometry(QtCore.QRect(20, 70, 381, 41))
         self.label.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label.setStyleSheet("QLabel{\n"
@@ -104,7 +109,7 @@ class VistaHome(object):
                                  "}")
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
-        self.label_2 = QtWidgets.QLabel(frame)
+        self.label_2 = QtWidgets.QLabel(Frame)
         self.label_2.setGeometry(QtCore.QRect(160, 10, 71, 31))
         self.label_2.setStyleSheet("QLabel{\n"
                                    "font-family: impact, sans-serif;\n"
@@ -113,39 +118,41 @@ class VistaHome(object):
                                    "}")
         self.label_2.setAlignment(QtCore.Qt.AlignCenter)
         self.label_2.setObjectName("label_2")
-        self.line = QtWidgets.QFrame(frame)
+        self.line = QtWidgets.QFrame(Frame)
         self.line.setGeometry(QtCore.QRect(80, 40, 221, 20))
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
-        self.pushButton_5 = QtWidgets.QPushButton(frame)
-        self.pushButton_5.setGeometry(QtCore.QRect(120, 300, 161, 41))
+        self.pushButtonLogout = QtWidgets.QPushButton(Frame)
+        self.pushButtonLogout.setGeometry(QtCore.QRect(120, 300, 161, 41))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_5.setFont(font)
-        self.pushButton_5.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_5.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
+        self.pushButtonLogout.setFont(font)
+        self.pushButtonLogout.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonLogout.setStyleSheet("QPushButton{\n"
+                                            "border: 2px solid black;\n"
+                                            "border-radius: 10px;\n"
+                                            "}\n"
+                                            "QPushButton:hover{\n"
+                                            "\n"
+                                            "background-color: #14626c;\n"
+                                            "color:white;\n"
+                                            "}")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(
             "Images\\log.png"),
-                       QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_5.setIcon(icon)
-        self.pushButton_5.setCheckable(False)
-        self.pushButton_5.setObjectName("pushButton_5")
+            QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButtonLogout.setIcon(icon)
+        self.pushButtonLogout.setCheckable(False)
+        self.pushButtonLogout.setObjectName("pushButton_5")
+        self.pushButtonLogout.clicked.connect(self.buttonLoginClicker)
+        self.pushButtonGestioneAccount.clicked.connect(self.buttonGestioneAccount)
 
-        self.retranslateUi(frame)
-        QtCore.QMetaObject.connectSlotsByName(frame)
+        self.retranslateUi(Frame)
+        QtCore.QMetaObject.connectSlotsByName(Frame)
 
     def retranslateUi(self, frame):
         _translate = QtCore.QCoreApplication.translate
@@ -156,19 +163,27 @@ class VistaHome(object):
                                                       " Abbonamenti"))
         self.pushButton_3.setText(_translate("frame", "Gestione \n"
                                                       " Vendite"))
-        self.pushButton_4.setText(_translate("frame", "Gestione \n"
+        self.pushButtonGestioneAccount.setText(_translate("frame", "Gestione \n"
                                                       " Account"))
         self.label.setText(_translate("frame", "Naviga tra le varie sezioni utilizzando il menu in basso\n"
                                                "e scegli l\'attività che vuoi eseguirei"))
         self.label_2.setText(_translate("frame", "HOME"))
-        self.pushButton_5.setText(_translate("frame", " Logout"))
+        self.pushButtonLogout.setText(_translate("frame", " Logout"))
 
+    def buttonLoginClicker(self):
+        self.openLogin()
 
-if __name__ == "__main__":
-    import sys
-    app = QtWidgets.QApplication(sys.argv)
-    Frame = QtWidgets.QFrame()
-    ui = VistaHome()
-    ui.setupUi(Frame)
-    Frame.show()
-    sys.exit(app.exec_())
+    # DA RIGUARDARE IL LOGOUT CHE PORTA AL LOGIN
+    def openLogin(self):
+        self.login = QtWidgets.QFrame()
+        self.ui = LoginAmministratore()
+        self.ui.setupUi(self.login)
+        self.login.show()
+        self.frame.close()  # hide serve a fare l'hide della schermata precedente
+
+    def buttonGestioneAccount(self):
+        self.gestioneAccount = QtWidgets.QFrame()
+        self.ui = GestioneAccountPrincipale()
+        self.ui.setupUi(self.gestioneAccount)
+        self.gestioneAccount.show()
+        self.frame.close()  # hide serve a fare l'hide della schermata precedente
