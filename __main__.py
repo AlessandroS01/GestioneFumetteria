@@ -1,6 +1,6 @@
 import sys
 
-from pyqt5_plugins.examplebutton import QtWidgets
+from PyQt5 import QtWidgets
 
 from GestioneMagazzino.Magazzino import Magazzino
 from Grafica.GestioneLogin.LoginAmministratore import LoginAmministratore
