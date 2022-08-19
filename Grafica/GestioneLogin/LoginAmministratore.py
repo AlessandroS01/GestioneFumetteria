@@ -71,7 +71,7 @@ class LoginAmministratore(object):
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
         self.label_4 = QtWidgets.QLabel(Frame)
-        self.label_4.setGeometry(QtCore.QRect(50, 70, 371, 31))
+        self.label_4.setGeometry(QtCore.QRect(27, 70, 428, 31))
         self.label_4.setStyleSheet("border: 1px solid black;\n"
                                    "border-radius:10px;")
         self.label_4.setObjectName("label_4")
@@ -99,7 +99,7 @@ class LoginAmministratore(object):
         self.label_3.setText(_translate("Frame", "FUMETTERIA"))
         self.label_4.setText(
             _translate("Frame",
-                       "Iserisci le credenziali per effettuare il login e iniziare ad utilizzare il programma"))
+                       "Inserisci le credenziali per effettuare e iniziare ad utilizzare il programma"))
         self.pushButton.setText(_translate("Frame", "Login"))
 
     def clickLogin(self):
@@ -119,7 +119,7 @@ class LoginAmministratore(object):
         self.ErrorBox.setWindowTitle("Errore")
         self.ErrorBox.setText("Nome utente o password errati")
         self.ErrorBox.setStyleSheet(
-            "QLabel{min-width:200 px; font-size: 16px; font-family: Helvetica, Sans-Serif; } QPushButton:hover{"
+            "QLabel{min-width:200 px; font-size: 14px; font-family: Helvetica, Sans-Serif; } QPushButton:hover{"
             "background-color: #14626c;color:white; }QPushButton{ width:40px; height:20px; font-size: 10px; "
             "font-family: Helvetica, Sans-Serif; border: 1px solid black; border-radius: 5px; }")
         self.ErrorBox.exec()

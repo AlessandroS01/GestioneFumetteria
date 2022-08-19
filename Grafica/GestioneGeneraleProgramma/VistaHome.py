@@ -179,7 +179,7 @@ class VistaHome(object):
         self.ui = LoginAmministratore()
         self.ui.setupUi(self.login)
         self.login.show()
-        self.frame.close()  # hide serve a fare l'hide della schermata precedente
+        self.frame.close()
 
     def buttonGestioneAccount(self):
         self.gestioneAccount = QtWidgets.QFrame()

@@ -9,16 +9,21 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMessageBox
+
+from Amministratore.Amministratore import Amministratore
+from Grafica.GestioneAccount.ModificaEffettuata import ModificaEffetuata
 
 
 class ModificaPassword(object):
     def setupUi(self, Frame):
         Frame.setObjectName("Frame")
-        Frame.resize(411, 362)
+        Frame.resize(390, 362)
         Frame.setStyleSheet("QFrame{\n"
                             "background-color: rgb(255, 255, 255);\n"
                             "}")
         Frame.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.frame = Frame
         self.label = QtWidgets.QLabel(Frame)
         self.label.setGeometry(QtCore.QRect(10, 70, 391, 31))
         self.label.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -49,27 +54,27 @@ class ModificaPassword(object):
                                    "}")
         self.label_3.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
         self.label_3.setObjectName("label_3")
-        self.lineEdit = QtWidgets.QLineEdit(Frame)
-        self.lineEdit.setGeometry(QtCore.QRect(10, 100, 371, 31))
-        self.lineEdit.setStyleSheet("QLineEdit{\n"
+        self.lineEditNomeUtente = QtWidgets.QLineEdit(Frame)
+        self.lineEditNomeUtente.setGeometry(QtCore.QRect(10, 100, 371, 31))
+        self.lineEditNomeUtente.setStyleSheet("QLineEdit{\n"
                                     "border: 2px solid black;\n"
                                     "border-radius: 6px;\n"
                                     "}")
-        self.lineEdit.setObjectName("lineEdit")
-        self.lineEdit_2 = QtWidgets.QLineEdit(Frame)
-        self.lineEdit_2.setGeometry(QtCore.QRect(10, 160, 371, 31))
-        self.lineEdit_2.setStyleSheet("QLineEdit{\n"
+        self.lineEditNomeUtente.setObjectName("lineEdit")
+        self.lineEditPasswordVecchia = QtWidgets.QLineEdit(Frame)
+        self.lineEditPasswordVecchia.setGeometry(QtCore.QRect(10, 160, 371, 31))
+        self.lineEditPasswordVecchia.setStyleSheet("QLineEdit{\n"
                                       "border: 2px solid black;\n"
                                       "border-radius: 6px;\n"
                                       "}")
-        self.lineEdit_2.setObjectName("lineEdit_2")
-        self.lineEdit_3 = QtWidgets.QLineEdit(Frame)
-        self.lineEdit_3.setGeometry(QtCore.QRect(10, 220, 371, 31))
-        self.lineEdit_3.setStyleSheet("QLineEdit{\n"
+        self.lineEditPasswordVecchia.setObjectName("lineEdit_2")
+        self.lineEditPasswordNuova = QtWidgets.QLineEdit(Frame)
+        self.lineEditPasswordNuova.setGeometry(QtCore.QRect(10, 220, 371, 31))
+        self.lineEditPasswordNuova.setStyleSheet("QLineEdit{\n"
                                       "border: 2px solid black;\n"
                                       "border-radius: 6px;\n"
                                       "}")
-        self.lineEdit_3.setObjectName("lineEdit_3")
+        self.lineEditPasswordNuova.setObjectName("lineEdit_3")
         self.label_4 = QtWidgets.QLabel(Frame)
         self.label_4.setGeometry(QtCore.QRect(20, 20, 381, 31))
         self.label_4.setStyleSheet("QLabel{\n"
@@ -84,16 +89,16 @@ class ModificaPassword(object):
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
-        self.pushButton_6 = QtWidgets.QPushButton(Frame)
-        self.pushButton_6.setGeometry(QtCore.QRect(10, 260, 371, 31))
+        self.pushButtonModifica = QtWidgets.QPushButton(Frame)
+        self.pushButtonModifica.setGeometry(QtCore.QRect(10, 260, 371, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_6.setFont(font)
-        self.pushButton_6.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_6.setStyleSheet("QPushButton{\n"
+        self.pushButtonModifica.setFont(font)
+        self.pushButtonModifica.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonModifica.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -102,8 +107,8 @@ class ModificaPassword(object):
                                         "background-color: #14626c;\n"
                                         "color:white;\n"
                                         "}")
-        self.pushButton_6.setCheckable(False)
-        self.pushButton_6.setObjectName("pushButton_6")
+        self.pushButtonModifica.setCheckable(False)
+        self.pushButtonModifica.setObjectName("pushButton_6")
         self.pushButton_7 = QtWidgets.QPushButton(Frame)
         self.pushButton_7.setGeometry(QtCore.QRect(10, 320, 141, 31))
         font = QtGui.QFont()
@@ -153,6 +158,7 @@ class ModificaPassword(object):
                         QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_5.setIcon(icon1)
         self.pushButton_5.setObjectName("pushButton_5")
+        self.pushButtonModifica.clicked.connect(self.clickModifica)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -164,6 +170,39 @@ class ModificaPassword(object):
         self.label_2.setText(_translate("Frame", "Inserisci password attuale:"))
         self.label_3.setText(_translate("Frame", "Inserisci la nuova password:"))
         self.label_4.setText(_translate("Frame", "MODIFICA PASSWORD"))
-        self.pushButton_6.setText(_translate("Frame", "Modifica"))
+        self.pushButtonModifica.setText(_translate("Frame", "Modifica"))
         self.pushButton_7.setText(_translate("Frame", " Logout"))
         self.pushButton_5.setText(_translate("Frame", " Indietro"))
+
+    def ErrorMessageCambioPassword(self):
+        self.ErrorBox = QMessageBox()
+        self.ErrorBox.setWindowTitle("Errore")
+        self.ErrorBox.setText("Nome utente o password errati")
+        self.ErrorBox.setStyleSheet(
+            "QLabel{min-width:200 px; font-size: 14px; font-family: Helvetica, Sans-Serif; } QPushButton:hover{"
+            "background-color: #14626c;color:white; }QPushButton{ width:40px; height:20px; font-size: 10px; "
+            "font-family: Helvetica, Sans-Serif; border: 1px solid black; border-radius: 5px; }")
+        self.ErrorBox.exec()
+
+    def clickModifica(self):
+        amministratore = Amministratore()
+
+        nomeUtente = self.lineEditNomeUtente.text()
+        passwordVecchia = self.lineEditPasswordVecchia.text()
+        passwordNuova = self.lineEditPasswordNuova.text()
+
+
+        if amministratore.controlloCredenziali(nomeUtente, passwordVecchia):
+            amministratore.setPassword(passwordNuova)
+            self.openModificaEffettuata()
+
+        else:
+            self.ErrorMessageCambioPassword()
+
+    # serve per la schermata di riuscita dell'operazione
+    def openModificaEffettuata(self):
+        self.modificaEffettuata = QtWidgets.QFrame()
+        self.ui = ModificaEffetuata()
+        self.ui.setupUi(self.modificaEffettuata)
+        self.modificaEffettuata.show()
+        self.frame.close()

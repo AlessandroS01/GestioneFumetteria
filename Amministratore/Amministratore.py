@@ -1,24 +1,58 @@
+from pathlib import Path
+
 from GestioneMagazzino.Magazzino import Magazzino
 
 
 class Amministratore:
 
-    # le credenziali è meglio farle su file
+    #credenziali salvate su file per comodità nella gestione delle informazioni
     def __init__(self):
-        self.nomeUtente = "f"
-        self.password = "f"
+
+        pathRelativo = Path("CredenzialiAmministratore")
+        pathAssoluto = pathRelativo.absolute()
+
+        with open(pathAssoluto, 'r') as f:
+            credenzialiLette = f.read()
+            f.close()
+
+        credenziali = credenzialiLette.split("\n")
+        self.nomeUtente = credenziali[0]
+        self.password = credenziali[1]
 
     def getNomeUtente(self):
         return self.nomeUtente
 
     def setNomeUtente(self, nomeUtente):
-        self.nomeUtente = nomeUtente
+        pathRelativo = Path("CredenzialiAmministratore")
+        pathAssoluto = pathRelativo.absolute()
+
+        with open(pathAssoluto, 'r') as file:
+            data = file.readlines()
+            file.close()
+
+        data[0] = nomeUtente + "\n"
+
+        with open(pathAssoluto, 'w') as file:
+            file.writelines(data)
+            file.close()
+
 
     def getPassword(self):
         return self.password
 
     def setPassword(self, password):
-        self.password = password
+        pathRelativo = Path("CredenzialiAmministratore")
+        pathAssoluto = pathRelativo.absolute()
+
+        with open(pathAssoluto, 'r') as file:
+            data = file.readlines()
+            file.close()
+
+        data[1] = password + "\n"
+
+        with open(pathAssoluto, 'w') as file:
+            file.writelines(data)
+            file.close()
 
     def visualizzaMagazzino(self):
 
