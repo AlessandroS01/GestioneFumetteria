@@ -22,7 +22,7 @@ class Amministratore:
     def visualizzaMagazzino(self):
 
         magazzino = Magazzino()
-        return magazzino
+        return magazzino.getMagazzino()
 
     def controlloCredenziali(self, utente, password):
         if self.nomeUtente == utente and self.password == password:
