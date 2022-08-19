@@ -11,7 +11,6 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 from Grafica.GestioneAccount.GestioneAccountPrincipale import GestioneAccountPrincipale
-from Grafica.GestioneLogin import LoginAmministratore
 
 
 class VistaHome(object):
@@ -148,7 +147,7 @@ class VistaHome(object):
         self.pushButtonLogout.setIcon(icon)
         self.pushButtonLogout.setCheckable(False)
         self.pushButtonLogout.setObjectName("pushButton_5")
-        self.pushButtonLogout.clicked.connect(self.buttonLoginClicker)
+        self.pushButtonLogout.clicked.connect(self.openLogin)
         self.pushButtonGestioneAccount.clicked.connect(self.buttonGestioneAccount)
 
         self.retranslateUi(Frame)
@@ -170,11 +169,9 @@ class VistaHome(object):
         self.label_2.setText(_translate("frame", "HOME"))
         self.pushButtonLogout.setText(_translate("frame", " Logout"))
 
-    def buttonLoginClicker(self):
-        self.openLogin()
-
-    # DA RIGUARDARE IL LOGOUT CHE PORTA AL LOGIN
+    # riporta alla pagina del login
     def openLogin(self):
+        from Grafica.GestioneLogin.LoginAmministratore import LoginAmministratore
         self.login = QtWidgets.QFrame()
         self.ui = LoginAmministratore()
         self.ui.setupUi(self.login)

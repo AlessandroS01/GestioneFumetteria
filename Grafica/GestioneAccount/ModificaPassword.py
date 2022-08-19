@@ -109,16 +109,16 @@ class ModificaPassword(object):
                                         "}")
         self.pushButtonModifica.setCheckable(False)
         self.pushButtonModifica.setObjectName("pushButton_6")
-        self.pushButton_7 = QtWidgets.QPushButton(Frame)
-        self.pushButton_7.setGeometry(QtCore.QRect(10, 320, 141, 31))
+        self.pushButtonLogout = QtWidgets.QPushButton(Frame)
+        self.pushButtonLogout.setGeometry(QtCore.QRect(10, 320, 141, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_7.setFont(font)
-        self.pushButton_7.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_7.setStyleSheet("QPushButton{\n"
+        self.pushButtonLogout.setFont(font)
+        self.pushButtonLogout.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonLogout.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -131,19 +131,19 @@ class ModificaPassword(object):
         icon.addPixmap(QtGui.QPixmap(
             "Images\\log.png"),
                        QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_7.setIcon(icon)
-        self.pushButton_7.setCheckable(False)
-        self.pushButton_7.setObjectName("pushButton_7")
-        self.pushButton_5 = QtWidgets.QPushButton(Frame)
-        self.pushButton_5.setGeometry(QtCore.QRect(160, 320, 141, 31))
+        self.pushButtonLogout.setIcon(icon)
+        self.pushButtonLogout.setCheckable(False)
+        self.pushButtonLogout.setObjectName("pushButton_7")
+        self.pushButtonGestioneAccount = QtWidgets.QPushButton(Frame)
+        self.pushButtonGestioneAccount.setGeometry(QtCore.QRect(160, 320, 141, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_5.setFont(font)
-        self.pushButton_5.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_5.setStyleSheet("QPushButton{\n"
+        self.pushButtonGestioneAccount.setFont(font)
+        self.pushButtonGestioneAccount.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonGestioneAccount.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -156,9 +156,11 @@ class ModificaPassword(object):
         icon1.addPixmap(QtGui.QPixmap(
             "Images\\left.png"),
                         QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_5.setIcon(icon1)
-        self.pushButton_5.setObjectName("pushButton_5")
+        self.pushButtonGestioneAccount.setIcon(icon1)
+        self.pushButtonGestioneAccount.setObjectName("pushButton_5")
         self.pushButtonModifica.clicked.connect(self.clickModifica)
+        self.pushButtonLogout.clicked.connect(self.openLogin)
+        self.pushButtonGestioneAccount.clicked.connect(self.backHome)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -171,8 +173,8 @@ class ModificaPassword(object):
         self.label_3.setText(_translate("Frame", "Inserisci la nuova password:"))
         self.label_4.setText(_translate("Frame", "MODIFICA PASSWORD"))
         self.pushButtonModifica.setText(_translate("Frame", "Modifica"))
-        self.pushButton_7.setText(_translate("Frame", " Logout"))
-        self.pushButton_5.setText(_translate("Frame", " Indietro"))
+        self.pushButtonLogout.setText(_translate("Frame", " Logout"))
+        self.pushButtonGestioneAccount.setText(_translate("Frame", " Indietro"))
 
     def ErrorMessageCambioPassword(self):
         self.ErrorBox = QMessageBox()
@@ -205,4 +207,22 @@ class ModificaPassword(object):
         self.ui = ModificaEffetuata()
         self.ui.setupUi(self.modificaEffettuata)
         self.modificaEffettuata.show()
+        self.frame.close()
+
+    # riporta alla pagina del login
+    def openLogin(self):
+        from Grafica.GestioneLogin.LoginAmministratore import LoginAmministratore
+        self.login = QtWidgets.QFrame()
+        self.ui = LoginAmministratore()
+        self.ui.setupUi(self.login)
+        self.login.show()
+        self.frame.close()
+
+    # ritorna alla home del programma
+    def backHome(self):
+        from Grafica.GestioneAccount.GestioneAccountPrincipale import GestioneAccountPrincipale
+        self.gestioneAccountPrincipale = QtWidgets.QFrame()
+        self.ui = GestioneAccountPrincipale()
+        self.ui.setupUi(self.gestioneAccountPrincipale)
+        self.gestioneAccountPrincipale.show()
         self.frame.close()

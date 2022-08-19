@@ -46,14 +46,14 @@ class GestioneAccountPrincipale(object):
         self.pushButtonModificaUtente.setFont(font)
         self.pushButtonModificaUtente.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pushButtonModificaUtente.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
+                                                    "border: 2px solid black;\n"
+                                                    "border-radius: 10px;\n"
+                                                    "}\n"
+                                                    "QPushButton:hover{\n"
+                                                    "\n"
+                                                    "background-color: #14626c;\n"
+                                                    "color:white;\n"
+                                                    "}")
         self.pushButtonModificaUtente.setObjectName("pushButton_2")
         self.pushButtonModificaPassword = QtWidgets.QPushButton(Frame)
         self.pushButtonModificaPassword.setGeometry(QtCore.QRect(230, 150, 161, 51))
@@ -65,14 +65,14 @@ class GestioneAccountPrincipale(object):
         self.pushButtonModificaPassword.setFont(font)
         self.pushButtonModificaPassword.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pushButtonModificaPassword.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
+                                                      "border: 2px solid black;\n"
+                                                      "border-radius: 10px;\n"
+                                                      "}\n"
+                                                      "QPushButton:hover{\n"
+                                                      "\n"
+                                                      "background-color: #14626c;\n"
+                                                      "color:white;\n"
+                                                      "}")
         self.pushButtonModificaPassword.setObjectName("pushButton_3")
         self.label = QtWidgets.QLabel(Frame)
         self.label.setGeometry(QtCore.QRect(20, 70, 371, 41))
@@ -84,16 +84,16 @@ class GestioneAccountPrincipale(object):
                                  "}")
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
-        self.pushButton_4 = QtWidgets.QPushButton(Frame)
-        self.pushButton_4.setGeometry(QtCore.QRect(120, 220, 161, 41))
+        self.pushButtonHome = QtWidgets.QPushButton(Frame)
+        self.pushButtonHome.setGeometry(QtCore.QRect(120, 220, 161, 41))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_4.setFont(font)
-        self.pushButton_4.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_4.setStyleSheet("QPushButton{\n"
+        self.pushButtonHome.setFont(font)
+        self.pushButtonHome.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonHome.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -105,19 +105,19 @@ class GestioneAccountPrincipale(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(
             "Images\\left.png"),
-                       QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_4.setIcon(icon)
-        self.pushButton_4.setObjectName("pushButton_4")
-        self.pushButton_5 = QtWidgets.QPushButton(Frame)
-        self.pushButton_5.setGeometry(QtCore.QRect(10, 320, 141, 31))
+            QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButtonHome.setIcon(icon)
+        self.pushButtonHome.setObjectName("pushButton_4")
+        self.pushButtonLogout = QtWidgets.QPushButton(Frame)
+        self.pushButtonLogout.setGeometry(QtCore.QRect(10, 320, 141, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_5.setFont(font)
-        self.pushButton_5.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_5.setStyleSheet("QPushButton{\n"
+        self.pushButtonLogout.setFont(font)
+        self.pushButtonLogout.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonLogout.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -129,12 +129,14 @@ class GestioneAccountPrincipale(object):
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap(
             "Images\\log.png"),
-                        QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_5.setIcon(icon1)
-        self.pushButton_5.setCheckable(False)
-        self.pushButton_5.setObjectName("pushButton_5")
+            QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButtonLogout.setIcon(icon1)
+        self.pushButtonLogout.setCheckable(False)
+        self.pushButtonLogout.setObjectName("pushButton_5")
         self.pushButtonModificaUtente.clicked.connect(self.openModificaUtente)
         self.pushButtonModificaPassword.clicked.connect(self.openModificaPassword)
+        self.pushButtonLogout.clicked.connect(self.openLogin)
+        self.pushButtonHome.clicked.connect(self.backHome)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -144,14 +146,13 @@ class GestioneAccountPrincipale(object):
         Frame.setWindowTitle(_translate("Frame", "Fumetteria - Gestione Account"))
         self.label_2.setText(_translate("Frame", "GESTIONE ACCOUNT"))
         self.pushButtonModificaUtente.setText(_translate("Frame", "Modifica \n"
-                                                      " Nome Utente"))
+                                                                  " Nome Utente"))
         self.pushButtonModificaPassword.setText(_translate("Frame", "Modifica \n"
-                                                      " Password"))
+                                                                    " Password"))
         self.label.setText(_translate("Frame", "Scegli una delle due opzioni disponibili o clicca \n"
                                                "il tasto indietro per tornare alla Home"))
-        self.pushButton_4.setText(_translate("Frame", " Home"))
-        self.pushButton_5.setText(_translate("Frame", " Logout"))
-
+        self.pushButtonHome.setText(_translate("Frame", " Home"))
+        self.pushButtonLogout.setText(_translate("Frame", " Logout"))
 
     def openModificaUtente(self):
         self.modificaUtente = QtWidgets.QFrame()
@@ -160,10 +161,27 @@ class GestioneAccountPrincipale(object):
         self.modificaUtente.show()
         self.frame.close()  # hide serve a fare l'hide della schermata precedente
 
-
     def openModificaPassword(self):
         self.modificaPassword = QtWidgets.QFrame()
         self.ui = ModificaPassword()
         self.ui.setupUi(self.modificaPassword)
         self.modificaPassword.show()
         self.frame.close()  # hide serve a fare l'hide della schermata precedente
+
+    # ritorna alla home del programma
+    def backHome(self):
+        from Grafica.GestioneGeneraleProgramma.VistaHome import VistaHome
+        self.home = QtWidgets.QFrame()
+        self.ui = VistaHome()
+        self.ui.setupUi(self.home)
+        self.home.show()
+        self.frame.close()
+
+    # riporta alla pagina del login
+    def openLogin(self):
+        from Grafica.GestioneLogin.LoginAmministratore import LoginAmministratore
+        self.login = QtWidgets.QFrame()
+        self.ui = LoginAmministratore()
+        self.ui.setupUi(self.login)
+        self.login.show()
+        self.frame.close()

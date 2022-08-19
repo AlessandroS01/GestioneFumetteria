@@ -19,6 +19,7 @@ class ModificaEffetuata(object):
                             "background-color: rgb(255, 255, 255);\n"
                             "}")
         Frame.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.frame = Frame
         self.label_4 = QtWidgets.QLabel(Frame)
         self.label_4.setGeometry(QtCore.QRect(10, 20, 381, 31))
         self.label_4.setStyleSheet("QLabel{\n"
@@ -33,31 +34,31 @@ class ModificaEffetuata(object):
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
-        self.pushButton_7 = QtWidgets.QPushButton(Frame)
-        self.pushButton_7.setGeometry(QtCore.QRect(120, 150, 141, 31))
+        self.pushButtonHome = QtWidgets.QPushButton(Frame)
+        self.pushButtonHome.setGeometry(QtCore.QRect(120, 150, 141, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_7.setFont(font)
-        self.pushButton_7.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_7.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
+        self.pushButtonHome.setFont(font)
+        self.pushButtonHome.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonHome.setStyleSheet("QPushButton{\n"
+                                          "border: 2px solid black;\n"
+                                          "border-radius: 10px;\n"
+                                          "}\n"
+                                          "QPushButton:hover{\n"
+                                          "\n"
+                                          "background-color: #14626c;\n"
+                                          "color:white;\n"
+                                          "}")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(
             "Images\\home.png"),
-                       QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_7.setIcon(icon)
-        self.pushButton_7.setCheckable(False)
-        self.pushButton_7.setObjectName("pushButton_7")
+            QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.pushButtonHome.setIcon(icon)
+        self.pushButtonHome.setCheckable(False)
+        self.pushButtonHome.setObjectName("pushButton_7")
         self.label_5 = QtWidgets.QLabel(Frame)
         self.label_5.setGeometry(QtCore.QRect(0, 60, 391, 61))
         self.label_5.setStyleSheet("QLabel{\n"
@@ -67,6 +68,7 @@ class ModificaEffetuata(object):
                                    "}")
         self.label_5.setAlignment(QtCore.Qt.AlignCenter)
         self.label_5.setObjectName("label_5")
+        self.pushButtonHome.clicked.connect(self.backHome)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -75,6 +77,15 @@ class ModificaEffetuata(object):
         _translate = QtCore.QCoreApplication.translate
         Frame.setWindowTitle(_translate("Frame", "Fumetteria - Modifica Password"))
         self.label_4.setText(_translate("Frame", "CREDENZIALI MODIFICATE"))
-        self.pushButton_7.setText(_translate("Frame", "Home"))
+        self.pushButtonHome.setText(_translate("Frame", "Home"))
         self.label_5.setText(_translate("Frame", "Le credenziali sono state modificate con successo.\n"
                                                  " Cliccare su Home per continuare ad utilizzare il programma "))
+
+    # ritorna alla home del programma
+    def backHome(self):
+        from Grafica.GestioneGeneraleProgramma.VistaHome import VistaHome
+        self.home = QtWidgets.QFrame()
+        self.ui = VistaHome()
+        self.ui.setupUi(self.home)
+        self.home.show()
+        self.frame.close()

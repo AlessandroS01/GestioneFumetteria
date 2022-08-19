@@ -89,16 +89,16 @@ class ModificaUtente(object):
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
-        self.pushButton_5 = QtWidgets.QPushButton(Frame)
-        self.pushButton_5.setGeometry(QtCore.QRect(10, 320, 141, 31))
+        self.pushButtonLogout = QtWidgets.QPushButton(Frame)
+        self.pushButtonLogout.setGeometry(QtCore.QRect(10, 320, 141, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_5.setFont(font)
-        self.pushButton_5.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_5.setStyleSheet("QPushButton{\n"
+        self.pushButtonLogout.setFont(font)
+        self.pushButtonLogout.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonLogout.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -111,9 +111,9 @@ class ModificaUtente(object):
         icon.addPixmap(QtGui.QPixmap(
             "Images\\log.png"),
             QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_5.setIcon(icon)
-        self.pushButton_5.setCheckable(False)
-        self.pushButton_5.setObjectName("pushButton_5")
+        self.pushButtonLogout.setIcon(icon)
+        self.pushButtonLogout.setCheckable(False)
+        self.pushButtonLogout.setObjectName("pushButton_5")
         self.pushButtonModifica = QtWidgets.QPushButton(Frame)
         self.pushButtonModifica.setGeometry(QtCore.QRect(10, 260, 371, 31))
         font = QtGui.QFont()
@@ -134,16 +134,16 @@ class ModificaUtente(object):
                                               "}")
         self.pushButtonModifica.setCheckable(False)
         self.pushButtonModifica.setObjectName("pushButton_6")
-        self.pushButton_4 = QtWidgets.QPushButton(Frame)
-        self.pushButton_4.setGeometry(QtCore.QRect(160, 320, 141, 31))
+        self.pushButtonGestionePrincipale = QtWidgets.QPushButton(Frame)
+        self.pushButtonGestionePrincipale.setGeometry(QtCore.QRect(160, 320, 141, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_4.setFont(font)
-        self.pushButton_4.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_4.setStyleSheet("QPushButton{\n"
+        self.pushButtonGestionePrincipale.setFont(font)
+        self.pushButtonGestionePrincipale.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonGestionePrincipale.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -156,9 +156,11 @@ class ModificaUtente(object):
         icon1.addPixmap(QtGui.QPixmap(
             "Images\\left.png"),
             QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_4.setIcon(icon1)
-        self.pushButton_4.setObjectName("pushButton_4")
+        self.pushButtonGestionePrincipale.setIcon(icon1)
+        self.pushButtonGestionePrincipale.setObjectName("pushButton_4")
         self.pushButtonModifica.clicked.connect(self.clickModifica)
+        self.pushButtonGestionePrincipale.clicked.connect(self.backHome)
+        self.pushButtonLogout.clicked.connect(self.openLogin)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -170,9 +172,9 @@ class ModificaUtente(object):
         self.label_2.setText(_translate("Frame", "Inserisci password:"))
         self.label_3.setText(_translate("Frame", "Inserisci il  nuovo nome utente:"))
         self.label_4.setText(_translate("Frame", "MODIFICA NOME UTENTE"))
-        self.pushButton_5.setText(_translate("Frame", " Logout"))
+        self.pushButtonLogout.setText(_translate("Frame", " Logout"))
         self.pushButtonModifica.setText(_translate("Frame", "Modifica"))
-        self.pushButton_4.setText(_translate("Frame", " Indietro"))
+        self.pushButtonGestionePrincipale.setText(_translate("Frame", " Indietro"))
 
     def clickModifica(self):
         amministratore = Amministratore()
@@ -196,7 +198,7 @@ class ModificaUtente(object):
         self.modificaEffettuata.show()
         self.frame.close()
 
-def ErrorMessageCambioUtente(self):
+    def ErrorMessageCambioUtente(self):
         self.ErrorBox = QMessageBox()
         self.ErrorBox.setWindowTitle("Errore")
         self.ErrorBox.setText("Nome utente o password errati")
@@ -205,3 +207,21 @@ def ErrorMessageCambioUtente(self):
             "background-color: #14626c;color:white; }QPushButton{ width:40px; height:20px; font-size: 10px; "
             "font-family: Helvetica, Sans-Serif; border: 1px solid black; border-radius: 5px; }")
         self.ErrorBox.exec()
+
+    # riporta alla pagina del login
+    def openLogin(self):
+        from Grafica.GestioneLogin.LoginAmministratore import LoginAmministratore
+        self.login = QtWidgets.QFrame()
+        self.ui = LoginAmministratore()
+        self.ui.setupUi(self.login)
+        self.login.show()
+        self.frame.close()
+
+    # ritorna alla home del programma
+    def backHome(self):
+        from Grafica.GestioneAccount.GestioneAccountPrincipale import GestioneAccountPrincipale
+        self.gestioneAccountPrincipale = QtWidgets.QFrame()
+        self.ui = GestioneAccountPrincipale()
+        self.ui.setupUi(self.gestioneAccountPrincipale)
+        self.gestioneAccountPrincipale.show()
+        self.frame.close()
