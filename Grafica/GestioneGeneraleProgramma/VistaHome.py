@@ -138,8 +138,7 @@ class VistaHome(object):
                                         "}")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap(
-            "C:\\Users\\Lenovo\\Desktop\\University\\MATERIE\\2°ANNO 2° SEMESTRE\\INGEGNERIA DEL "
-            "SOFTWARE\\Mockup\\../../../../../Mockup/Mockup/log.png"),
+            "Images\\log.png"),
                        QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButton_5.setIcon(icon)
         self.pushButton_5.setCheckable(False)

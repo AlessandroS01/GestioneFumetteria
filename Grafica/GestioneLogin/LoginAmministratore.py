@@ -12,6 +12,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 
 from Amministratore.Amministratore import Amministratore
+from Grafica.GestioneGeneraleProgramma.VistaHome import VistaHome
 
 
 class LoginAmministratore(object):
@@ -104,14 +105,11 @@ class LoginAmministratore(object):
         password = self.lineEdit_2.text()
 
         if amministratore.controlloCredenziali(nomeUtente, password):
-            print("T")
-            #   compare la finestra per la gestione della fumetteria
-            return True
+            self.openHome()
 
         else:
             self.ErrorMessage()
-            print("F")
-            return False
+
 
     def ErrorMessage(self):
         self.ErrorBox = QMessageBox()
@@ -120,6 +118,11 @@ class LoginAmministratore(object):
         self.ErrorBox.setStyleSheet("QLabel{min-width:200 px; font-size: 16px; font-family: Helvetica, Sans-Serif; } QPushButton:hover{background-color: #14626c;color:white; }QPushButton{ width:40px; height:20px; font-size: 10px; font-family: Helvetica, Sans-Serif; border: 1px solid black; border-radius: 5px; }")
         self.ErrorBox.exec()
 
+    def openHome(self):
+        self.home = QtWidgets.QFrame()
+        self.ui = VistaHome()
+        self.ui.setupUi(self.home)
+        self.home.show()
 
 
 
