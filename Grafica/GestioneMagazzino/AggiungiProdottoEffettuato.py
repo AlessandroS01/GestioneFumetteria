@@ -35,16 +35,16 @@ class AggiungiProdottoEffettuato(object):
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
-        self.pushButton_7 = QtWidgets.QPushButton(Frame)
-        self.pushButton_7.setGeometry(QtCore.QRect(130, 130, 151, 41))
+        self.pushButtonMagazzino = QtWidgets.QPushButton(Frame)
+        self.pushButtonMagazzino.setGeometry(QtCore.QRect(130, 130, 151, 41))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_7.setFont(font)
-        self.pushButton_7.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_7.setStyleSheet("QPushButton{\n"
+        self.pushButtonMagazzino.setFont(font)
+        self.pushButtonMagazzino.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonMagazzino.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -57,9 +57,9 @@ class AggiungiProdottoEffettuato(object):
         icon.addPixmap(QtGui.QPixmap(
             "Images\\warehouse.png"),
                        QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_7.setIcon(icon)
-        self.pushButton_7.setCheckable(False)
-        self.pushButton_7.setObjectName("pushButton_7")
+        self.pushButtonMagazzino.setIcon(icon)
+        self.pushButtonMagazzino.setCheckable(False)
+        self.pushButtonMagazzino.setObjectName("pushButton_7")
         self.label_5 = QtWidgets.QLabel(Frame)
         self.label_5.setGeometry(QtCore.QRect(0, 60, 401, 61))
         self.label_5.setStyleSheet("QLabel{\n"
@@ -69,6 +69,7 @@ class AggiungiProdottoEffettuato(object):
                                    "}")
         self.label_5.setAlignment(QtCore.Qt.AlignCenter)
         self.label_5.setObjectName("label_5")
+        self.pushButtonMagazzino.clicked.connect(self.openGestioneMagazzino)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -77,7 +78,15 @@ class AggiungiProdottoEffettuato(object):
         _translate = QtCore.QCoreApplication.translate
         Frame.setWindowTitle(_translate("Frame", "Fumetteria - Prodotto Inserito"))
         self.label_4.setText(_translate("Frame", "INSERIMENTO EFFETTUATO"))
-        self.pushButton_7.setText(_translate("Frame", "Magazzino"))
+        self.pushButtonMagazzino.setText(_translate("Frame", "Magazzino"))
         self.label_5.setText(_translate("Frame", "Il prodotto è stato inserito con successo.\n"
                                                  " Cliccare sul pulsante per tornare alla gestione del magazzino"))
 
+    # permette di gestire il funzionamento del magazzino
+    def openGestioneMagazzino(self):
+        from Grafica.GestioneMagazzino.GestioneMagazzinoPrincipale import GestioneMagazzinoPrincipale
+        self.gestioneMagazzino = QtWidgets.QFrame()
+        self.ui = GestioneMagazzinoPrincipale()
+        self.ui.setupUi(self.gestioneMagazzino)
+        self.gestioneMagazzino.show()
+        self.frame.close()  # hide serve a fare l'hide della schermata precedente

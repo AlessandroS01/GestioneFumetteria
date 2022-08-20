@@ -40,9 +40,10 @@ class Magazzino:
     def ricercaProdotto(self, codiceSerialeProdotto):
 
         for index, element in enumerate(self.storage):
-            codiceProdottoEsistente = str(self.storage[index]).split('-')
-            if codiceProdottoEsistente[3] == codiceSerialeProdotto:
-                return True, element
+            if element != "":
+                codiceProdottoEsistente = str(self.storage[index]).split('-')
+                if codiceProdottoEsistente[3] == codiceSerialeProdotto:
+                    return True, element
 
         return False, self.invioMessaggioErroreRicerca()
 

@@ -74,16 +74,16 @@ class AggiungiProdotto(object):
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
-        self.pushButton_5 = QtWidgets.QPushButton(Frame)
-        self.pushButton_5.setGeometry(QtCore.QRect(10, 380, 141, 31))
+        self.pushButtonLogout = QtWidgets.QPushButton(Frame)
+        self.pushButtonLogout.setGeometry(QtCore.QRect(10, 380, 141, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_5.setFont(font)
-        self.pushButton_5.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_5.setStyleSheet("QPushButton{\n"
+        self.pushButtonLogout.setFont(font)
+        self.pushButtonLogout.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonLogout.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -96,9 +96,9 @@ class AggiungiProdotto(object):
         icon.addPixmap(QtGui.QPixmap(
             "Images\\log.png"),
             QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_5.setIcon(icon)
-        self.pushButton_5.setCheckable(False)
-        self.pushButton_5.setObjectName("pushButton_5")
+        self.pushButtonLogout.setIcon(icon)
+        self.pushButtonLogout.setCheckable(False)
+        self.pushButtonLogout.setObjectName("pushButton_5")
         self.pushButtonInserisci = QtWidgets.QPushButton(Frame)
         self.pushButtonInserisci.setGeometry(QtCore.QRect(10, 320, 371, 31))
         font = QtGui.QFont()
@@ -119,16 +119,16 @@ class AggiungiProdotto(object):
                                                "}")
         self.pushButtonInserisci.setCheckable(False)
         self.pushButtonInserisci.setObjectName("pushButton_6")
-        self.pushButton_4 = QtWidgets.QPushButton(Frame)
-        self.pushButton_4.setGeometry(QtCore.QRect(160, 380, 141, 31))
+        self.pushButtonGestioneMagazzino = QtWidgets.QPushButton(Frame)
+        self.pushButtonGestioneMagazzino.setGeometry(QtCore.QRect(160, 380, 141, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_4.setFont(font)
-        self.pushButton_4.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_4.setStyleSheet("QPushButton{\n"
+        self.pushButtonGestioneMagazzino.setFont(font)
+        self.pushButtonGestioneMagazzino.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonGestioneMagazzino.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -141,8 +141,8 @@ class AggiungiProdotto(object):
         icon1.addPixmap(QtGui.QPixmap(
             "Images\\left.png"),
             QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_4.setIcon(icon1)
-        self.pushButton_4.setObjectName("pushButton_4")
+        self.pushButtonGestioneMagazzino.setIcon(icon1)
+        self.pushButtonGestioneMagazzino.setObjectName("pushButton_4")
         self.label_5 = QtWidgets.QLabel(Frame)
         self.label_5.setGeometry(QtCore.QRect(10, 250, 391, 31))
         self.label_5.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -235,6 +235,8 @@ class AggiungiProdotto(object):
         self.horizontalSlider_2.setOrientation(QtCore.Qt.Horizontal)
         self.horizontalSlider_2.setObjectName("horizontalSlider_2")
         self.pushButtonInserisci.clicked.connect(self.clickInserisci)
+        self.pushButtonLogout.clicked.connect(self.openLogin)
+        self.pushButtonGestioneMagazzino.clicked.connect(self.openGestioneMagazzino)
 
         self.retranslateUi(Frame)
         self.horizontalSlider.sliderMoved['int'].connect(self.spinBoxQuantita.setValue)
@@ -249,11 +251,13 @@ class AggiungiProdotto(object):
         self.label_2.setText(_translate("Frame", "Inserisci quantità prodotto:"))
         self.label_3.setText(_translate("Frame", "Inserisci prezzo: "))
         self.label_4.setText(_translate("Frame", "INSERISCI PRODOTTO"))
-        self.pushButton_5.setText(_translate("Frame", " Logout"))
+        self.pushButtonLogout.setText(_translate("Frame", " Logout"))
         self.pushButtonInserisci.setText(_translate("Frame", "Inserisci"))
-        self.pushButton_4.setText(_translate("Frame", " Indietro"))
+        self.pushButtonGestioneMagazzino.setText(_translate("Frame", " Indietro"))
         self.label_5.setText(_translate("Frame", "Inserisci codice seriale:"))
 
+    # una volta cliccato inserisci fa dei controlli per vedere se
+    # il prodotto può essere aggiunto o meno al magazzino
     def clickInserisci(self):
         magazzino = Magazzino()
 
@@ -285,4 +289,22 @@ class AggiungiProdotto(object):
         self.ui = AggiungiProdottoEffettuato()
         self.ui.setupUi(self.aggiungiProdottoFunzionante)
         self.aggiungiProdottoFunzionante.show()
+        self.frame.close()
+
+    # permette di gestire il funzionamento del magazzino
+    def openGestioneMagazzino(self):
+        from Grafica.GestioneMagazzino.GestioneMagazzinoPrincipale import GestioneMagazzinoPrincipale
+        self.gestioneMagazzino = QtWidgets.QFrame()
+        self.ui = GestioneMagazzinoPrincipale()
+        self.ui.setupUi(self.gestioneMagazzino)
+        self.gestioneMagazzino.show()
+        self.frame.close()  # hide serve a fare l'hide della schermata precedente
+
+    # riporta alla pagina del login
+    def openLogin(self):
+        from Grafica.GestioneLogin.LoginAmministratore import LoginAmministratore
+        self.login = QtWidgets.QFrame()
+        self.ui = LoginAmministratore()
+        self.ui.setupUi(self.login)
+        self.login.show()
         self.frame.close()
