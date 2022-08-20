@@ -54,16 +54,16 @@ class GestioneMagazzinoPrincipale(object):
                                         "color:white;\n"
                                         "}")
         self.pushButton_2.setObjectName("pushButton_2")
-        self.pushButton_3 = QtWidgets.QPushButton(Frame)
-        self.pushButton_3.setGeometry(QtCore.QRect(230, 150, 161, 51))
+        self.pushButtonRicercaProdotto = QtWidgets.QPushButton(Frame)
+        self.pushButtonRicercaProdotto.setGeometry(QtCore.QRect(230, 150, 161, 51))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_3.setFont(font)
-        self.pushButton_3.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_3.setStyleSheet("QPushButton{\n"
+        self.pushButtonRicercaProdotto.setFont(font)
+        self.pushButtonRicercaProdotto.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonRicercaProdotto.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -72,7 +72,7 @@ class GestioneMagazzinoPrincipale(object):
                                         "background-color: #14626c;\n"
                                         "color:white;\n"
                                         "}")
-        self.pushButton_3.setObjectName("pushButton_3")
+        self.pushButtonRicercaProdotto.setObjectName("pushButton_3")
         self.label = QtWidgets.QLabel(Frame)
         self.label.setGeometry(QtCore.QRect(20, 70, 371, 41))
         self.label.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -154,6 +154,7 @@ class GestioneMagazzinoPrincipale(object):
         self.pushButtonHome.clicked.connect(self.backHome)
         self.pushButtonLogout.clicked.connect(self.openLogin)
         self.pushButtonAggiungiProdotto.clicked.connect(self.openAggiungiProdotto)
+        self.pushButtonRicercaProdotto.clicked.connect(self.openRicercaProdotto)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -164,7 +165,7 @@ class GestioneMagazzinoPrincipale(object):
         self.label_2.setText(_translate("Frame", "GESTIONE MAGAZZINO"))
         self.pushButton_2.setText(_translate("Frame", "Visualizza \n"
                                                       "Magazzino"))
-        self.pushButton_3.setText(_translate("Frame", "Ricerca \n"
+        self.pushButtonRicercaProdotto.setText(_translate("Frame", "Ricerca \n"
                                                       "Prodotto"))
         self.label.setText(_translate("Frame", "Scegli una delle tre opzioni disponibili o clicca \n"
                                                "il tasto home per tornare alla Home"))
@@ -198,4 +199,13 @@ class GestioneMagazzinoPrincipale(object):
         self.ui = AggiungiProdotto()
         self.ui.setupUi(self.aggiungiProdotto)
         self.aggiungiProdotto.show()
+        self.frame.close()
+
+    # apre la schermata per aggiungere un prodotto
+    def openRicercaProdotto(self):
+        from Grafica.GestioneMagazzino.RicercaProdotto import RicercaProdotto
+        self.ricercaProdotto = QtWidgets.QFrame()
+        self.ui = RicercaProdotto()
+        self.ui.setupUi(self.ricercaProdotto)
+        self.ricercaProdotto.show()
         self.frame.close()
