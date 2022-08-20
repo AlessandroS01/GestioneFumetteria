@@ -74,7 +74,7 @@ class GestioneMagazzinoPrincipale(object):
                                         "}")
         self.pushButtonRicercaProdotto.setObjectName("pushButton_3")
         self.label = QtWidgets.QLabel(Frame)
-        self.label.setGeometry(QtCore.QRect(20, 70, 371, 41))
+        self.label.setGeometry(QtCore.QRect(20, 70, 371, 61))
         self.label.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label.setStyleSheet("QLabel{\n"
                                  "font-family: Helvetica, sans-serif;\n"
@@ -168,7 +168,8 @@ class GestioneMagazzinoPrincipale(object):
         self.pushButtonRicercaProdotto.setText(_translate("Frame", "Ricerca \n"
                                                       "Prodotto"))
         self.label.setText(_translate("Frame", "Scegli una delle tre opzioni disponibili o clicca \n"
-                                               "il tasto home per tornare alla Home"))
+                                               "il tasto home per tornare alla Home. Per modificare\n"
+                                               "un prodotto effettua la Ricerca"))
         self.pushButtonHome.setText(_translate("Frame", "Home"))
         self.pushButtonLogout.setText(_translate("Frame", " Logout"))
         self.pushButtonAggiungiProdotto.setText(_translate("Frame", "Aggiungi \n"

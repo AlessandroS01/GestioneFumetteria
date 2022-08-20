@@ -68,3 +68,9 @@ class Prodotto:
 
     def setDataScadenzaOfferta(self, dataScadenzaOfferta):
         self.dataScadenzaOfferta = dataScadenzaOfferta
+
+    def getProdotto(self):
+        return str(self.getNomeProdotto() + " " + self.getQuantitaMagazzino()
+                   + " " + self.getPrezzo() + " " + self.getCodiceSeriale()
+                   + " " + self.getOfferta() + " " + self.getTipoOfferta()
+                   + " " + self.getPrezzoOfferta() + " " + self.getDataScadenzaOfferta())

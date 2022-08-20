@@ -15,12 +15,25 @@ class Magazzino:
 
         prodotto = storage.split("\n")
         self.storage = prodotto
+        self.listaProdotti = []
+        for index, element in enumerate(self.storage):
+            stringaSplittata = str(self.storage[index]).split('-')
+            prodottoAppoggio = Prodotto(None, None, None, None, None, None, None, None)
+            prodottoAppoggio.setNomeProdotto(stringaSplittata[0])
+            prodottoAppoggio.setQuantitaMagazzino(stringaSplittata[1])
+            prodottoAppoggio.setPrezzo(stringaSplittata[2])
+            prodottoAppoggio.setCodiceSeriale(stringaSplittata[3])
+            prodottoAppoggio.setOfferta(stringaSplittata[4])
+            prodottoAppoggio.setTipoOfferta(stringaSplittata[5])
+            prodottoAppoggio.setPrezzoOfferta(stringaSplittata[6])
+            prodottoAppoggio.setDataScadenzaOfferta(stringaSplittata[7])
+            self.listaProdotti.append(prodottoAppoggio)
 
     # stampa tutti i prodotti che sono stati salvati all'interno dello storage
     # all'interno di una singola lista.
     # Per trovare un prodotto si immette l'indice all'interno di []
     def getMagazzino(self):
-        return self.storage
+        return self.listaProdotti
 
     def aggiungereProdottoSuFile(self, nomeProdotto,
                                  quantitaProdotto, prezzoProdotto,
@@ -32,17 +45,18 @@ class Magazzino:
         with open(pathAssoluto, 'a') as f:
             f.write("\n")
             f.write(nomeProdotto + "-" + quantitaProdotto + "-"
-                    + prezzoProdotto + "-" + codiceSeriale)
+                    + prezzoProdotto + "-" + codiceSeriale + "-"
+                    + "-" + "-" + "-")
             f.close()
 
     # metodo che serve per ricercare un prodotto all'interno del magazzino tramite
     # l'utilizzo del suo codice seriale
     def ricercaProdotto(self, codiceSerialeProdotto):
 
-        for index, element in enumerate(self.storage):
+        for index, element in enumerate(self.listaProdotti):
             if element != "":
-                codiceProdottoEsistente = str(self.storage[index]).split('-')
-                if codiceProdottoEsistente[3] == codiceSerialeProdotto:
+                codiceProdottoEsistente = self.listaProdotti[index].getCodiceSeriale()
+                if codiceProdottoEsistente == codiceSerialeProdotto:
                     return True, element
 
         return False, self.invioMessaggioErroreRicerca()
