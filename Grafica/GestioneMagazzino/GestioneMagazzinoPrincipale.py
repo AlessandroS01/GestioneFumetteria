@@ -11,6 +11,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
+
 class GestioneMagazzinoPrincipale(object):
 
     def setupUi(self, Frame):
@@ -131,16 +132,16 @@ class GestioneMagazzinoPrincipale(object):
         self.pushButtonLogout.setIcon(icon1)
         self.pushButtonLogout.setCheckable(False)
         self.pushButtonLogout.setObjectName("pushButton_5")
-        self.pushButton_6 = QtWidgets.QPushButton(Frame)
-        self.pushButton_6.setGeometry(QtCore.QRect(130, 220, 161, 51))
+        self.pushButtonAggiungiProdotto = QtWidgets.QPushButton(Frame)
+        self.pushButtonAggiungiProdotto.setGeometry(QtCore.QRect(130, 220, 161, 51))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_6.setFont(font)
-        self.pushButton_6.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_6.setStyleSheet("QPushButton{\n"
+        self.pushButtonAggiungiProdotto.setFont(font)
+        self.pushButtonAggiungiProdotto.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonAggiungiProdotto.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -149,9 +150,10 @@ class GestioneMagazzinoPrincipale(object):
                                         "background-color: #14626c;\n"
                                         "color:white;\n"
                                         "}")
-        self.pushButton_6.setObjectName("pushButton_6")
+        self.pushButtonAggiungiProdotto.setObjectName("pushButton_6")
         self.pushButtonHome.clicked.connect(self.backHome)
         self.pushButtonLogout.clicked.connect(self.openLogin)
+        self.pushButtonAggiungiProdotto.clicked.connect(self.openAggiungiProdotto)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -168,7 +170,7 @@ class GestioneMagazzinoPrincipale(object):
                                                "il tasto home per tornare alla Home"))
         self.pushButtonHome.setText(_translate("Frame", "Home"))
         self.pushButtonLogout.setText(_translate("Frame", " Logout"))
-        self.pushButton_6.setText(_translate("Frame", "Aggiungi \n"
+        self.pushButtonAggiungiProdotto.setText(_translate("Frame", "Aggiungi \n"
                                                       "Prodotto"))
 
     # ritorna alla home del programma
@@ -187,4 +189,13 @@ class GestioneMagazzinoPrincipale(object):
         self.ui = LoginAmministratore()
         self.ui.setupUi(self.login)
         self.login.show()
+        self.frame.close()
+
+    # apre la schermata per aggiungere un prodotto
+    def openAggiungiProdotto(self):
+        from Grafica.GestioneMagazzino.AggiungiProdotto import AggiungiProdotto
+        self.aggiungiProdotto = QtWidgets.QFrame()
+        self.ui = AggiungiProdotto()
+        self.ui.setupUi(self.aggiungiProdotto)
+        self.aggiungiProdotto.show()
         self.frame.close()

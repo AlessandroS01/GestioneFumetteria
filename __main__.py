@@ -2,7 +2,9 @@ import sys
 
 from PyQt5 import QtWidgets
 
+from GestioneMagazzino.Magazzino import Magazzino
 from Grafica.GestioneLogin.LoginAmministratore import LoginAmministratore
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)

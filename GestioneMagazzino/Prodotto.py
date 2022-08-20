@@ -1,16 +1,16 @@
 class Prodotto:
 
     def __init__(self, nomeProdotto,
-                 quantitaMagazzino, codiceSeriale,
-                 prezzo, offerta,
+                 quantitaMagazzino, prezzo,
+                 codiceSeriale, offerta,
                  tipoOfferta, prezzoOfferta,
                  dataScadenzaOfferta):
 
         if offerta:
             self.nomeProdotto = nomeProdotto
             self.quantitaMagazzino = quantitaMagazzino
-            self.codiceSeriale = codiceSeriale
             self.prezzo = prezzo
+            self.codiceSeriale = codiceSeriale
             self.offerta = offerta
             self.tipoOfferta = tipoOfferta
             self.prezzoOfferta = prezzoOfferta
@@ -68,4 +68,3 @@ class Prodotto:
 
     def setDataScadenzaOfferta(self, dataScadenzaOfferta):
         self.dataScadenzaOfferta = dataScadenzaOfferta
-
