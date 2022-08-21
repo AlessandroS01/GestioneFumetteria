@@ -48,7 +48,7 @@ class Magazzino:
             f.write("\n")
             f.write(nomeProdotto + "-" + quantitaProdotto + "-"
                     + prezzoProdotto + "-" + codiceSeriale
-                    + "----")
+                    + "-None-None-None-None")
             f.close()
 
     # metodo che serve a capire se un prodotto è possibile aggiungerlo al
@@ -76,7 +76,7 @@ class Magazzino:
             if element != "":
                 codiceProdottoEsistente = self.listaProdotti[index].getCodiceSeriale()
                 if codiceProdottoEsistente == codiceSerialeProdotto:
-                    return True, self.listaProdotti[index], index
+                    return True, self.listaProdotti[index]
 
         return False, self.invioMessaggioErroreRicerca()
 

@@ -77,14 +77,10 @@ class Amministratore:
         magazzino = Magazzino()
         resultRicerca = magazzino.ricercaProdotto(codiceSerialeProdotto)
 
-        # resultRicerca[2] indice
         # resultRicerca[1] prodotto
         if resultRicerca[0] is True:
-            resultRicerca[1].setOffertaTotale(tipoOfferta, prezzoOfferta,
-                                              dataScadenzaOfferta, resultRicerca[1])
-            # aggiungere una parte che mi permette di modificare i dati relativi all'offerta
-            # all'interno del file del prodotto ritrovato
-
+            resultRicerca[1].setNuovaOfferta(tipoOfferta, prezzoOfferta,
+                                             dataScadenzaOfferta, resultRicerca[1])
             return True
 
         else:

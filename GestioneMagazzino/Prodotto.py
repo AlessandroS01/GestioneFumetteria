@@ -80,10 +80,11 @@ class Prodotto:
                    + " " + self.getOfferta() + " " + self.getTipoOfferta()
                    + " " + self.getPrezzoOfferta() + " " + self.getDataScadenzaOfferta())
 
-    # metodo che serve a settare totalmente un'offerta al prodotto
-    def setOffertaTotale(self, tipoOfferta,
-                         prezzoOfferta, dataScadenzaOfferta,
-                         prodotto):
+    # metodo che serve a settare un'offerta ad un prodotto
+    # che prima non ne aveva
+    def setNuovaOfferta(self, tipoOfferta,
+                        prezzoOfferta, dataScadenzaOfferta,
+                        prodotto):
 
         pathRelativo = Path("Magazzino")
         pathAssoluto = pathRelativo.absolute()
@@ -93,8 +94,8 @@ class Prodotto:
         prezzoProdotto = prodotto.getPrezzo()
         codiceSeriale = prodotto.getCodiceSeriale()
 
-        replacement = str(nomeProdotto + "-" + quantitaProdotto + "-" + prezzoProdotto + "-" + codiceSeriale + "-" + tipoOfferta + "-" + prezzoOfferta + "-" + dataScadenzaOfferta + "-")
-        data = str(nomeProdotto + "-" + quantitaProdotto + "-" + prezzoProdotto + "-" + codiceSeriale + "----")
+        replacement = str(nomeProdotto + "-" + quantitaProdotto + "-" + prezzoProdotto + "-" + codiceSeriale + "-True-" + tipoOfferta + "-" + prezzoOfferta + "-" + dataScadenzaOfferta)
+        data = str(nomeProdotto + "-" + quantitaProdotto + "-" + prezzoProdotto + "-" + codiceSeriale + "-None-None-None-None")
 
         with open(pathAssoluto, 'r') as file:
             filedata = file.read()
@@ -105,5 +106,4 @@ class Prodotto:
         # Write the file out again
         with open(pathAssoluto, 'w') as file:
             file.write(filedata)
-
 

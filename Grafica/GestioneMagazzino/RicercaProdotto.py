@@ -169,8 +169,8 @@ class RicercaProdotto(object):
 
         codiceSeriale = self.lineEditCodiceSeriale.text()
         result = magazzino.ricercaProdotto(codiceSeriale)
-
         if result[0] is True:
+            self.prodottoTrovato = result[1]
             self.openRicercaSuccesso()
         else:
             self.ErrorMessage()
@@ -190,6 +190,6 @@ class RicercaProdotto(object):
         from Grafica.GestioneMagazzino.RicercaProdottoSuccesso import RicercaProdottoSuccesso
         self.ricercaProdottoSuccesso = QtWidgets.QFrame()
         self.ui = RicercaProdottoSuccesso()
-        self.ui.setupUi(self.ricercaProdottoSuccesso)
+        self.ui.setupUi(self.ricercaProdottoSuccesso, self.prodottoTrovato)
         self.ricercaProdottoSuccesso.show()
-        self.frame.close()  # hide serve a fare l'hide della schermata precedente
+        self.frame.close()
