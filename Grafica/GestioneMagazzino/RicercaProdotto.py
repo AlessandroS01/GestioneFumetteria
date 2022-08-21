@@ -171,7 +171,7 @@ class RicercaProdotto(object):
         result = magazzino.ricercaProdotto(codiceSeriale)
 
         if result[0] is True:
-            print("AA")
+            self.openRicercaSuccesso()
         else:
             self.ErrorMessage()
 
@@ -184,3 +184,12 @@ class RicercaProdotto(object):
             "background-color: #14626c;color:white; }QPushButton{ width:40px; height:20px; font-size: 10px; "
             "font-family: Helvetica, Sans-Serif; border: 1px solid black; border-radius: 5px; }")
         self.ErrorBox.exec()
+
+    # serve ad aprire la schermata relativa alla ricerca del prodotto andata a buon fine
+    def openRicercaSuccesso(self):
+        from Grafica.GestioneMagazzino.RicercaProdottoSuccesso import RicercaProdottoSuccesso
+        self.ricercaProdottoSuccesso = QtWidgets.QFrame()
+        self.ui = RicercaProdottoSuccesso()
+        self.ui.setupUi(self.ricercaProdottoSuccesso)
+        self.ricercaProdottoSuccesso.show()
+        self.frame.close()  # hide serve a fare l'hide della schermata precedente

@@ -1,3 +1,7 @@
+import fileinput
+from pathlib import Path
+
+
 class Prodotto:
 
     def __init__(self, nomeProdotto,
@@ -69,8 +73,37 @@ class Prodotto:
     def setDataScadenzaOfferta(self, dataScadenzaOfferta):
         self.dataScadenzaOfferta = dataScadenzaOfferta
 
+    # ritorna tutti gli attributi del prodotto specifico come una stringa
     def getProdotto(self):
         return str(self.getNomeProdotto() + " " + self.getQuantitaMagazzino()
                    + " " + self.getPrezzo() + " " + self.getCodiceSeriale()
                    + " " + self.getOfferta() + " " + self.getTipoOfferta()
                    + " " + self.getPrezzoOfferta() + " " + self.getDataScadenzaOfferta())
+
+    # metodo che serve a settare totalmente un'offerta al prodotto
+    def setOffertaTotale(self, tipoOfferta,
+                         prezzoOfferta, dataScadenzaOfferta,
+                         prodotto):
+
+        pathRelativo = Path("Magazzino")
+        pathAssoluto = pathRelativo.absolute()
+
+        nomeProdotto = prodotto.getNomeProdotto()
+        quantitaProdotto = prodotto.getQuantitaMagazzino()
+        prezzoProdotto = prodotto.getPrezzo()
+        codiceSeriale = prodotto.getCodiceSeriale()
+
+        replacement = str(nomeProdotto + "-" + quantitaProdotto + "-" + prezzoProdotto + "-" + codiceSeriale + "-" + tipoOfferta + "-" + prezzoOfferta + "-" + dataScadenzaOfferta + "-")
+        data = str(nomeProdotto + "-" + quantitaProdotto + "-" + prezzoProdotto + "-" + codiceSeriale + "----")
+
+        with open(pathAssoluto, 'r') as file:
+            filedata = file.read()
+
+        # Replace the target string
+        filedata = filedata.replace(data, replacement)
+
+        # Write the file out again
+        with open(pathAssoluto, 'w') as file:
+            file.write(filedata)
+
+

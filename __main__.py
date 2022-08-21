@@ -2,6 +2,7 @@ import sys
 
 from PyQt5 import QtWidgets
 
+from Amministratore.Amministratore import Amministratore
 from GestioneMagazzino.Magazzino import Magazzino
 from Grafica.GestioneLogin.LoginAmministratore import LoginAmministratore
 
@@ -13,6 +14,7 @@ if __name__ == "__main__":
     ui.setupUi(Frame)
     Frame.show()
     sys.exit(app.exec_())
+
 
 
 

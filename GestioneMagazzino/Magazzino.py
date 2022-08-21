@@ -35,6 +35,8 @@ class Magazzino:
     def getMagazzino(self):
         return self.listaProdotti
 
+    # metodo richiamato da aggiungiProdotto per andare a
+    # scrivere i dati del prodotto su file
     def aggiungereProdottoSuFile(self, nomeProdotto,
                                  quantitaProdotto, prezzoProdotto,
                                  codiceSeriale):
@@ -45,22 +47,12 @@ class Magazzino:
         with open(pathAssoluto, 'a') as f:
             f.write("\n")
             f.write(nomeProdotto + "-" + quantitaProdotto + "-"
-                    + prezzoProdotto + "-" + codiceSeriale + "-"
-                    + "-" + "-" + "-")
+                    + prezzoProdotto + "-" + codiceSeriale
+                    + "----")
             f.close()
 
-    # metodo che serve per ricercare un prodotto all'interno del magazzino tramite
-    # l'utilizzo del suo codice seriale
-    def ricercaProdotto(self, codiceSerialeProdotto):
-
-        for index, element in enumerate(self.listaProdotti):
-            if element != "":
-                codiceProdottoEsistente = self.listaProdotti[index].getCodiceSeriale()
-                if codiceProdottoEsistente == codiceSerialeProdotto:
-                    return True, element
-
-        return False, self.invioMessaggioErroreRicerca()
-
+    # metodo che serve a capire se un prodotto è possibile aggiungerlo al
+    # file Magazzino a seguito della ricerca
     def aggiungiProdotto(self, nomeProdotto,
                          quantitaProdotto, prezzoProdotto,
                          codiceSeriale):
@@ -75,6 +67,18 @@ class Magazzino:
         else:
             self.invioMessaggioErroreInserimentoProdotto()
             return False
+
+    # metodo che serve per ricercare un prodotto all'interno del magazzino tramite
+    # l'utilizzo del suo codice seriale
+    def ricercaProdotto(self, codiceSerialeProdotto):
+
+        for index, element in enumerate(self.listaProdotti):
+            if element != "":
+                codiceProdottoEsistente = self.listaProdotti[index].getCodiceSeriale()
+                if codiceProdottoEsistente == codiceSerialeProdotto:
+                    return True, self.listaProdotti[index], index
+
+        return False, self.invioMessaggioErroreRicerca()
 
     def invioMessaggioErroreRicerca(self):
         return "Il prodotto cercato non si trova all'interno del magazzino"
