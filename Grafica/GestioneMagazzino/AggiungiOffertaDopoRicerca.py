@@ -236,12 +236,19 @@ class AggiungiOffertaDopoRicerca(object):
         dataScadenzaOffertaDatetime = datetime.strptime(dataScadenzaOffertaText, '%d/%m/%Y').date()
         today = datetime.now().date()
 
+
+        # risolve un problema di incompatibilità dello spinBox
+        # tra le versione di Windows10 e Windows11
+        if "," in prezzoOfferta:
+            prezzoVector = prezzoOfferta.split(",")
+            prezzoOfferta = prezzoVector[0] + "." + prezzoVector[1]
+
         if prezzoOfferta != "0.00":
             if float(prezzoOfferta) < float(self.prodottoTrovato.getPrezzo()):
                 if dataScadenzaOffertaDatetime > today:
                     amministratore.aggiungiOffertaProdotto(self.prodottoTrovato.getCodiceSeriale(),
-                                                       tipoOfferta, prezzoOfferta,
-                                                       dataScadenzaOffertaText)
+                                                           tipoOfferta, prezzoOfferta,
+                                                           dataScadenzaOffertaText)
                     self.openAggiungiOffertaSuccesso()
                 else:
                     self.ErrorData()

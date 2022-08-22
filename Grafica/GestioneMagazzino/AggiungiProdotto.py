@@ -266,6 +266,12 @@ class AggiungiProdotto(object):
         prezzo = self.doubleSpinBoxPrezzo.text()
         codiceSeriale = self.lineEditCodiceSeriale.text()
 
+        # risolve un problema di incompatibilità dello spinBox
+        # tra le versione di Windows10 e Windows11
+        if "," in prezzo:
+            prezzoVector = prezzo.split(",")
+            prezzo = prezzoVector[0] + "." + prezzoVector[1]
+
         if codiceSeriale.isnumeric() is True:
             if nome != "":
                 if quantita != "0":
