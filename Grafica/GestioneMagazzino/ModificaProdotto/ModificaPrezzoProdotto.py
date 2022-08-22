@@ -175,6 +175,11 @@ class ModificaPrezzoProdotto(object):
 
         prezzoInserito = self.doubleSpinBoxPrezzo.text()
 
+
+        if "," in prezzoInserito:
+            prezzoVector = prezzoInserito.split(",")
+            prezzoInserito = prezzoVector[0] + "." + prezzoVector[1]
+
         if float(prezzoInserito) != 0.00:
             if float(prezzoInserito) != float(self.prodottoTrovato.getPrezzo()):
                 if str(self.prodottoTrovato.getOfferta()) != "True" or float(prezzoInserito) > float(self.prodottoTrovato.getPrezzoOfferta()):
