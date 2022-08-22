@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'C:\Users\Lenovo\Desktop\University\MATERIE\2°ANNO 2° SEMESTRE\INGEGNERIA DEL SOFTWARE\Mockup\AggiungiProdottoEffettuato.ui'
+# Form implementation generated from reading ui file 'C:\Users\Lenovo\Downloads\ModificaProdottoEffettuato.ui'
 #
 # Created by: PyQt5 UI code generator 5.15.4
 #
@@ -11,18 +11,18 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class AggiungiProdottoEffettuato(object):
+class ModificaEffettuata(object):
 
     def setupUi(self, Frame):
         Frame.setObjectName("Frame")
-        Frame.resize(407, 201)
+        Frame.resize(407, 195)
         Frame.setStyleSheet("QFrame{\n"
                             "background-color: rgb(255, 255, 255);\n"
                             "}")
         Frame.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.frame = Frame
         self.label_4 = QtWidgets.QLabel(Frame)
-        self.label_4.setGeometry(QtCore.QRect(10, 20, 381, 31))
+        self.label_4.setGeometry(QtCore.QRect(10, 20, 391, 31))
         self.label_4.setStyleSheet("QLabel{\n"
                                    "font-family: impact, sans-serif;\n"
                                    "font-size:30px;\n"
@@ -54,9 +54,8 @@ class AggiungiProdottoEffettuato(object):
                                         "color:white;\n"
                                         "}")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap(
-            "Images\\warehouse.png"),
-                       QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("Images\\warehouse.png"), QtGui.QIcon.Normal,
+                       QtGui.QIcon.Off)
         self.pushButtonMagazzino.setIcon(icon)
         self.pushButtonMagazzino.setCheckable(False)
         self.pushButtonMagazzino.setObjectName("pushButton_7")
@@ -76,10 +75,10 @@ class AggiungiProdottoEffettuato(object):
 
     def retranslateUi(self, Frame):
         _translate = QtCore.QCoreApplication.translate
-        Frame.setWindowTitle(_translate("Frame", "Fumetteria - Prodotto Inserito"))
-        self.label_4.setText(_translate("Frame", "INSERIMENTO EFFETTUATO"))
+        Frame.setWindowTitle(_translate("Frame", "Fumetteria - Modifca Effettuata"))
+        self.label_4.setText(_translate("Frame", "MODIFICA EFFETTUATA "))
         self.pushButtonMagazzino.setText(_translate("Frame", "Magazzino"))
-        self.label_5.setText(_translate("Frame", "Il prodotto è stato inserito con successo.\n"
+        self.label_5.setText(_translate("Frame", "Il prodotto è stato modificato con successo.\n"
                                                  " Cliccare sul pulsante per tornare alla gestione del magazzino"))
 
     # permette di gestire il funzionamento del magazzino

@@ -82,7 +82,6 @@ class Amministratore:
             resultRicerca[1].setNuovaOfferta(tipoOfferta, prezzoOfferta,
                                              dataScadenzaOfferta, resultRicerca[1])
             return True
-
         else:
             return False
 

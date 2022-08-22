@@ -233,19 +233,20 @@ class RicercaProdottoSuccesso(object):
         self.pushButtonAggiungiOfferta.setFont(font)
         self.pushButtonAggiungiOfferta.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pushButtonAggiungiOfferta.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
+                                                     "border: 2px solid black;\n"
+                                                     "border-radius: 10px;\n"
+                                                     "}\n"
+                                                     "QPushButton:hover{\n"
+                                                     "\n"
+                                                     "background-color: #14626c;\n"
+                                                     "color:white;\n"
+                                                     "}")
         self.pushButtonAggiungiOfferta.setCheckable(False)
         self.pushButtonAggiungiOfferta.setObjectName("pushButton_7")
         self.pushButtonLogout.clicked.connect(self.openLogin)
         self.pushButtonRicercaProdotto.clicked.connect(self.openRicercaProdotto)
         self.pushButtonAggiungiOfferta.clicked.connect(self.clickAggiungiOfferta)
+        self.pushButtonModifica.clicked.connect(self.openModifica)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -266,7 +267,7 @@ class RicercaProdottoSuccesso(object):
         item = self.listWidget.item(1)
         item.setText(_translate("Frame", "Quantità Prodotto : " + self.prodottoTrovato.getQuantitaMagazzino()))
         item = self.listWidget.item(2)
-        item.setText(_translate("Frame", "Prezzo Prodotto : " + self.prodottoTrovato.getPrezzo() + "€"))
+        item.setText(_translate("Frame", "Prezzo Prodotto : " + self.prodottoTrovato.getPrezzo() + " €"))
         item = self.listWidget.item(3)
         item.setText(_translate("Frame", "Codice Seriale : " + self.prodottoTrovato.getCodiceSeriale()))
         item = self.listWidget.item(4)
@@ -274,7 +275,7 @@ class RicercaProdottoSuccesso(object):
         item = self.listWidget.item(5)
         item.setText(_translate("Frame", "Tipo Offerta : " + self.prodottoTrovato.getTipoOfferta()))
         item = self.listWidget.item(6)
-        item.setText(_translate("Frame", "Prezzo Offerta : " + self.prodottoTrovato.getPrezzoOfferta()))
+        item.setText(_translate("Frame", "Prezzo Offerta : " + self.prodottoTrovato.getPrezzoOfferta() + " €"))
         item = self.listWidget.item(7)
         item.setText(_translate("Frame", "Data Scadenza Offerta : " + self.prodottoTrovato.getDataScadenzaOfferta()))
         self.listWidget.setSortingEnabled(__sortingEnabled)
@@ -318,6 +319,15 @@ class RicercaProdottoSuccesso(object):
         self.aggiungiOfferta.show()
         self.frame.close()
 
+    # metodo utilizzato per modificare i valori che si trovano all'interno
+    # della classe Prodotto
+    def openModifica(self):
+        from Grafica.GestioneMagazzino.ModificaProdotto.ModificaPrincipaleProdotto import ModificaPrincipaleProdotto
+        self.modificaPrincipaleProdotto = QtWidgets.QFrame()
+        self.ui = ModificaPrincipaleProdotto()
+        self.ui.setupUi(self.modificaPrincipaleProdotto, self.prodottoTrovato)
+        self.modificaPrincipaleProdotto.show()
+        self.frame.close()
 
     def ErrorCodice(self):
         self.ErrorBox = QMessageBox()
