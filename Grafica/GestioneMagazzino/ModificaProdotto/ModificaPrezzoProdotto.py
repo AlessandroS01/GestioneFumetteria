@@ -186,8 +186,8 @@ class ModificaPrezzoProdotto(object):
                     data = self.prodottoTrovato.getProdotto()
                     self.prodottoTrovato.sovrascriviDati(data, replacement)
                     self.openModificaEffettuata()
-                else :
-                    if float(prezzoInserito) < float(self.prodottoTrovato.getPrezzoOfferta()):
+                else:
+                    if float(prezzoInserito) <= float(self.prodottoTrovato.getPrezzoOfferta()):
                         replacement = str(
                             self.prodottoTrovato.getNomeProdotto() + "-" + self.prodottoTrovato.getQuantitaMagazzino()
                             + "-" + prezzoInserito + "-" + self.prodottoTrovato.getCodiceSeriale() + "-"
