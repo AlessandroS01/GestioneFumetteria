@@ -166,7 +166,6 @@ class RicercaProdotto(object):
     # alla presenza o meno del prodotto ottengo schermate diverse
     def clickRicerca(self):
         magazzino = Magazzino()
-
         codiceSeriale = self.lineEditCodiceSeriale.text()
         result = magazzino.ricercaProdotto(codiceSeriale)
         if result[0] is True:

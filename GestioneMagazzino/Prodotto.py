@@ -90,28 +90,6 @@ class Prodotto:
         data = self.getProdotto()
         self.sovrascriviDati(data, replacement)
 
-    # metodo che serve a rimuovere l'offerta ad un prodotto
-    def rimuoviOffertaEsistente(self, tipoOfferta,
-                                prezzoOfferta, dataScadenzaOfferta,
-                                prodotto):
-
-        nomeProdotto = prodotto.getNomeProdotto()
-        quantitaProdotto = prodotto.getQuantitaMagazzino()
-        prezzoProdotto = prodotto.getPrezzo()
-        codiceSeriale = prodotto.getCodiceSeriale()
-
-        data = str(
-            nomeProdotto + "-" + quantitaProdotto
-            + "-" + prezzoProdotto + "-" + codiceSeriale
-            + "-True-" + tipoOfferta + "-"
-            + prezzoOfferta + "-" + dataScadenzaOfferta)
-        replacement = str(
-            nomeProdotto + "-" + quantitaProdotto + "-"
-            + prezzoProdotto + "-" + codiceSeriale
-            + "-None-None-None-None")
-
-        self.sovrascriviDati(data, replacement)
-
     # metodo che viene richiamato per far sì che all'interno dei file
     # le stringhe possano essere sovrascritte
     def sovrascriviDati(self, stringaDaCambiare, stringaModificata):

@@ -57,30 +57,30 @@ class ModificaPrezzoProdotto(object):
         self.pushButtonModifica.setFont(font)
         self.pushButtonModifica.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pushButtonModifica.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
+                                              "border: 2px solid black;\n"
+                                              "border-radius: 10px;\n"
+                                              "}\n"
+                                              "QPushButton:hover{\n"
+                                              "\n"
+                                              "background-color: #14626c;\n"
+                                              "color:white;\n"
+                                              "}")
         self.pushButtonModifica.setCheckable(False)
         self.pushButtonModifica.setObjectName("pushButton_6")
         self.doubleSpinBoxPrezzo = QtWidgets.QDoubleSpinBox(Frame)
         self.doubleSpinBoxPrezzo.setGeometry(QtCore.QRect(330, 100, 51, 31))
         self.doubleSpinBoxPrezzo.setStyleSheet("QDoubleSpinBox{\n"
-                                           "border: 2px solid black;\n"
-                                           "border-radius: 6px;\n"
-                                           "}\n"
-                                           "QDoubleSpinBox::up-button{\n"
-                                           "\n"
-                                           "\n"
-                                           "}\n"
-                                           "\n"
-                                           "\n"
-                                           "\n"
-                                           "")
+                                               "border: 2px solid black;\n"
+                                               "border-radius: 6px;\n"
+                                               "}\n"
+                                               "QDoubleSpinBox::up-button{\n"
+                                               "\n"
+                                               "\n"
+                                               "}\n"
+                                               "\n"
+                                               "\n"
+                                               "\n"
+                                               "")
         self.doubleSpinBoxPrezzo.setWrapping(False)
         self.doubleSpinBoxPrezzo.setFrame(True)
         self.doubleSpinBoxPrezzo.setAlignment(QtCore.Qt.AlignCenter)
@@ -118,14 +118,14 @@ class ModificaPrezzoProdotto(object):
         self.pushButtonLogout.setFont(font)
         self.pushButtonLogout.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pushButtonLogout.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
+                                            "border: 2px solid black;\n"
+                                            "border-radius: 10px;\n"
+                                            "}\n"
+                                            "QPushButton:hover{\n"
+                                            "\n"
+                                            "background-color: #14626c;\n"
+                                            "color:white;\n"
+                                            "}")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("Images\\log.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButtonLogout.setIcon(icon)
@@ -141,14 +141,14 @@ class ModificaPrezzoProdotto(object):
         self.pushButtonModificaPrincipale.setFont(font)
         self.pushButtonModificaPrincipale.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pushButtonModificaPrincipale.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
+                                                        "border: 2px solid black;\n"
+                                                        "border-radius: 10px;\n"
+                                                        "}\n"
+                                                        "QPushButton:hover{\n"
+                                                        "\n"
+                                                        "background-color: #14626c;\n"
+                                                        "color:white;\n"
+                                                        "}")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("Images\\left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButtonModificaPrincipale.setIcon(icon1)
@@ -175,14 +175,16 @@ class ModificaPrezzoProdotto(object):
 
         prezzoInserito = self.doubleSpinBoxPrezzo.text()
 
-
+        # risolve un problema di incompatibilità dello spinBox
+        # tra le versione di Windows10 e Windows11
         if "," in prezzoInserito:
             prezzoVector = prezzoInserito.split(",")
             prezzoInserito = prezzoVector[0] + "." + prezzoVector[1]
 
         if float(prezzoInserito) != 0.00:
             if float(prezzoInserito) != float(self.prodottoTrovato.getPrezzo()):
-                if str(self.prodottoTrovato.getOfferta()) != "True" or float(prezzoInserito) > float(self.prodottoTrovato.getPrezzoOfferta()):
+                if str(self.prodottoTrovato.getOfferta()) != "True" or float(prezzoInserito) > float(
+                        self.prodottoTrovato.getPrezzoOfferta()):
                     replacement = str(
                         self.prodottoTrovato.getNomeProdotto() + "-" + self.prodottoTrovato.getQuantitaMagazzino()
                         + "-" + prezzoInserito + "-" + self.prodottoTrovato.getCodiceSeriale()
@@ -206,7 +208,7 @@ class ModificaPrezzoProdotto(object):
         else:
             self.ErrorPrezzoNullo()
 
-    # metodo che riporta alla pagina del login
+    # metodo che apre la pagina Modifica Effettuata
     def openModificaEffettuata(self):
         from Grafica.GestioneMagazzino.ModificaProdotto.ModificaEffettuata import ModificaEffettuata
         self.modificaEffettuta = QtWidgets.QFrame()
@@ -214,7 +216,6 @@ class ModificaPrezzoProdotto(object):
         self.ui.setupUi(self.modificaEffettuta)
         self.modificaEffettuta.show()
         self.frame.close()
-
 
     # metodo che riporta l'utente all'interno della schermata ModificaPrincipalePrincipale
     # dopo aver cliccato indietro

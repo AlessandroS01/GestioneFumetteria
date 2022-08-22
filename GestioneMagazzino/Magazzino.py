@@ -1,3 +1,5 @@
+import os
+
 from GestioneMagazzino.Prodotto import Prodotto
 from pathlib import Path
 
@@ -12,22 +14,24 @@ class Magazzino:
         with open(pathAssoluto, 'r') as f:
             storage = f.read()
             f.close()
-
-        prodotto = storage.split("\n")
-        self.storage = prodotto
-        self.listaProdotti = []
-        for index, element in enumerate(self.storage):
-            stringaSplittata = str(self.storage[index]).split('-')
-            prodottoAppoggio = Prodotto(None, None, None, None, None, None, None, None)
-            prodottoAppoggio.setNomeProdotto(stringaSplittata[0])
-            prodottoAppoggio.setQuantitaMagazzino(stringaSplittata[1])
-            prodottoAppoggio.setPrezzo(stringaSplittata[2])
-            prodottoAppoggio.setCodiceSeriale(stringaSplittata[3])
-            prodottoAppoggio.setOfferta(stringaSplittata[4])
-            prodottoAppoggio.setTipoOfferta(stringaSplittata[5])
-            prodottoAppoggio.setPrezzoOfferta(stringaSplittata[6])
-            prodottoAppoggio.setDataScadenzaOfferta(stringaSplittata[7])
-            self.listaProdotti.append(prodottoAppoggio)
+        if os.stat(pathAssoluto).st_size == 0:
+            self.listaProdotti = []
+        else:
+            prodotto = storage.split("\n")
+            self.storage = prodotto
+            self.listaProdotti = []
+            for index, element in enumerate(self.storage):
+                stringaSplittata = str(self.storage[index]).split('-')
+                prodottoAppoggio = Prodotto(None, None, None, None, None, None, None, None)
+                prodottoAppoggio.setNomeProdotto(stringaSplittata[0])
+                prodottoAppoggio.setQuantitaMagazzino(stringaSplittata[1])
+                prodottoAppoggio.setPrezzo(stringaSplittata[2])
+                prodottoAppoggio.setCodiceSeriale(stringaSplittata[3])
+                prodottoAppoggio.setOfferta(stringaSplittata[4])
+                prodottoAppoggio.setTipoOfferta(stringaSplittata[5])
+                prodottoAppoggio.setPrezzoOfferta(stringaSplittata[6])
+                prodottoAppoggio.setDataScadenzaOfferta(stringaSplittata[7])
+                self.listaProdotti.append(prodottoAppoggio)
 
     # stampa tutti i prodotti che sono stati salvati all'interno dello storage
     # all'interno di una singola lista.
@@ -45,11 +49,17 @@ class Magazzino:
         pathAssoluto = pathRelativo.absolute()
 
         with open(pathAssoluto, 'a') as f:
-            f.write("\n")
-            f.write(nomeProdotto + "-" + quantitaProdotto + "-"
-                    + prezzoProdotto + "-" + codiceSeriale
-                    + "-None-None-None-None")
-            f.close()
+            if os.stat(pathAssoluto).st_size == 0:
+                f.write(nomeProdotto + "-" + quantitaProdotto + "-"
+                        + prezzoProdotto + "-" + codiceSeriale
+                        + "-None-None-None-None")
+                f.close()
+            else:
+                f.write("\n")
+                f.write(nomeProdotto + "-" + quantitaProdotto + "-"
+                        + prezzoProdotto + "-" + codiceSeriale
+                        + "-None-None-None-None")
+                f.close()
 
     # metodo che serve a capire se un prodotto è possibile aggiungerlo al
     # file Magazzino a seguito della ricerca
@@ -67,11 +77,9 @@ class Magazzino:
         else:
             self.invioMessaggioErroreInserimentoProdotto()
             return False
-
     # metodo che serve per ricercare un prodotto all'interno del magazzino tramite
     # l'utilizzo del suo codice seriale
     def ricercaProdotto(self, codiceSerialeProdotto):
-
         for index, element in enumerate(self.listaProdotti):
             if element != "":
                 codiceProdottoEsistente = self.listaProdotti[index].getCodiceSeriale()

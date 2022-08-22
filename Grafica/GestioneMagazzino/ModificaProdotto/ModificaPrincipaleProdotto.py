@@ -46,14 +46,14 @@ class ModificaPrincipaleProdotto(object):
         self.pushButtonLogout.setFont(font)
         self.pushButtonLogout.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pushButtonLogout.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
+                                            "border: 2px solid black;\n"
+                                            "border-radius: 10px;\n"
+                                            "}\n"
+                                            "QPushButton:hover{\n"
+                                            "\n"
+                                            "background-color: #14626c;\n"
+                                            "color:white;\n"
+                                            "}")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("Images\\log.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButtonLogout.setIcon(icon)
@@ -69,14 +69,14 @@ class ModificaPrincipaleProdotto(object):
         self.pushButtonRicercaProdottoSuccesso.setFont(font)
         self.pushButtonRicercaProdottoSuccesso.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pushButtonRicercaProdottoSuccesso.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
+                                                             "border: 2px solid black;\n"
+                                                             "border-radius: 10px;\n"
+                                                             "}\n"
+                                                             "QPushButton:hover{\n"
+                                                             "\n"
+                                                             "background-color: #14626c;\n"
+                                                             "color:white;\n"
+                                                             "}")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("Images\\left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButtonRicercaProdottoSuccesso.setIcon(icon1)
@@ -91,36 +91,36 @@ class ModificaPrincipaleProdotto(object):
         self.pushButtonModificaQuantita.setFont(font)
         self.pushButtonModificaQuantita.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pushButtonModificaQuantita.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
+                                                      "border: 2px solid black;\n"
+                                                      "border-radius: 10px;\n"
+                                                      "}\n"
+                                                      "QPushButton:hover{\n"
+                                                      "\n"
+                                                      "background-color: #14626c;\n"
+                                                      "color:white;\n"
+                                                      "}")
         self.pushButtonModificaQuantita.setCheckable(False)
         self.pushButtonModificaQuantita.setObjectName("pushButton_8")
-        self.pushButton_9 = QtWidgets.QPushButton(Frame)
-        self.pushButton_9.setGeometry(QtCore.QRect(20, 170, 191, 51))
+        self.pushButtonModificaCodice = QtWidgets.QPushButton(Frame)
+        self.pushButtonModificaCodice.setGeometry(QtCore.QRect(20, 170, 191, 51))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_9.setFont(font)
-        self.pushButton_9.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_9.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
-        self.pushButton_9.setCheckable(False)
-        self.pushButton_9.setObjectName("pushButton_9")
+        self.pushButtonModificaCodice.setFont(font)
+        self.pushButtonModificaCodice.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonModificaCodice.setStyleSheet("QPushButton{\n"
+                                                    "border: 2px solid black;\n"
+                                                    "border-radius: 10px;\n"
+                                                    "}\n"
+                                                    "QPushButton:hover{\n"
+                                                    "\n"
+                                                    "background-color: #14626c;\n"
+                                                    "color:white;\n"
+                                                    "}")
+        self.pushButtonModificaCodice.setCheckable(False)
+        self.pushButtonModificaCodice.setObjectName("pushButton_9")
         self.pushButton_10 = QtWidgets.QPushButton(Frame)
         self.pushButton_10.setGeometry(QtCore.QRect(120, 240, 191, 51))
         font = QtGui.QFont()
@@ -151,26 +151,26 @@ class ModificaPrincipaleProdotto(object):
         self.pushButtonModificaPrezzo.setFont(font)
         self.pushButtonModificaPrezzo.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pushButtonModificaPrezzo.setStyleSheet("QPushButton{\n"
-                                         "border: 2px solid black;\n"
-                                         "border-radius: 10px;\n"
-                                         "}\n"
-                                         "QPushButton:hover{\n"
-                                         "\n"
-                                         "background-color: #14626c;\n"
-                                         "color:white;\n"
-                                         "}")
+                                                    "border: 2px solid black;\n"
+                                                    "border-radius: 10px;\n"
+                                                    "}\n"
+                                                    "QPushButton:hover{\n"
+                                                    "\n"
+                                                    "background-color: #14626c;\n"
+                                                    "color:white;\n"
+                                                    "}")
         self.pushButtonModificaPrezzo.setCheckable(False)
         self.pushButtonModificaPrezzo.setObjectName("pushButton_12")
-        self.pushButton_13 = QtWidgets.QPushButton(Frame)
-        self.pushButton_13.setGeometry(QtCore.QRect(230, 170, 191, 51))
+        self.pushButtonElimina = QtWidgets.QPushButton(Frame)
+        self.pushButtonElimina.setGeometry(QtCore.QRect(230, 170, 191, 51))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_13.setFont(font)
-        self.pushButton_13.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_13.setStyleSheet("QPushButton{\n"
+        self.pushButtonElimina.setFont(font)
+        self.pushButtonElimina.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonElimina.setStyleSheet("QPushButton{\n"
                                          "border: 2px solid black;\n"
                                          "border-radius: 10px;\n"
                                          "}\n"
@@ -179,8 +179,8 @@ class ModificaPrincipaleProdotto(object):
                                          "background-color: #14626c;\n"
                                          "color:white;\n"
                                          "}")
-        self.pushButton_13.setCheckable(False)
-        self.pushButton_13.setObjectName("pushButton_13")
+        self.pushButtonElimina.setCheckable(False)
+        self.pushButtonElimina.setObjectName("pushButton_13")
         self.label = QtWidgets.QLabel(Frame)
         self.label.setGeometry(QtCore.QRect(10, 60, 421, 41))
         self.label.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -195,6 +195,8 @@ class ModificaPrincipaleProdotto(object):
         self.pushButtonRicercaProdottoSuccesso.clicked.connect(self.openRicercaProdottoSuccesso)
         self.pushButtonModificaQuantita.clicked.connect(self.openModificaQuantitaProdotto)
         self.pushButtonModificaPrezzo.clicked.connect(self.openModificaPrezzoProdotto)
+        self.pushButtonModificaCodice.clicked.connect(self.openModificaCodice)
+        self.pushButtonElimina.clicked.connect(self.openEliminaProdotto)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -206,14 +208,14 @@ class ModificaPrincipaleProdotto(object):
         self.pushButtonLogout.setText(_translate("Frame", " Logout"))
         self.pushButtonRicercaProdottoSuccesso.setText(_translate("Frame", " Indietro"))
         self.pushButtonModificaQuantita.setText(_translate("Frame", "Modifica\n"
-                                                      "Quantità Prodotto"))
-        self.pushButton_9.setText(_translate("Frame", "Modifica\n"
-                                                      "Codice Seriale "))
+                                                                    "Quantità Prodotto"))
+        self.pushButtonModificaCodice.setText(_translate("Frame", "Modifica\n"
+                                                                  "Codice Seriale "))
         self.pushButton_10.setText(_translate("Frame", "Modifica\n"
                                                        " Offerta Prodotto"))
         self.pushButtonModificaPrezzo.setText(_translate("Frame", "Modifica \n"
-                                                       "Prezzo Prodotto"))
-        self.pushButton_13.setText(_translate("Frame", "Elimina \n"
+                                                                  "Prezzo Prodotto"))
+        self.pushButtonElimina.setText(_translate("Frame", "Elimina \n"
                                                        " Prodotto"))
         self.label.setText(_translate("Frame", "Seleziona una delle opzioni per modificare il prodotto "))
 
@@ -256,5 +258,20 @@ class ModificaPrincipaleProdotto(object):
         self.modificaPrezzoProdotto.show()
         self.frame.close()
 
+    # metodo permette all'utente di modificare il codice del prodotto
+    def openModificaCodice(self):
+        from Grafica.GestioneMagazzino.ModificaProdotto.ModificaCodiceProdotto import ModificaCodiceProdotto
+        self.modificaCodice = QtWidgets.QFrame()
+        self.ui = ModificaCodiceProdotto()
+        self.ui.setupUi(self.modificaCodice, self.prodottoTrovato)
+        self.modificaCodice.show()
+        self.frame.close()
 
-
+    # metodo permette all'utente di eliminare un prodotto
+    def openEliminaProdotto(self):
+        from Grafica.GestioneMagazzino.ModificaProdotto.EliminaProdotto import EliminaProdotto
+        self.eliminaProdotto = QtWidgets.QFrame()
+        self.ui = EliminaProdotto()
+        self.ui.setupUi(self.eliminaProdotto, self.prodottoTrovato)
+        self.eliminaProdotto.show()
+        self.frame.close()
