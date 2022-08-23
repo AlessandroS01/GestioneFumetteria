@@ -5,7 +5,9 @@ from GestioneMagazzino.Magazzino import Magazzino
 
 class Amministratore:
 
-    # credenziali salvate su file per comodità nella gestione delle informazioni
+    # Il costruttore di amministratore serve a leggere all'interno del
+    # file apposito (CredenzialiAmministratore.txt) quali sono le credenziali
+    # dell'amministratore.
     def __init__(self):
 
         pathRelativo = Path("CredenzialiAmministratore")
@@ -22,7 +24,8 @@ class Amministratore:
     def getNomeUtente(self):
         return self.nomeUtente
 
-    # metodo che serve a cambiare il nome utente dell'amministratore per il login
+    # Metodo che serve a cambiare il nome utente dell'amministratore per il login.
+    # Il nome utente viene poi salvato direttamente su file nella prima riga.
     def setNomeUtente(self, nomeUtente):
         pathRelativo = Path("CredenzialiAmministratore")
         pathAssoluto = pathRelativo.absolute()
@@ -40,7 +43,8 @@ class Amministratore:
     def getPassword(self):
         return self.password
 
-    # metodo che serve a cambiare la password dell'amministratore per il login
+    # Metodo che serve a cambiare la password dell'amministratore per il login.
+    # La password viene poi salvata direttamente su file nella seconda riga.
     def setPassword(self, password):
         pathRelativo = Path("CredenzialiAmministratore")
         pathAssoluto = pathRelativo.absolute()
@@ -55,29 +59,32 @@ class Amministratore:
             file.writelines(data)
             file.close()
 
-    # metodo che richiama il getMagazzino all'interno dell'istanza magazzino
+    # Metodo che richiama il getMagazzino all'interno dell'oggetto magazzino, che
+    # grazie al costruttore viene popolato.
     def visualizzaMagazzino(self):
 
         magazzino = Magazzino()
         return magazzino.getMagazzino()
 
-    # metodo che viene utilizzato per confrontare le credenziali immesse per il login
-    # e quelle all'interno del file
+    # Metodo che viene utilizzato per confrontare le credenziali immesse per il login
+    # tramite interfaccia e quelle all'interno del file.
     def controlloCredenziali(self, utente, password):
         if self.nomeUtente == utente and self.password == password:
             return True
         else:
             return False
 
-    # metodo che viene utilizzato per generare un'offerta relativa ad un prodotto ricercato
-    # e cambiare i valori all'interno del file per salvare la modifica
+    # Metodo che viene utilizzato per generare un'offerta relativa a un
+    # prodotto prima sprovvisto di offerta.
+    # Per fare ciò vengono cambiati gli attributi di quel determinato
+    # prodotto attraverso il metodo che viene richiamato all'interno dell if
+    # e che è descritto dentro la classe Prodotto.
     def aggiungiOffertaProdotto(self, codiceSerialeProdotto,
                                 tipoOfferta, prezzoOfferta,
                                 dataScadenzaOfferta):
         magazzino = Magazzino()
-        resultRicerca = magazzino.ricercaProdotto(codiceSerialeProdotto)
+        resultRicerca = magazzino.ricercaProdottoCodice(codiceSerialeProdotto)
 
-        # resultRicerca[1] prodotto
         if resultRicerca[0] is True:
             resultRicerca[1].setNuovaOfferta(tipoOfferta, prezzoOfferta,
                                              dataScadenzaOfferta, resultRicerca[1])
@@ -85,15 +92,19 @@ class Amministratore:
         else:
             return False
 
-    # metodo che viene utilizzato per cercare all'interno del magazzino tutti i prodotti che hanno
-    # un'offerta
+    # Metodo che va a ricercare quali sono i prodotti all'interno
+    # del file ai quali è presente un'offerta.
+    # Una volta trovato un prodotto con l'offerta, questo viene aggiunto
+    # a una nuova lista al cui interno si troveranno tutti i prodotti con
+    # un'offerta abbinata.
+    # Alla fine viene fatto il return della lista.
     def visualizzaProdottiConOfferta(self):
         magazzino = Magazzino()
         listaProdotti = magazzino.getMagazzino()
         listaProdottiConOfferta = []
 
-        for prodotto in listaProdotti:
-            if prodotto.getOfferta() is True:
-                listaProdottiConOfferta.append(prodotto)
+        for index in range(0, len(listaProdotti)):
+            if listaProdotti[index].getOfferta() == "True":
+                listaProdottiConOfferta.append(listaProdotti[index])
 
         return listaProdottiConOfferta

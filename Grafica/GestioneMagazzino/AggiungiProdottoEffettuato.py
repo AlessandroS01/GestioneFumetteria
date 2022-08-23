@@ -69,7 +69,7 @@ class AggiungiProdottoEffettuato(object):
                                    "}")
         self.label_5.setAlignment(QtCore.Qt.AlignCenter)
         self.label_5.setObjectName("label_5")
-        self.pushButtonMagazzino.clicked.connect(self.openGestioneMagazzino)
+        self.pushButtonMagazzino.clicked.connect(self.openGestioneMagazzinoPrincipale)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -82,11 +82,11 @@ class AggiungiProdottoEffettuato(object):
         self.label_5.setText(_translate("Frame", "Il prodotto è stato inserito con successo.\n"
                                                  " Cliccare sul pulsante per tornare alla gestione del magazzino"))
 
-    # permette di gestire il funzionamento del magazzino
-    def openGestioneMagazzino(self):
+    # Metodo che permette di ritornare all'interfaccia GestioneMagazzinoPrincipale.
+    def openGestioneMagazzinoPrincipale(self):
         from Grafica.GestioneMagazzino.GestioneMagazzinoPrincipale import GestioneMagazzinoPrincipale
-        self.gestioneMagazzino = QtWidgets.QFrame()
+        self.gestioneMagazzinoPrincipale = QtWidgets.QFrame()
         self.ui = GestioneMagazzinoPrincipale()
-        self.ui.setupUi(self.gestioneMagazzino)
-        self.gestioneMagazzino.show()
+        self.ui.setupUi(self.gestioneMagazzinoPrincipale)
+        self.gestioneMagazzinoPrincipale.show()
         self.frame.close()

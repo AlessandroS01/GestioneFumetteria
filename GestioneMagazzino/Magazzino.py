@@ -6,6 +6,16 @@ from pathlib import Path
 
 class Magazzino:
 
+    # Il costruttore di magazzino ha il compito di popolare una lista
+    # formata solamente da oggetti di Prodotto. Per popolare la lista
+    # il costruttore richiama l'apertura del file Magazzino.txt per far
+    # sì che si possa leggere ogni prodotto che si trova all'interno del
+    # file stesso.
+    # Per leggere le singole righe però non devo avere righe nulle (sia all'inizio,
+    # sia nel mezzo, sia alla fine del file) altrimenti il programma smette
+    # di funzionare.
+    # L'If serve a far sì che se il file inizialmente è nullo, il programma non vada
+    # in crash e setta la lista dei prodotti a una lista vuota.
     def __init__(self):
 
         pathRelativo = Path("Magazzino")
@@ -14,6 +24,7 @@ class Magazzino:
         with open(pathAssoluto, 'r') as f:
             storage = f.read()
             f.close()
+
         if os.stat(pathAssoluto).st_size == 0:
             self.listaProdotti = []
         else:
@@ -33,14 +44,20 @@ class Magazzino:
                 prodottoAppoggio.setDataScadenzaOfferta(stringaSplittata[7])
                 self.listaProdotti.append(prodottoAppoggio)
 
-    # stampa tutti i prodotti che sono stati salvati all'interno dello storage
-    # all'interno di una singola lista.
-    # Per trovare un prodotto si immette l'indice all'interno di []
+    # Ritorna tutti i prodotti che sono stati salvati all'interno della lista
+    # popolata grazie al costruttore.
     def getMagazzino(self):
         return self.listaProdotti
 
-    # metodo richiamato da aggiungiProdotto per andare a
-    # scrivere i dati del prodotto su file
+    # Metodo richiamato da aggiungiProdotto per andare a
+    # scrivere i dati del prodotto da aggiungere su file a seguito
+    # di un controllo effettuato dal metodo richiamante.
+    # Per non incorrere nel problema della lettura delle righe nulle, il
+    # quale è responsabile del crash del programma, la scrittura del prodotto
+    # avviene in modo diverso in base al file di testo.
+    # Infatti se il file è vuoto, il metodo scrive nella prima riga il prodotto
+    # da aggiungere, altrimenti, grazie all' "append" e un "\n", il metodo scrive
+    # il nuovo prodotto sulla linea successiva rispetto all'ultimo prodotto salvato.
     def aggiungereProdottoSuFile(self, nomeProdotto,
                                  quantitaProdotto, prezzoProdotto,
                                  codiceSeriale):
@@ -61,29 +78,46 @@ class Magazzino:
                         + "-None-None-None-None")
                 f.close()
 
-    # metodo che serve a capire se un prodotto è possibile aggiungerlo al
-    # file Magazzino a seguito della ricerca
+    # Metodo che va a richiamare il metodo sopra solo se è
+    # possibile aggiungere un nuovo prodotto i cui attributi vengono
+    # istanziati a seguito dell'inserimento di questi ultimi all'interno
+    # dell'interfaccia rispettiva (AggiungiProdotto.py).
+    # Il controllo viene fatto rispetto al nome e al codice seriale.
+    # In caso il controllo viene passato, il metodo richiama il metodo
+    # sopra scritto.
     def aggiungiProdotto(self, nomeProdotto,
                          quantitaProdotto, prezzoProdotto,
                          codiceSeriale):
 
-        result = self.ricercaProdotto(codiceSeriale)
+        resultCodice = self.ricercaProdottoCodice(codiceSeriale)
+        resultNome = self.ricercaProdottoNome(nomeProdotto)
 
-        if result[0] is False:
-            self.aggiungereProdottoSuFile(nomeProdotto,
-                                          quantitaProdotto, prezzoProdotto,
-                                          codiceSeriale)
+        if resultCodice[0] is False and resultNome[0] is False:
+            self.aggiungereProdottoSuFile(nomeProdotto, quantitaProdotto,
+                                          prezzoProdotto, codiceSeriale)
             return True
         else:
             self.invioMessaggioErroreInserimentoProdotto()
             return False
-    # metodo che serve per ricercare un prodotto all'interno del magazzino tramite
-    # l'utilizzo del suo codice seriale
-    def ricercaProdotto(self, codiceSerialeProdotto):
+
+    # Metodo che serve per ricercare un prodotto all'interno del
+    # magazzino tramite l'utilizzo del suo codice seriale.
+    def ricercaProdottoCodice(self, codiceSerialeProdotto):
         for index, element in enumerate(self.listaProdotti):
             if element != "":
                 codiceProdottoEsistente = self.listaProdotti[index].getCodiceSeriale()
                 if codiceProdottoEsistente == codiceSerialeProdotto:
+                    return True, self.listaProdotti[index]
+
+        return False, self.invioMessaggioErroreRicerca()
+
+    # Metodo che serve per ricercare un prodotto all'interno
+    # del magazzino tramite l'utilizzo del suo nome.
+    def ricercaProdottoNome(self, nomeProdotto):
+        for index, element in enumerate(self.listaProdotti):
+            if element != "":
+                nomeProdottoEsistente = self.listaProdotti[index].getNomeProdotto()
+                if nomeProdottoEsistente == nomeProdotto:
                     return True, self.listaProdotti[index]
 
         return False, self.invioMessaggioErroreRicerca()

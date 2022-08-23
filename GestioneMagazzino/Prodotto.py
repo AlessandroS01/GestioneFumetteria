@@ -4,6 +4,8 @@ from pathlib import Path
 
 class Prodotto:
 
+    # Il costruttore di Prodotto permette ad ogni oggetto di
+    # prodotto di settare i propri attributi iniziali.
     def __init__(self, nomeProdotto,
                  quantitaMagazzino, prezzo,
                  codiceSeriale, offerta,
@@ -66,18 +68,22 @@ class Prodotto:
     def setDataScadenzaOfferta(self, dataScadenzaOfferta):
         self.dataScadenzaOfferta = dataScadenzaOfferta
 
-    # ritorna tutti gli attributi del prodotto specifico come una stringa
+    # Il metodo ritorna come stringa i vari attributi del prodotto in successione
+    # nello stesso modo in cui vengono salvati all'interno del file di
+    # testo "Magazzino.txt".
     def getProdotto(self):
         return str(self.getNomeProdotto() + "-" + self.getQuantitaMagazzino()
                    + "-" + self.getPrezzo() + "-" + self.getCodiceSeriale()
                    + "-" + self.getOfferta() + "-" + self.getTipoOfferta()
                    + "-" + self.getPrezzoOfferta() + "-" + self.getDataScadenzaOfferta())
 
-    # metodo che serve a settare un'offerta ad un prodotto
-    # che prima non ne aveva
+    # Metodo che va a settare un'offerta a un prodotto.
+    # Per settare l'offerta, questo metodo richiama il metodo
+    # "sovrascriviDati".
+    # I vari attributi relativi al campo dell'offerta sono inseriti tramite
+    # l'interfaccia ModificaOfferta.
     def setNuovaOfferta(self, tipoOfferta,
-                        prezzoOfferta, dataScadenzaOfferta,
-                        prodotto):
+                        prezzoOfferta, dataScadenzaOfferta, prodotto):
 
         nomeProdotto = prodotto.getNomeProdotto()
         quantitaProdotto = prodotto.getQuantitaMagazzino()
@@ -90,8 +96,8 @@ class Prodotto:
         data = self.getProdotto()
         self.sovrascriviDati(data, replacement)
 
-    # metodo che viene richiamato per far sì che all'interno dei file
-    # le stringhe possano essere sovrascritte
+    # Metodo richiamato se si vuole ad andare a sostituire una
+    # linea all'interno del file "Magazzino.txt".
     def sovrascriviDati(self, stringaDaCambiare, stringaModificata):
         pathRelativo = Path("Magazzino")
         pathAssoluto = pathRelativo.absolute()

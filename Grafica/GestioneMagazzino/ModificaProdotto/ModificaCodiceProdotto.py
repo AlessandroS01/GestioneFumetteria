@@ -135,8 +135,7 @@ class ModificaCodiceProdotto(object):
         self.pushButtonModificaPrincipale.setText(_translate("Frame", " Indietro"))
         self.label_5.setText(_translate("Frame", "Modifica codice seriale:"))
 
-    # metodo che riporta l'utente all'interno della schermata ModificaPrincipalePrincipale
-    # dopo aver cliccato indietro
+    # Metodo che riporta l'utente all'interno della schermata ModificaPrincipalePrincipale
     def openModificaPrincipaleProdotto(self):
         from Grafica.GestioneMagazzino.ModificaProdotto.ModificaPrincipaleProdotto import ModificaPrincipaleProdotto
         self.modificaPrincipaleProdotto = QtWidgets.QFrame()
@@ -145,7 +144,8 @@ class ModificaCodiceProdotto(object):
         self.modificaPrincipaleProdotto.show()
         self.frame.close()
 
-    # metodo che riporta alla pagina del login
+    # Metodo che permette di ritornare all'interfaccia iniziale
+    # del programma, ovvero LoginAmministratore.
     def openLogin(self):
         from Grafica.GestioneLogin.LoginAmministratore import LoginAmministratore
         self.login = QtWidgets.QFrame()
@@ -154,7 +154,16 @@ class ModificaCodiceProdotto(object):
         self.login.show()
         self.frame.close()
 
-    # metodo che viene chiamato quando l'utente clicca su modifica
+    # Metodo che permette di modificare il codice del prodotto trovato
+    # dopo aver cliccato il pulsante Modifica.
+    # Nel caso in cui il codice immesso in un altro prodotto,
+    # viene visualizzata una finestra di errore.
+    # Nel caso in cui invece il codice immesso è utilizzabile e
+    # formato solo da caratteri numerici,
+    # viene richiamato il metodo "sovrascriviDati" della classe
+    # Magazzino per cambiare l'attributo codice del prodotto trovato
+    # all'interno del file di testo "Magazzino.txt".
+    # Successivamente viene richiamato il metodo "self.openModificaEffettuata".
     def clickModifica(self):
 
         from GestioneMagazzino.Magazzino import Magazzino
@@ -162,7 +171,7 @@ class ModificaCodiceProdotto(object):
 
         nuovoCodice = self.lineEditCodice.text()
 
-        result = magazzino.ricercaProdotto(nuovoCodice)
+        result = magazzino.ricercaProdottoCodice(nuovoCodice)
         if nuovoCodice.isnumeric() is True:
             if result[0] is False:
                 replacement = str(
@@ -178,7 +187,7 @@ class ModificaCodiceProdotto(object):
         else:
             self.ErrorCodiceNumerico()
 
-    # metodo che apre la pagina Modifica Effettuata
+    # Metodo che fa visualizzare a schermo l'interfaccia ModificaEffettuata.
     def openModificaEffettuata(self):
         from Grafica.GestioneMagazzino.ModificaProdotto.ModificaEffettuata import ModificaEffettuata
         self.modificaEffettuta = QtWidgets.QFrame()
