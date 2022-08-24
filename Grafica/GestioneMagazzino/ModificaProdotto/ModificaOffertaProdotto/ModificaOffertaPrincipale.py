@@ -46,66 +46,66 @@ class ModificaOffertaPrincipale(object):
                                         "}")
         self.pushButton_9.setCheckable(False)
         self.pushButton_9.setObjectName("pushButton_9")
-        self.pushButton_8 = QtWidgets.QPushButton(Frame)
-        self.pushButton_8.setGeometry(QtCore.QRect(20, 140, 191, 51))
+        self.pushButtonModificaTipoOfferta = QtWidgets.QPushButton(Frame)
+        self.pushButtonModificaTipoOfferta.setGeometry(QtCore.QRect(20, 140, 191, 51))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_8.setFont(font)
-        self.pushButton_8.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_8.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
-        self.pushButton_8.setCheckable(False)
-        self.pushButton_8.setObjectName("pushButton_8")
-        self.pushButton_13 = QtWidgets.QPushButton(Frame)
-        self.pushButton_13.setGeometry(QtCore.QRect(230, 200, 191, 51))
+        self.pushButtonModificaTipoOfferta.setFont(font)
+        self.pushButtonModificaTipoOfferta.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonModificaTipoOfferta.setStyleSheet("QPushButton{\n"
+                                                         "border: 2px solid black;\n"
+                                                         "border-radius: 10px;\n"
+                                                         "}\n"
+                                                         "QPushButton:hover{\n"
+                                                         "\n"
+                                                         "background-color: #14626c;\n"
+                                                         "color:white;\n"
+                                                         "}")
+        self.pushButtonModificaTipoOfferta.setCheckable(False)
+        self.pushButtonModificaTipoOfferta.setObjectName("pushButton_8")
+        self.pushButtonEliminaOfferta = QtWidgets.QPushButton(Frame)
+        self.pushButtonEliminaOfferta.setGeometry(QtCore.QRect(230, 200, 191, 51))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_13.setFont(font)
-        self.pushButton_13.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_13.setStyleSheet("QPushButton{\n"
-                                         "border: 2px solid black;\n"
-                                         "border-radius: 10px;\n"
-                                         "}\n"
-                                         "QPushButton:hover{\n"
-                                         "\n"
-                                         "background-color: #14626c;\n"
-                                         "color:white;\n"
-                                         "}")
-        self.pushButton_13.setCheckable(False)
-        self.pushButton_13.setObjectName("pushButton_13")
-        self.pushButton_12 = QtWidgets.QPushButton(Frame)
-        self.pushButton_12.setGeometry(QtCore.QRect(230, 140, 191, 51))
+        self.pushButtonEliminaOfferta.setFont(font)
+        self.pushButtonEliminaOfferta.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonEliminaOfferta.setStyleSheet("QPushButton{\n"
+                                                    "border: 2px solid black;\n"
+                                                    "border-radius: 10px;\n"
+                                                    "}\n"
+                                                    "QPushButton:hover{\n"
+                                                    "\n"
+                                                    "background-color: #14626c;\n"
+                                                    "color:white;\n"
+                                                    "}")
+        self.pushButtonEliminaOfferta.setCheckable(False)
+        self.pushButtonEliminaOfferta.setObjectName("pushButton_13")
+        self.pushButtonModificaPrezzoOfferta = QtWidgets.QPushButton(Frame)
+        self.pushButtonModificaPrezzoOfferta.setGeometry(QtCore.QRect(230, 140, 191, 51))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_12.setFont(font)
-        self.pushButton_12.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_12.setStyleSheet("QPushButton{\n"
-                                         "border: 2px solid black;\n"
-                                         "border-radius: 10px;\n"
-                                         "}\n"
-                                         "QPushButton:hover{\n"
-                                         "\n"
-                                         "background-color: #14626c;\n"
-                                         "color:white;\n"
-                                         "}")
-        self.pushButton_12.setCheckable(False)
-        self.pushButton_12.setObjectName("pushButton_12")
+        self.pushButtonModificaPrezzoOfferta.setFont(font)
+        self.pushButtonModificaPrezzoOfferta.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonModificaPrezzoOfferta.setStyleSheet("QPushButton{\n"
+                                                           "border: 2px solid black;\n"
+                                                           "border-radius: 10px;\n"
+                                                           "}\n"
+                                                           "QPushButton:hover{\n"
+                                                           "\n"
+                                                           "background-color: #14626c;\n"
+                                                           "color:white;\n"
+                                                           "}")
+        self.pushButtonModificaPrezzoOfferta.setCheckable(False)
+        self.pushButtonModificaPrezzoOfferta.setObjectName("pushButton_12")
         self.label = QtWidgets.QLabel(Frame)
         self.label.setGeometry(QtCore.QRect(10, 70, 421, 41))
         self.label.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -126,14 +126,14 @@ class ModificaOffertaPrincipale(object):
         self.pushButtonLogout.setFont(font)
         self.pushButtonLogout.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pushButtonLogout.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
+                                            "border: 2px solid black;\n"
+                                            "border-radius: 10px;\n"
+                                            "}\n"
+                                            "QPushButton:hover{\n"
+                                            "\n"
+                                            "background-color: #14626c;\n"
+                                            "color:white;\n"
+                                            "}")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("Images\\log.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButtonLogout.setIcon(icon)
@@ -149,20 +149,23 @@ class ModificaOffertaPrincipale(object):
         self.pushButtonModficaProdottoPrincipale.setFont(font)
         self.pushButtonModficaProdottoPrincipale.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pushButtonModficaProdottoPrincipale.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
+                                                               "border: 2px solid black;\n"
+                                                               "border-radius: 10px;\n"
+                                                               "}\n"
+                                                               "QPushButton:hover{\n"
+                                                               "\n"
+                                                               "background-color: #14626c;\n"
+                                                               "color:white;\n"
+                                                               "}")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("Images\\left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButtonModficaProdottoPrincipale.setIcon(icon1)
         self.pushButtonModficaProdottoPrincipale.setObjectName("pushButton_5")
         self.pushButtonModficaProdottoPrincipale.clicked.connect(self.openModificaPrincipaleProdotto)
         self.pushButtonLogout.clicked.connect(self.openLogin)
+        self.pushButtonModificaTipoOfferta.clicked.connect(self.openModificaTipoOfferta)
+        self.pushButtonModificaPrezzoOfferta.clicked.connect(self.openModificaPrezzoOfferta)
+        self.pushButtonEliminaOfferta.clicked.connect(self.openEliminaOfferta)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -173,32 +176,70 @@ class ModificaOffertaPrincipale(object):
         self.label_4.setText(_translate("Frame", "MODIFICA OFFERTA PRODOTTO"))
         self.pushButton_9.setText(_translate("Frame", "Modifica\n"
                                                       "Data Scadenza "))
-        self.pushButton_8.setText(_translate("Frame", "Modifica\n"
-                                                      "Tipo Offerta"))
-        self.pushButton_13.setText(_translate("Frame", "Elimina \n"
-                                                       "Offerta"))
-        self.pushButton_12.setText(_translate("Frame", "Modifica \n"
-                                                       "Prezzo Offerta"))
+        self.pushButtonModificaTipoOfferta.setText(_translate("Frame", "Modifica\n"
+                                                                       "Tipo Offerta"))
+        self.pushButtonEliminaOfferta.setText(_translate("Frame", "Elimina \n"
+                                                                  "Offerta"))
+        self.pushButtonModificaPrezzoOfferta.setText(_translate("Frame", "Modifica \n"
+                                                                         "Prezzo Offerta"))
         self.label.setText(_translate("Frame", "Seleziona una delle opzioni per modificare l\'offerta relativa\n"
                                                " al prodotto. Clicca indietro per tornare a modifica prodotto"))
         self.pushButtonLogout.setText(_translate("Frame", " Logout"))
         self.pushButtonModficaProdottoPrincipale.setText(_translate("Frame", " Indietro"))
 
-        # Metodo che riporta l'utente all'interno della schermata ModificaPrincipalePrincipale
-        def openModificaPrincipaleProdotto(self):
-            from Grafica.GestioneMagazzino.ModificaProdotto.ModificaPrincipaleProdotto import ModificaPrincipaleProdotto
-            self.modificaPrincipaleProdotto = QtWidgets.QFrame()
-            self.ui = ModificaPrincipaleProdotto()
-            self.ui.setupUi(self.modificaPrincipaleProdotto, self.prodottoTrovato)
-            self.modificaPrincipaleProdotto.show()
-            self.frame.close()
+    # Metodo che riporta l'utente all'interno della schermata ModificaPrincipalePrincipale
+    def openModificaPrincipaleProdotto(self):
+        from Grafica.GestioneMagazzino.ModificaProdotto.ModificaPrincipaleProdotto import ModificaPrincipaleProdotto
+        self.modificaPrincipaleProdotto = QtWidgets.QFrame()
+        self.ui = ModificaPrincipaleProdotto()
+        self.ui.setupUi(self.modificaPrincipaleProdotto, self.prodottoTrovato)
+        self.modificaPrincipaleProdotto.show()
+        self.frame.close()
 
-        # Metodo che permette di ritornare all'interfaccia iniziale
-        # del programma, ovvero LoginAmministratore.
-        def openLogin(self):
-            from Grafica.GestioneLogin.LoginAmministratore import LoginAmministratore
-            self.login = QtWidgets.QFrame()
-            self.ui = LoginAmministratore()
-            self.ui.setupUi(self.login)
-            self.login.show()
-            self.frame.close()
+    # Metodo che permette di ritornare all'interfaccia iniziale
+    # del programma, ovvero LoginAmministratore.
+    def openLogin(self):
+        from Grafica.GestioneLogin.LoginAmministratore import LoginAmministratore
+        self.login = QtWidgets.QFrame()
+        self.ui = LoginAmministratore()
+        self.ui.setupUi(self.login)
+        self.login.show()
+        self.frame.close()
+
+    # Metodo che permette di visualizzare l'interfaccia
+    # utilizzata per modificare il tipo dell'offerta del prodotto trovato
+    # all'interno del magazzino.
+    # L'interfaccia è ModificaTipoOfferta.
+    def openModificaTipoOfferta(self):
+        from Grafica.GestioneMagazzino.ModificaProdotto.ModificaOffertaProdotto.ModificaTipoOfferta import \
+            ModificaTipoOfferta
+        self.modificaTipoOfferta = QtWidgets.QFrame()
+        self.ui = ModificaTipoOfferta()
+        self.ui.setupUi(self.modificaTipoOfferta, self.prodottoTrovato)
+        self.modificaTipoOfferta.show()
+        self.frame.close()
+
+    # Metodo che permette di visualizzare l'interfaccia
+    # utilizzata per modificare il prezzo dell'offerta del prodotto trovato
+    # all'interno del magazzino.
+    # L'interfaccia è ModificaPrezzoOfferta.
+    def openModificaPrezzoOfferta(self):
+        from Grafica.GestioneMagazzino.ModificaProdotto.ModificaOffertaProdotto.ModificaPrezzoOfferta import \
+            ModificaPrezzoOfferta
+        self.modificaPrezzoOfferta = QtWidgets.QFrame()
+        self.ui = ModificaPrezzoOfferta()
+        self.ui.setupUi(self.modificaPrezzoOfferta, self.prodottoTrovato)
+        self.modificaPrezzoOfferta.show()
+        self.frame.close()
+
+    # Metodo che permette di visualizzare l'interfaccia
+    # utilizzata per eliminare l'offerta del prodotto trovato
+    # all'interno del magazzino.
+    # L'interfaccia è EliminaOfferta.
+    def openEliminaOfferta(self):
+        from Grafica.GestioneMagazzino.ModificaProdotto.ModificaOffertaProdotto.EliminaOfferta import EliminaOfferta
+        self.eliminaOfferta = QtWidgets.QFrame()
+        self.ui = EliminaOfferta()
+        self.ui.setupUi(self.eliminaOfferta, self.prodottoTrovato)
+        self.eliminaOfferta.show()
+        self.frame.close()

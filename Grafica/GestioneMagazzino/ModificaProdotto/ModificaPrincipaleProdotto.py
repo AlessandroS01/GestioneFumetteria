@@ -1,4 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMessageBox
 
 
 class ModificaPrincipaleProdotto(object):
@@ -282,9 +283,23 @@ class ModificaPrincipaleProdotto(object):
     # all'interno del magazzino.
     # L'interfaccia è ModificaOffertaProdotto.
     def openModificaOffertaProdottoPrincipale(self):
+        if self.prodottoTrovato.getOfferta() == "True":
             from Grafica.GestioneMagazzino.ModificaProdotto.ModificaOffertaProdotto.ModificaOffertaPrincipale import ModificaOffertaPrincipale
             self.modificaOffertaPrincipale = QtWidgets.QFrame()
             self.ui = ModificaOffertaPrincipale()
             self.ui.setupUi(self.modificaOffertaPrincipale, self.prodottoTrovato)
             self.modificaOffertaPrincipale.show()
             self.frame.close()
+        else:
+            self.ErrorOfferta()
+
+    def ErrorOfferta(self):
+        self.ErrorBox = QMessageBox()
+        self.ErrorBox.setWindowTitle("Errore")
+        self.ErrorBox.setText("Il prodotto non presenta nessuna offerta attiva.\nAggiungi un'offerta "
+                              "alla schermata precedente.")
+        self.ErrorBox.setStyleSheet(
+            "QLabel{min-width:300 px; font-size: 14px; font-family: Helvetica, Sans-Serif; } QPushButton:hover{"
+            "background-color: #14626c;color:white; }QPushButton{ width:40px; height:20px; font-size: 10px; "
+            "font-family: Helvetica, Sans-Serif; border: 1px solid black; border-radius: 5px; }")
+        self.ErrorBox.exec()
