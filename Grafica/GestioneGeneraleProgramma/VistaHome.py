@@ -32,16 +32,16 @@ class VistaHome(object):
                                                        "color:white;\n"
                                                        "}")
         self.pushButtonGestioneMagazzino.setObjectName("pushButton")
-        self.pushButton_2 = QtWidgets.QPushButton(Frame)
-        self.pushButton_2.setGeometry(QtCore.QRect(220, 140, 161, 51))
+        self.pushButtonGestioneAbbonamentiPrincipale = QtWidgets.QPushButton(Frame)
+        self.pushButtonGestioneAbbonamentiPrincipale.setGeometry(QtCore.QRect(220, 140, 161, 51))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_2.setFont(font)
-        self.pushButton_2.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_2.setStyleSheet("QPushButton{\n"
+        self.pushButtonGestioneAbbonamentiPrincipale.setFont(font)
+        self.pushButtonGestioneAbbonamentiPrincipale.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonGestioneAbbonamentiPrincipale.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -50,7 +50,7 @@ class VistaHome(object):
                                         "background-color: #14626c;\n"
                                         "color:white;\n"
                                         "}")
-        self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButtonGestioneAbbonamentiPrincipale.setObjectName("pushButton_2")
         self.pushButton_3 = QtWidgets.QPushButton(Frame)
         self.pushButton_3.setGeometry(QtCore.QRect(30, 220, 161, 51))
         font = QtGui.QFont()
@@ -141,6 +141,7 @@ class VistaHome(object):
         self.pushButtonLogout.clicked.connect(self.openLogin)
         self.pushButtonGestioneAccount.clicked.connect(self.openGestioneAccount)
         self.pushButtonGestioneMagazzino.clicked.connect(self.openGestioneMagazzino)
+        self.pushButtonGestioneAbbonamentiPrincipale.clicked.connect(self.openGestioneAbbonamenti)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -150,7 +151,7 @@ class VistaHome(object):
         frame.setWindowTitle(_translate("frame", "Fumetteria - Home"))
         self.pushButtonGestioneMagazzino.setText(_translate("frame", "Gestione\n"
                                                                      "  Magazzino"))
-        self.pushButton_2.setText(_translate("frame", "Gestione \n"
+        self.pushButtonGestioneAbbonamentiPrincipale.setText(_translate("frame", "Gestione \n"
                                                       " Abbonamenti"))
         self.pushButton_3.setText(_translate("frame", "Gestione \n"
                                                       " Vendite"))
@@ -189,4 +190,15 @@ class VistaHome(object):
         self.ui = GestioneMagazzinoPrincipale()
         self.ui.setupUi(self.gestioneMagazzino)
         self.gestioneMagazzino.show()
+        self.frame.close()
+
+    # Metodo che permette di aprire l'interfaccia sulla quale si
+    # può gestire interamente la parte relativa agli abbonamenti.
+    # L'interfaccia è : GestioneAbbonamentiPrincipale
+    def openGestioneAbbonamenti(self):
+        from Grafica.GestioneAbbonamenti.GestioneAbbonamentiPrincipale import GestioneAbbonamentiPrincipale
+        self.gestioneAbbonamentiPrincipale = QtWidgets.QFrame()
+        self.ui = GestioneAbbonamentiPrincipale()
+        self.ui.setupUi(self.gestioneAbbonamentiPrincipale)
+        self.gestioneAbbonamentiPrincipale.show()
         self.frame.close()

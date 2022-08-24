@@ -1,8 +1,10 @@
+import os
 import sys
 
 from PyQt5 import QtWidgets
 
 from Amministratore.Amministratore import Amministratore
+from GestioneAbbonamenti.GestioneAbbonamenti import GestioneAbbonamenti
 from GestioneMagazzino.Magazzino import Magazzino
 from Grafica.GestioneLogin.LoginAmministratore import LoginAmministratore
 
