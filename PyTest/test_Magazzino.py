@@ -1,8 +1,5 @@
 import os
-import pathlib
 from unittest import TestCase
-
-from GestioneMagazzino.Magazzino import Magazzino
 
 
 class TestMagazzino(TestCase):

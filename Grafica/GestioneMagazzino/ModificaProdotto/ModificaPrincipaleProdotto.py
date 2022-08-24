@@ -112,16 +112,16 @@ class ModificaPrincipaleProdotto(object):
                                                     "}")
         self.pushButtonModificaCodice.setCheckable(False)
         self.pushButtonModificaCodice.setObjectName("pushButton_9")
-        self.pushButton_10 = QtWidgets.QPushButton(Frame)
-        self.pushButton_10.setGeometry(QtCore.QRect(120, 240, 191, 51))
+        self.pushButtonModificaOffertaProdottoPrincipale = QtWidgets.QPushButton(Frame)
+        self.pushButtonModificaOffertaProdottoPrincipale.setGeometry(QtCore.QRect(120, 240, 191, 51))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_10.setFont(font)
-        self.pushButton_10.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_10.setStyleSheet("QPushButton{\n"
+        self.pushButtonModificaOffertaProdottoPrincipale.setFont(font)
+        self.pushButtonModificaOffertaProdottoPrincipale.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonModificaOffertaProdottoPrincipale.setStyleSheet("QPushButton{\n"
                                          "border: 2px solid black;\n"
                                          "border-radius: 10px;\n"
                                          "}\n"
@@ -130,8 +130,8 @@ class ModificaPrincipaleProdotto(object):
                                          "background-color: #14626c;\n"
                                          "color:white;\n"
                                          "}")
-        self.pushButton_10.setCheckable(False)
-        self.pushButton_10.setObjectName("pushButton_10")
+        self.pushButtonModificaOffertaProdottoPrincipale.setCheckable(False)
+        self.pushButtonModificaOffertaProdottoPrincipale.setObjectName("pushButton_10")
         self.pushButtonModificaPrezzo = QtWidgets.QPushButton(Frame)
         self.pushButtonModificaPrezzo.setGeometry(QtCore.QRect(230, 110, 191, 51))
         font = QtGui.QFont()
@@ -188,6 +188,7 @@ class ModificaPrincipaleProdotto(object):
         self.pushButtonModificaPrezzo.clicked.connect(self.openModificaPrezzoProdotto)
         self.pushButtonModificaCodice.clicked.connect(self.openModificaCodice)
         self.pushButtonElimina.clicked.connect(self.openEliminaProdotto)
+        self.pushButtonModificaOffertaProdottoPrincipale.clicked.connect(self.openModificaOffertaProdottoPrincipale)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -202,7 +203,7 @@ class ModificaPrincipaleProdotto(object):
                                                                     "Quantità Prodotto"))
         self.pushButtonModificaCodice.setText(_translate("Frame", "Modifica\n"
                                                                   "Codice Seriale "))
-        self.pushButton_10.setText(_translate("Frame", "Modifica\n"
+        self.pushButtonModificaOffertaProdottoPrincipale.setText(_translate("Frame", "Modifica\n"
                                                        " Offerta Prodotto"))
         self.pushButtonModificaPrezzo.setText(_translate("Frame", "Modifica \n"
                                                                   "Prezzo Prodotto"))
@@ -275,3 +276,15 @@ class ModificaPrincipaleProdotto(object):
         self.ui.setupUi(self.eliminaProdotto, self.prodottoTrovato)
         self.eliminaProdotto.show()
         self.frame.close()
+
+    # Metodo che permette di visualizzare l'interfaccia
+    # utilizzata per modificare l'offerta del prodotto trovato
+    # all'interno del magazzino.
+    # L'interfaccia è ModificaOffertaProdotto.
+    def openModificaOffertaProdottoPrincipale(self):
+            from Grafica.GestioneMagazzino.ModificaProdotto.ModificaOffertaProdotto.ModificaOffertaPrincipale import ModificaOffertaPrincipale
+            self.modificaOffertaPrincipale = QtWidgets.QFrame()
+            self.ui = ModificaOffertaPrincipale()
+            self.ui.setupUi(self.modificaOffertaPrincipale, self.prodottoTrovato)
+            self.modificaOffertaPrincipale.show()
+            self.frame.close()
