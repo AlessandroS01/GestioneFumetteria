@@ -116,16 +116,16 @@ class ModificaOffertaPrincipale(object):
                                  "}")
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
-        self.pushButton_6 = QtWidgets.QPushButton(Frame)
-        self.pushButton_6.setGeometry(QtCore.QRect(10, 320, 141, 31))
+        self.pushButtonLogout = QtWidgets.QPushButton(Frame)
+        self.pushButtonLogout.setGeometry(QtCore.QRect(10, 320, 141, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_6.setFont(font)
-        self.pushButton_6.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_6.setStyleSheet("QPushButton{\n"
+        self.pushButtonLogout.setFont(font)
+        self.pushButtonLogout.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonLogout.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -136,19 +136,19 @@ class ModificaOffertaPrincipale(object):
                                         "}")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("Images\\log.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_6.setIcon(icon)
-        self.pushButton_6.setCheckable(False)
-        self.pushButton_6.setObjectName("pushButton_6")
-        self.pushButton_5 = QtWidgets.QPushButton(Frame)
-        self.pushButton_5.setGeometry(QtCore.QRect(160, 320, 141, 31))
+        self.pushButtonLogout.setIcon(icon)
+        self.pushButtonLogout.setCheckable(False)
+        self.pushButtonLogout.setObjectName("pushButton_6")
+        self.pushButtonModficaProdottoPrincipale = QtWidgets.QPushButton(Frame)
+        self.pushButtonModficaProdottoPrincipale.setGeometry(QtCore.QRect(160, 320, 141, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_5.setFont(font)
-        self.pushButton_5.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_5.setStyleSheet("QPushButton{\n"
+        self.pushButtonModficaProdottoPrincipale.setFont(font)
+        self.pushButtonModficaProdottoPrincipale.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonModficaProdottoPrincipale.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -159,8 +159,10 @@ class ModificaOffertaPrincipale(object):
                                         "}")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("Images\\left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_5.setIcon(icon1)
-        self.pushButton_5.setObjectName("pushButton_5")
+        self.pushButtonModficaProdottoPrincipale.setIcon(icon1)
+        self.pushButtonModficaProdottoPrincipale.setObjectName("pushButton_5")
+        self.pushButtonModficaProdottoPrincipale.clicked.connect(self.openModificaPrincipaleProdotto)
+        self.pushButtonLogout.clicked.connect(self.openLogin)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -179,5 +181,24 @@ class ModificaOffertaPrincipale(object):
                                                        "Prezzo Offerta"))
         self.label.setText(_translate("Frame", "Seleziona una delle opzioni per modificare l\'offerta relativa\n"
                                                " al prodotto. Clicca indietro per tornare a modifica prodotto"))
-        self.pushButton_6.setText(_translate("Frame", " Logout"))
-        self.pushButton_5.setText(_translate("Frame", " Indietro"))
+        self.pushButtonLogout.setText(_translate("Frame", " Logout"))
+        self.pushButtonModficaProdottoPrincipale.setText(_translate("Frame", " Indietro"))
+
+        # Metodo che riporta l'utente all'interno della schermata ModificaPrincipalePrincipale
+        def openModificaPrincipaleProdotto(self):
+            from Grafica.GestioneMagazzino.ModificaProdotto.ModificaPrincipaleProdotto import ModificaPrincipaleProdotto
+            self.modificaPrincipaleProdotto = QtWidgets.QFrame()
+            self.ui = ModificaPrincipaleProdotto()
+            self.ui.setupUi(self.modificaPrincipaleProdotto, self.prodottoTrovato)
+            self.modificaPrincipaleProdotto.show()
+            self.frame.close()
+
+        # Metodo che permette di ritornare all'interfaccia iniziale
+        # del programma, ovvero LoginAmministratore.
+        def openLogin(self):
+            from Grafica.GestioneLogin.LoginAmministratore import LoginAmministratore
+            self.login = QtWidgets.QFrame()
+            self.ui = LoginAmministratore()
+            self.ui.setupUi(self.login)
+            self.login.show()
+            self.frame.close()
