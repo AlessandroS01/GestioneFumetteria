@@ -105,14 +105,14 @@ class RicercaProdotto(object):
         self.pushButtonGestioneMagazzinoPrincipale.setFont(font)
         self.pushButtonGestioneMagazzinoPrincipale.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pushButtonGestioneMagazzinoPrincipale.setStyleSheet("QPushButton{\n"
-                                                       "border: 2px solid black;\n"
-                                                       "border-radius: 10px;\n"
-                                                       "}\n"
-                                                       "QPushButton:hover{\n"
-                                                       "\n"
-                                                       "background-color: #14626c;\n"
-                                                       "color:white;\n"
-                                                       "}")
+                                                                 "border: 2px solid black;\n"
+                                                                 "border-radius: 10px;\n"
+                                                                 "}\n"
+                                                                 "QPushButton:hover{\n"
+                                                                 "\n"
+                                                                 "background-color: #14626c;\n"
+                                                                 "color:white;\n"
+                                                                 "}")
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap(
             "Images\\left.png"),

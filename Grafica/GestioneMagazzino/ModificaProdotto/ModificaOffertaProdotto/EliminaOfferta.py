@@ -80,16 +80,16 @@ class EliminaOfferta(object):
                                    "}")
         self.label_5.setAlignment(QtCore.Qt.AlignCenter)
         self.label_5.setObjectName("label_5")
-        self.pushButton_7 = QtWidgets.QPushButton(Frame)
-        self.pushButton_7.setGeometry(QtCore.QRect(10, 130, 361, 31))
+        self.pushButtonEliminaOfferta = QtWidgets.QPushButton(Frame)
+        self.pushButtonEliminaOfferta.setGeometry(QtCore.QRect(10, 130, 361, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_7.setFont(font)
-        self.pushButton_7.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_7.setStyleSheet("QPushButton{\n"
+        self.pushButtonEliminaOfferta.setFont(font)
+        self.pushButtonEliminaOfferta.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonEliminaOfferta.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -100,11 +100,12 @@ class EliminaOfferta(object):
                                         "}")
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap("Images\\delete.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_7.setIcon(icon2)
-        self.pushButton_7.setCheckable(False)
-        self.pushButton_7.setObjectName("pushButton_7")
+        self.pushButtonEliminaOfferta.setIcon(icon2)
+        self.pushButtonEliminaOfferta.setCheckable(False)
+        self.pushButtonEliminaOfferta.setObjectName("pushButton_7")
         self.pushButtonLogout.clicked.connect(self.openLogin)
         self.pushButtonModificaOffertaPrincipale.clicked.connect(self.openModificaOffertaPrincipaleProdotto)
+        self.pushButtonEliminaOfferta.clicked.connect(self.clickElimina)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -117,7 +118,7 @@ class EliminaOfferta(object):
         self.pushButtonModificaOffertaPrincipale.setText(_translate("Frame", " Indietro"))
         self.label_5.setText(_translate("Frame", "Sei sicuro di voler eliminare l\'offerta relativa\n"
                                                  " al prodotto in modo definitivo ?"))
-        self.pushButton_7.setText(_translate("Frame", " Elimina Offerta"))
+        self.pushButtonEliminaOfferta.setText(_translate("Frame", " Elimina Offerta"))
 
     # Metodo che permette di ritornare all'interfaccia iniziale
     # del programma, ovvero LoginAmministratore.
@@ -136,4 +137,23 @@ class EliminaOfferta(object):
         self.ui = ModificaOffertaPrincipale()
         self.ui.setupUi(self.modificaOffertaPrincipale, self.prodottoTrovato)
         self.modificaOffertaPrincipale.show()
+        self.frame.close()
+
+    # Metodo che serve a eliminare l'offerta del prodotto cercato.
+    # Nel caso in cui si clicchi direttamente su elimina,
+    # viene richiamato il metodo "" di Prodotto
+    # per effettuare il cambiamento al prodotto.
+    # In seguito viene richiamato il metodo "self.openModificaOffertaSuccesso".
+    def clickElimina(self):
+
+        self.prodottoTrovato.eliminaOfferta()
+        self.openEliminaOffertaEffettuata()
+
+    # Metodo che fa visualizzare a schermo l'interfaccia EliminaOffertaEffettuata.
+    def openEliminaOffertaEffettuata(self):
+        from Grafica.GestioneMagazzino.ModificaProdotto.ModificaOffertaProdotto.EliminaOffertaEffettuata import EliminaOffertaEffettuata
+        self.eliminaOffertaEffettuata = QtWidgets.QFrame()
+        self.ui = EliminaOffertaEffettuata()
+        self.ui.setupUi(self.eliminaOffertaEffettuata)
+        self.eliminaOffertaEffettuata.show()
         self.frame.close()

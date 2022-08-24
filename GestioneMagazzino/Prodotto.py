@@ -11,6 +11,7 @@ class Prodotto:
                  codiceSeriale, offerta,
                  tipoOfferta, prezzoOfferta,
                  dataScadenzaOfferta):
+
         self.nomeProdotto = nomeProdotto
         self.quantitaMagazzino = quantitaMagazzino
         self.prezzo = prezzo
@@ -83,16 +84,32 @@ class Prodotto:
     # I vari attributi relativi al campo dell'offerta sono inseriti tramite
     # l'interfaccia ModificaOfferta.
     def setNuovaOfferta(self, tipoOfferta,
-                        prezzoOfferta, dataScadenzaOfferta, prodotto):
+                        prezzoOfferta, dataScadenzaOfferta):
 
-        nomeProdotto = prodotto.getNomeProdotto()
-        quantitaProdotto = prodotto.getQuantitaMagazzino()
-        prezzoProdotto = prodotto.getPrezzo()
-        codiceSeriale = prodotto.getCodiceSeriale()
+        nomeProdotto = self.getNomeProdotto()
+        quantitaProdotto = self.getQuantitaMagazzino()
+        prezzoProdotto = self.getPrezzo()
+        codiceSeriale = self.getCodiceSeriale()
 
         replacement = str(nomeProdotto + "-" + quantitaProdotto + "-"
                           + prezzoProdotto + "-" + codiceSeriale + "-True-"
                           + tipoOfferta + "-" + prezzoOfferta + "-" + dataScadenzaOfferta)
+        data = self.getProdotto()
+        self.sovrascriviDati(data, replacement)
+
+    # Metodo che va a eliminare l'offerta al prodotto.
+    # Per eliminare l'offerta, questo metodo richiama il metodo
+    # "sovrascriviDati".
+    # I vari attributi relativi al campo dell'offerta sono settati tutti a "None"
+    def eliminaOfferta(self):
+
+        nomeProdotto = self.getNomeProdotto()
+        quantitaProdotto = self.getQuantitaMagazzino()
+        prezzoProdotto = self.getPrezzo()
+        codiceSeriale = self.getCodiceSeriale()
+
+        replacement = str(nomeProdotto + "-" + quantitaProdotto + "-"
+                          + prezzoProdotto + "-" + codiceSeriale + "-None-None-None-None")
         data = self.getProdotto()
         self.sovrascriviDati(data, replacement)
 

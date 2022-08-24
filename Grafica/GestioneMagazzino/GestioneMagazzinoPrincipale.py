@@ -24,16 +24,16 @@ class GestioneMagazzinoPrincipale(object):
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
-        self.pushButton_2 = QtWidgets.QPushButton(Frame)
-        self.pushButton_2.setGeometry(QtCore.QRect(30, 150, 161, 51))
+        self.pushButtonVisualizzaMagazzino = QtWidgets.QPushButton(Frame)
+        self.pushButtonVisualizzaMagazzino.setGeometry(QtCore.QRect(30, 150, 161, 51))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_2.setFont(font)
-        self.pushButton_2.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_2.setStyleSheet("QPushButton{\n"
+        self.pushButtonVisualizzaMagazzino.setFont(font)
+        self.pushButtonVisualizzaMagazzino.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonVisualizzaMagazzino.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -42,7 +42,7 @@ class GestioneMagazzinoPrincipale(object):
                                         "background-color: #14626c;\n"
                                         "color:white;\n"
                                         "}")
-        self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButtonVisualizzaMagazzino.setObjectName("pushButton_2")
         self.pushButtonRicercaProdotto = QtWidgets.QPushButton(Frame)
         self.pushButtonRicercaProdotto.setGeometry(QtCore.QRect(230, 150, 161, 51))
         font = QtGui.QFont()
@@ -144,6 +144,7 @@ class GestioneMagazzinoPrincipale(object):
         self.pushButtonLogout.clicked.connect(self.openLogin)
         self.pushButtonAggiungiProdotto.clicked.connect(self.openAggiungiProdotto)
         self.pushButtonRicercaProdotto.clicked.connect(self.openRicercaProdotto)
+        self.pushButtonVisualizzaMagazzino.clicked.connect(self.openVisualizzaMagazzino)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -152,7 +153,7 @@ class GestioneMagazzinoPrincipale(object):
         _translate = QtCore.QCoreApplication.translate
         Frame.setWindowTitle(_translate("Frame", "Fumetteria - Gestione Magazzino"))
         self.label_2.setText(_translate("Frame", "GESTIONE MAGAZZINO"))
-        self.pushButton_2.setText(_translate("Frame", "Visualizza \n"
+        self.pushButtonVisualizzaMagazzino.setText(_translate("Frame", "Visualizza \n"
                                                       "Magazzino"))
         self.pushButtonRicercaProdotto.setText(_translate("Frame", "Ricerca \n"
                                                                    "Prodotto"))
@@ -203,4 +204,15 @@ class GestioneMagazzinoPrincipale(object):
         self.ui = RicercaProdotto()
         self.ui.setupUi(self.ricercaProdotto)
         self.ricercaProdotto.show()
+        self.frame.close()
+
+    # Metodo che permette di aprire l'interfaccia sulla quale si
+    # può vedere la lista dei prodotti presenti nel magazzino.
+    # L'interfaccia è : VisualizzaMagazzino
+    def openVisualizzaMagazzino(self):
+        from Grafica.GestioneMagazzino.VisualizzaMagazzino import VisualizzaMagazzino
+        self.visualizzaMagazzino = QtWidgets.QFrame()
+        self.ui = VisualizzaMagazzino()
+        self.ui.setupUi(self.visualizzaMagazzino)
+        self.visualizzaMagazzino.show()
         self.frame.close()

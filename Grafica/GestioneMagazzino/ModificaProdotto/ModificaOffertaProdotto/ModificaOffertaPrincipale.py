@@ -26,16 +26,16 @@ class ModificaOffertaPrincipale(object):
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
-        self.pushButton_9 = QtWidgets.QPushButton(Frame)
-        self.pushButton_9.setGeometry(QtCore.QRect(20, 200, 191, 51))
+        self.pushButtonModificaDataScadenza = QtWidgets.QPushButton(Frame)
+        self.pushButtonModificaDataScadenza.setGeometry(QtCore.QRect(20, 200, 191, 51))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_9.setFont(font)
-        self.pushButton_9.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_9.setStyleSheet("QPushButton{\n"
+        self.pushButtonModificaDataScadenza.setFont(font)
+        self.pushButtonModificaDataScadenza.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonModificaDataScadenza.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -44,8 +44,8 @@ class ModificaOffertaPrincipale(object):
                                         "background-color: #14626c;\n"
                                         "color:white;\n"
                                         "}")
-        self.pushButton_9.setCheckable(False)
-        self.pushButton_9.setObjectName("pushButton_9")
+        self.pushButtonModificaDataScadenza.setCheckable(False)
+        self.pushButtonModificaDataScadenza.setObjectName("pushButton_9")
         self.pushButtonModificaTipoOfferta = QtWidgets.QPushButton(Frame)
         self.pushButtonModificaTipoOfferta.setGeometry(QtCore.QRect(20, 140, 191, 51))
         font = QtGui.QFont()
@@ -166,6 +166,7 @@ class ModificaOffertaPrincipale(object):
         self.pushButtonModificaTipoOfferta.clicked.connect(self.openModificaTipoOfferta)
         self.pushButtonModificaPrezzoOfferta.clicked.connect(self.openModificaPrezzoOfferta)
         self.pushButtonEliminaOfferta.clicked.connect(self.openEliminaOfferta)
+        self.pushButtonModificaDataScadenza.clicked.connect(self.openModificaDataScadenzaOfferta)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -174,7 +175,7 @@ class ModificaOffertaPrincipale(object):
         _translate = QtCore.QCoreApplication.translate
         Frame.setWindowTitle(_translate("Frame", "Fumetteria - Modifica Nome Utente"))
         self.label_4.setText(_translate("Frame", "MODIFICA OFFERTA PRODOTTO"))
-        self.pushButton_9.setText(_translate("Frame", "Modifica\n"
+        self.pushButtonModificaDataScadenza.setText(_translate("Frame", "Modifica\n"
                                                       "Data Scadenza "))
         self.pushButtonModificaTipoOfferta.setText(_translate("Frame", "Modifica\n"
                                                                        "Tipo Offerta"))
@@ -230,6 +231,18 @@ class ModificaOffertaPrincipale(object):
         self.ui = ModificaPrezzoOfferta()
         self.ui.setupUi(self.modificaPrezzoOfferta, self.prodottoTrovato)
         self.modificaPrezzoOfferta.show()
+        self.frame.close()
+
+    # Metodo che permette di visualizzare l'interfaccia
+    # utilizzata per modificare la data di scadenza dell'offerta del prodotto trovato
+    # all'interno del magazzino.
+    # L'interfaccia è ModificaPrezzoOfferta.
+    def openModificaDataScadenzaOfferta(self):
+        from Grafica.GestioneMagazzino.ModificaProdotto.ModificaOffertaProdotto.ModificaDataScadenzaOfferta import ModificaDataScadenzaOfferta
+        self.modificaDataScadenzaOfferta = QtWidgets.QFrame()
+        self.ui = ModificaDataScadenzaOfferta()
+        self.ui.setupUi(self.modificaDataScadenzaOfferta, self.prodottoTrovato)
+        self.modificaDataScadenzaOfferta.show()
         self.frame.close()
 
     # Metodo che permette di visualizzare l'interfaccia
