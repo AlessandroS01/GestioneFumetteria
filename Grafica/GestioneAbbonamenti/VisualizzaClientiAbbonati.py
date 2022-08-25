@@ -6,7 +6,7 @@ from GestioneAbbonamenti.GestioneAbbonamenti import GestioneAbbonamenti
 class VisualizzaClientiAbbonati(object):
 
     def setupUi(self, Frame):
-        self.clientiabbonati= GestioneAbbonamenti()
+        self.clientiabbonati = GestioneAbbonamenti()
         Frame.setObjectName("Frame")
         Frame.resize(872, 651)
         Frame.setStyleSheet("QFrame{\n"
@@ -103,7 +103,7 @@ class VisualizzaClientiAbbonati(object):
         self.tableWidget.setSelectionMode(QtWidgets.QAbstractItemView.NoSelection)
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(8)
-        self.tableWidget.setRowCount(0)
+        self.tableWidget.setRowCount(self.leggiNumeroClientiAbbonati())
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -148,6 +148,12 @@ class VisualizzaClientiAbbonati(object):
         self.pushButtonLogout.clicked.connect(self.openLogin)
         self.pushButtonGestioneAbbonamentiPrincipale.clicked.connect(self.openGestioneAbbonamentiPrincipale)
 
+        for riga in range(0, self.leggiNumeroClientiAbbonati()):
+            for colonna in range(0, 8):
+                item = QtWidgets.QTableWidgetItem()
+                self.tableWidget.setItem(riga, colonna, item)
+
+
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
 
@@ -178,6 +184,29 @@ class VisualizzaClientiAbbonati(object):
         item.setText(_translate("Frame", "Codice Abbonamento"))
         self.pushButton_5.setText(_translate("Frame", " Ricerca"))
 
+        for riga in range(0, self.leggiNumeroClientiAbbonati()):
+
+            clienteAbbonato = self.clientiabbonati.getAbbonamenti()[riga]
+            print(clienteAbbonato.getCliente().getNome())
+            print(clienteAbbonato.getDataScadenza())
+            item = self.tableWidget.item(riga, 0)
+            item.setText(_translate("Frame", clienteAbbonato.getCliente().getNome()))
+            item = self.tableWidget.item(riga, 1)
+            item.setText(_translate("Frame", clienteAbbonato.getCliente().getCognome()))
+            item = self.tableWidget.item(riga, 2)
+            item.setText(_translate("Frame", clienteAbbonato.getCliente().getCodiceFiscale()))
+            item = self.tableWidget.item(riga, 3)
+            item.setText(_translate("Frame", clienteAbbonato.getCliente().getTelefono()))
+            item = self.tableWidget.item(riga, 4)
+            item.setText(_translate("Frame", clienteAbbonato.getCliente().getEmail()))
+            item = self.tableWidget.item(riga, 5)
+            item.setText(_translate("Frame", clienteAbbonato.getDataEmissione()))
+            item = self.tableWidget.item(riga, 6)
+            item.setText(_translate("Frame", clienteAbbonato.getDataScadenza()))
+            item = self.tableWidget.item(riga, 7)
+            item.setText(_translate("Frame", clienteAbbonato.getCodiceIdentificativo()))
+
+
     def openLogin(self):
         from Grafica.GestioneLogin.LoginAmministratore import LoginAmministratore
         self.login = QtWidgets.QFrame()
@@ -193,3 +222,7 @@ class VisualizzaClientiAbbonati(object):
         self.ui.setupUi(self.gestioneAbbonamentiPrincipale)
         self.gestioneAbbonamentiPrincipale.show()
         self.frame.close()
+
+    def leggiNumeroClientiAbbonati(self):
+
+        return len(self.clientiabbonati.listaAbbonamenti)
