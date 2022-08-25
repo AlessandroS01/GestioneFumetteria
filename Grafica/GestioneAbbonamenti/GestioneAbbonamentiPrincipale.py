@@ -127,16 +127,16 @@ class GestioneAbbonamentiPrincipale(object):
                                         "color:white;\n"
                                         "}")
         self.pushButton_6.setObjectName("pushButton_6")
-        self.pushButton = QtWidgets.QPushButton(Frame)
-        self.pushButton.setGeometry(QtCore.QRect(20, 160, 201, 51))
+        self.pushButtonVisualizzaClientiAbbonati = QtWidgets.QPushButton(Frame)
+        self.pushButtonVisualizzaClientiAbbonati.setGeometry(QtCore.QRect(20, 160, 201, 51))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton.setFont(font)
-        self.pushButton.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton.setStyleSheet("QPushButton{\n"
+        self.pushButtonVisualizzaClientiAbbonati.setFont(font)
+        self.pushButtonVisualizzaClientiAbbonati.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonVisualizzaClientiAbbonati.setStyleSheet("QPushButton{\n"
                                       "border: 2px solid black;\n"
                                       "border-radius: 10px;\n"
                                       "}\n"
@@ -145,7 +145,7 @@ class GestioneAbbonamentiPrincipale(object):
                                       "background-color: #14626c;\n"
                                       "color:white;\n"
                                       "}")
-        self.pushButton.setObjectName("pushButton")
+        self.pushButtonVisualizzaClientiAbbonati.setObjectName("pushButton")
         self.pushButton_7 = QtWidgets.QPushButton(Frame)
         self.pushButton_7.setGeometry(QtCore.QRect(20, 280, 201, 51))
         font = QtGui.QFont()
@@ -198,6 +198,7 @@ class GestioneAbbonamentiPrincipale(object):
         self.pushButtonVistaHome.clicked.connect(self.openVistaHome)
         self.pushButtonVisualizzaProdottiAbbonati.clicked.connect(self.openVisualizzaProdottiAbbonati)
         self.pushButtonRicercaAbbonamento.clicked.connect(self.openRicercaAbbonamento)
+        self.pushButtonVisualizzaClientiAbbonati.clicked.connect(self.openVisualizzaClientiAbbonati)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -213,7 +214,7 @@ class GestioneAbbonamentiPrincipale(object):
         self.pushButtonRicercaAbbonamento.setText(_translate("Frame", "Ricerca \n"
                                                       " Abbonamento"))
         self.pushButton_6.setText(_translate("Frame", "Modifica Prezzo\nAbbonamento"))
-        self.pushButton.setText(_translate("Frame", "Visualizza \n"
+        self.pushButtonVisualizzaClientiAbbonati.setText(_translate("Frame", "Visualizza \n"
                                                     "Clienti Abbonati"))
         self.pushButton_7.setText(_translate("Frame", "Visualizza\n"
                                                       "Abbonamenti Attivi"))
@@ -262,4 +263,12 @@ class GestioneAbbonamentiPrincipale(object):
         self.ui = RicercaAbbonamento()
         self.ui.setupUi(self.ricercaAbbonamento)
         self.ricercaAbbonamento.show()
+        self.frame.close()
+
+    def openVisualizzaClientiAbbonati(self):
+        from Grafica.GestioneAbbonamenti.VisualizzaClientiAbbonati import VisualizzaClientiAbbonati
+        self.visualizzaClientiabbonati = QtWidgets.QFrame()
+        self.ui = VisualizzaClientiAbbonati()
+        self.ui.setupUi(self.visualizzaClientiabbonati)
+        self.visualizzaClientiabbonati.show()
         self.frame.close()
