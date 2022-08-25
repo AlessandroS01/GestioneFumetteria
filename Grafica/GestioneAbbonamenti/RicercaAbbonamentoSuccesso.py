@@ -49,16 +49,16 @@ class RicercaAbbonamentoSuccesso(object):
         self.pushButtonLogout.setIcon(icon)
         self.pushButtonLogout.setCheckable(False)
         self.pushButtonLogout.setObjectName("pushButton_5")
-        self.pushButton_6 = QtWidgets.QPushButton(Frame)
-        self.pushButton_6.setGeometry(QtCore.QRect(20, 280, 361, 31))
+        self.pushButtonModficaCliente = QtWidgets.QPushButton(Frame)
+        self.pushButtonModficaCliente.setGeometry(QtCore.QRect(20, 280, 361, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_6.setFont(font)
-        self.pushButton_6.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_6.setStyleSheet("QPushButton{\n"
+        self.pushButtonModficaCliente.setFont(font)
+        self.pushButtonModficaCliente.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonModficaCliente.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -67,8 +67,8 @@ class RicercaAbbonamentoSuccesso(object):
                                         "background-color: #14626c;\n"
                                         "color:white;\n"
                                         "}")
-        self.pushButton_6.setCheckable(False)
-        self.pushButton_6.setObjectName("pushButton_6")
+        self.pushButtonModficaCliente.setCheckable(False)
+        self.pushButtonModficaCliente.setObjectName("pushButton_6")
         self.pushButtonRicerca = QtWidgets.QPushButton(Frame)
         self.pushButtonRicerca.setGeometry(QtCore.QRect(160, 340, 141, 31))
         font = QtGui.QFont()
@@ -214,6 +214,7 @@ class RicercaAbbonamentoSuccesso(object):
         self.listWidget.addItem(item)
         self.pushButtonRicerca.clicked.connect(self.openRicercaAbbonamento)
         self.pushButtonLogout.clicked.connect(self.openLogin)
+        self.pushButtonModficaCliente.clicked.connect(self.openModifciaClientePrincipale)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -223,7 +224,7 @@ class RicercaAbbonamentoSuccesso(object):
         Frame.setWindowTitle(_translate("Frame", "Fumetteria - Abbonamento Trovato"))
         self.label_4.setText(_translate("Frame", "ABBONAMENTO TROVATO"))
         self.pushButtonLogout.setText(_translate("Frame", " Logout"))
-        self.pushButton_6.setText(_translate("Frame", "Modifica"))
+        self.pushButtonModficaCliente.setText(_translate("Frame", "Modifica"))
         self.pushButtonRicerca.setText(_translate("Frame", " Indietro"))
         self.label.setText(_translate("Frame", "La ricerca è andata a buon fine. Cliccare il pulsante\n"
                                                "modifica per modificare le informazioni del cliente."))
@@ -265,3 +266,12 @@ class RicercaAbbonamentoSuccesso(object):
         self.ui.setupUi(self.login)
         self.login.show()
         self.frame.close()
+    def openModifciaClientePrincipale(self):
+        from Grafica.GestioneAbbonamenti.ModificaCliente.ModificaClientePrincipale import ModificaClientePrincipale
+        self.modificaclienteprincipale= QtWidgets.QFrame()
+        self.ui = ModificaClientePrincipale()
+        self.ui.setupUi(self.modificaclienteprincipale, self.abbonamentoTrovato)
+        self.modificaclienteprincipale.show()
+        self.frame.close()
+
+
