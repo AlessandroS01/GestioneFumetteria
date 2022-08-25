@@ -89,16 +89,16 @@ class GestioneAbbonamentiPrincipale(object):
                                         "color:white;\n"
                                         "}")
         self.pushButton_2.setObjectName("pushButton_2")
-        self.pushButton_3 = QtWidgets.QPushButton(Frame)
-        self.pushButton_3.setGeometry(QtCore.QRect(20, 220, 201, 51))
+        self.pushButtonRicercaAbbonamento = QtWidgets.QPushButton(Frame)
+        self.pushButtonRicercaAbbonamento.setGeometry(QtCore.QRect(20, 220, 201, 51))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_3.setFont(font)
-        self.pushButton_3.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_3.setStyleSheet("QPushButton{\n"
+        self.pushButtonRicercaAbbonamento.setFont(font)
+        self.pushButtonRicercaAbbonamento.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonRicercaAbbonamento.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -107,7 +107,7 @@ class GestioneAbbonamentiPrincipale(object):
                                         "background-color: #14626c;\n"
                                         "color:white;\n"
                                         "}")
-        self.pushButton_3.setObjectName("pushButton_3")
+        self.pushButtonRicercaAbbonamento.setObjectName("pushButton_3")
         self.pushButton_6 = QtWidgets.QPushButton(Frame)
         self.pushButton_6.setGeometry(QtCore.QRect(240, 220, 201, 51))
         font = QtGui.QFont()
@@ -197,6 +197,7 @@ class GestioneAbbonamentiPrincipale(object):
         self.pushButtonLogout.clicked.connect(self.openLogin)
         self.pushButtonVistaHome.clicked.connect(self.openVistaHome)
         self.pushButtonVisualizzaProdottiAbbonati.clicked.connect(self.openVisualizzaProdottiAbbonati)
+        self.pushButtonRicercaAbbonamento.clicked.connect(self.openRicercaAbbonamento)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -209,11 +210,11 @@ class GestioneAbbonamentiPrincipale(object):
         self.pushButtonVistaHome.setText(_translate("Frame", "Home"))
         self.pushButton_2.setText(_translate("Frame", "Statistiche \n"
                                                       " Abbonamenti "))
-        self.pushButton_3.setText(_translate("Frame", "Ricerca \n"
-                                                      " Cliente Abbonato"))
+        self.pushButtonRicercaAbbonamento.setText(_translate("Frame", "Ricerca \n"
+                                                      " Abbonamento"))
         self.pushButton_6.setText(_translate("Frame", "Modifica Prezzo\nAbbonamento"))
-        self.pushButton.setText(_translate("Frame", "Aggiungi \n"
-                                                    "Cliente Abbonato"))
+        self.pushButton.setText(_translate("Frame", "Visualizza \n"
+                                                    "Clienti Abbonati"))
         self.pushButton_7.setText(_translate("Frame", "Visualizza\n"
                                                       "Abbonamenti Attivi"))
         self.pushButtonVisualizzaProdottiAbbonati.setText(_translate("Frame", "Visualizza Prodotti\nper Abbonati"))
@@ -250,4 +251,15 @@ class GestioneAbbonamentiPrincipale(object):
         self.ui = VisualizzaProdottiAbbonati()
         self.ui.setupUi(self.visualizzaProdottiAbbonati)
         self.visualizzaProdottiAbbonati.show()
+        self.frame.close()
+
+    # Metodo che permette di aprire l'interfaccia sulla quale si
+    # può ricercare un abbonamento.
+    # L'interfaccia è : RicercaAbbonamento.
+    def openRicercaAbbonamento(self):
+        from Grafica.GestioneAbbonamenti.RicercaAbbonamento import RicercaAbbonamento
+        self.ricercaAbbonamento = QtWidgets.QFrame()
+        self.ui = RicercaAbbonamento()
+        self.ui.setupUi(self.ricercaAbbonamento)
+        self.ricercaAbbonamento.show()
         self.frame.close()

@@ -4,7 +4,6 @@ from pathlib import Path
 from GestioneAbbonamenti.Abbonamento import Abbonamento
 from GestioneAbbonamenti.Cliente import Cliente
 
-
 # Classe necessaria per andare a leggere dal file "Abbonamenti.txt"
 # e popolare la lista degli abbonamenti con la lettura.
 from GestioneMagazzino.Magazzino import Magazzino
@@ -13,6 +12,8 @@ from GestioneMagazzino.Magazzino import Magazzino
 class GestioneAbbonamenti:
 
     def __init__(self):
+
+        self.prezzoAbbonamento = float(50)
 
         pathRelativo = Path("Abbonamenti")
         pathAssoluto = pathRelativo.absolute()
@@ -39,14 +40,19 @@ class GestioneAbbonamenti:
                 clienteAppoggio.setTelefono(stringaSplittata[3])
                 clienteAppoggio.setEmail(stringaSplittata[4])
 
-                abbonamentoAppoggio = Abbonamento(None, None, None, None, None)
+                abbonamentoAppoggio = Abbonamento(None, None, None, None)
                 abbonamentoAppoggio.setCliente(clienteAppoggio)
                 abbonamentoAppoggio.setDataEmissione(stringaSplittata[5])
                 abbonamentoAppoggio.setDataScadenza(stringaSplittata[6])
                 abbonamentoAppoggio.setCodiceIdentificativo(stringaSplittata[7])
-                abbonamentoAppoggio.setPrezzoAbbonamento(stringaSplittata[8])
 
                 self.listaAbbonamenti.append(abbonamentoAppoggio)
+
+    def getPrezzoAbbonamento(self):
+        return self.prezzoAbbonamento
+
+    def setPrezzoAbbonamento(self, prezzoAbbonamento):
+        self.prezzoAbbonamento = prezzoAbbonamento
 
     # Metodo che ritorna una lista di abbonamenti che è stata
     # popolata grazie al costruttore.
@@ -68,3 +74,15 @@ class GestioneAbbonamenti:
 
         return listaProdottiOffertaAbbonati
 
+    # Metodo che serve per ricercare un abbonamento tramite il suo codice seriale.
+    def ricercaAbbonamentoCodice(self, codiceIdentificativoAbbonamento):
+        for index, element in enumerate(self.listaAbbonamenti):
+            if element != "":
+                codiceIdentificativoEsistente = self.listaAbbonamenti[index].getCodiceIdentificativo()
+                if codiceIdentificativoEsistente == codiceIdentificativoAbbonamento:
+                    return True, self.listaAbbonamenti[index]
+
+        return False, self.invioMessaggioErroreRicerca()
+
+    def invioMessaggioErroreRicerca(self):
+        return ""
