@@ -210,7 +210,7 @@ class GestioneAbbonamentiPrincipale(object):
         Frame.setWindowTitle(_translate("Frame", "Fumetteria - Gestione Abbonamenti"))
         self.label_4.setText(_translate("Frame", "GESTIONE ABBONAMENTI"))
         self.pushButtonLogout.setText(_translate("Frame", " Logout"))
-        self.pushButtonVistaHome.setText(_translate("Frame", "Home"))
+        self.pushButtonVistaHome.setText(_translate("Frame", " Home"))
         self.pushButton_2.setText(_translate("Frame", "Statistiche \n"
                                                       " Abbonamenti "))
         self.pushButtonRicercaAbbonamento.setText(_translate("Frame", "Ricerca \n"
