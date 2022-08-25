@@ -191,6 +191,11 @@ class ModificaPrezzoAbbonamenti(object):
 
         from GestioneAbbonamenti.GestioneAbbonamenti import GestioneAbbonamenti
         prezzoInserito = self.doubleSpinBoxPrezzo.text()
+
+        if "," in prezzoInserito:
+            prezzoVector = prezzoInserito.split(",")
+            prezzoInserito = prezzoVector[0] + "." + prezzoVector[1]
+
         gestoreAbbonamenti = GestioneAbbonamenti()
 
         if float(prezzoInserito) != float(gestoreAbbonamenti.getPrezzoAbbonamento()):
