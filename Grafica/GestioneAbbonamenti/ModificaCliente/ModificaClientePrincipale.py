@@ -130,16 +130,16 @@ class ModificaClientePrincipale(object):
                                         "}")
         self.pushButtonModificaCodiceFiscale.setCheckable(False)
         self.pushButtonModificaCodiceFiscale.setObjectName("pushButton_12")
-        self.pushButton_13 = QtWidgets.QPushButton(Frame)
-        self.pushButton_13.setGeometry(QtCore.QRect(230, 180, 201, 51))
+        self.pushButtonModificaTelefono = QtWidgets.QPushButton(Frame)
+        self.pushButtonModificaTelefono.setGeometry(QtCore.QRect(230, 180, 201, 51))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_13.setFont(font)
-        self.pushButton_13.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_13.setStyleSheet("QPushButton{\n"
+        self.pushButtonModificaTelefono.setFont(font)
+        self.pushButtonModificaTelefono.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonModificaTelefono.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -148,8 +148,8 @@ class ModificaClientePrincipale(object):
                                         "background-color: #14626c;\n"
                                         "color:white;\n"
                                         "}")
-        self.pushButton_13.setCheckable(False)
-        self.pushButton_13.setObjectName("pushButton_13")
+        self.pushButtonModificaTelefono.setCheckable(False)
+        self.pushButtonModificaTelefono.setObjectName("pushButton_13")
         self.label = QtWidgets.QLabel(Frame)
         self.label.setGeometry(QtCore.QRect(10, 60, 431, 41))
         self.label.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -165,6 +165,7 @@ class ModificaClientePrincipale(object):
         self.pushButtonNomeCognome.clicked.connect(self.openModificaNomeCognomeCliente)
         self.pushButtonModificaEmail.clicked.connect(self.openModificaEmailCliente)
         self.pushButtonModificaCodiceFiscale.clicked.connect(self.openModificaCodiceFiscaleCliente)
+        self.pushButtonModificaTelefono.clicked.connect(self.openModificaTelefonoCliente)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -181,7 +182,7 @@ class ModificaClientePrincipale(object):
                                             "Email"))
         self.pushButtonModificaCodiceFiscale.setText(_translate("Frame", "Modifica \n"
                                             "Codice Fiscale"))
-        self.pushButton_13.setText(_translate("Frame", "Modifica \n"
+        self.pushButtonModificaTelefono.setText(_translate("Frame", "Modifica \n"
                                                 " Telefono"))
         self.label.setText(_translate("Frame", "Seleziona una delle opzioni per modificare il le informazioni\n"
                                     "relative al cliente"))
@@ -223,4 +224,11 @@ class ModificaClientePrincipale(object):
         self.ui = ModificaCodiceFiscaleCliente()
         self.ui.setupUi(self.modificaCodiceFiscaleCliente,self.abbonamentoTrovato)
         self.modificaCodiceFiscaleCliente.show()
+        self.frame.close()
+    def openModificaTelefonoCliente(self):
+        from Grafica.GestioneAbbonamenti.ModificaCliente.ModificaTelefonoCliente import ModificaTelefonoCliente
+        self.modificaTelefonoCliente = QtWidgets.QFrame()
+        self.ui = ModificaTelefonoCliente()
+        self.ui.setupUi(self.modificaTelefonoCliente,self.abbonamentoTrovato)
+        self.modificaTelefonoCliente.show()
         self.frame.close()
