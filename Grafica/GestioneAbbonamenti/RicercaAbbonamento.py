@@ -170,10 +170,10 @@ class RicercaAbbonamento(object):
     def clickRicerca(self):
         from GestioneAbbonamenti.GestioneAbbonamenti import GestioneAbbonamenti
 
-        gestioneAbbonamenti = GestioneAbbonamenti()
+        gestoreAbbonamenti = GestioneAbbonamenti()
         codiceAbbonamento = self.lineEditCodiceAbbonamento.text()
 
-        result = gestioneAbbonamenti.ricercaAbbonamentoCodice(codiceAbbonamento)
+        result = gestoreAbbonamenti.ricercaAbbonamentoCodice(codiceAbbonamento)
 
         if result[0] is True:
             abbonamentoTrovato = result[1]

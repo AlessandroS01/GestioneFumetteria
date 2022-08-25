@@ -3,10 +3,10 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from GestioneAbbonamenti.GestioneAbbonamenti import GestioneAbbonamenti
 
 
-class VisualizzaClientiAbbonati(object):
+class VisualizzaAbbonamentiAttivi(object):
 
     def setupUi(self, Frame):
-        self.clientiabbonati = GestioneAbbonamenti()
+        self.abbonamentiAttivi = GestioneAbbonamenti()
         Frame.setObjectName("Frame")
         Frame.resize(872, 651)
         Frame.setStyleSheet("QFrame{\n"
@@ -103,7 +103,7 @@ class VisualizzaClientiAbbonati(object):
         self.tableWidget.setSelectionMode(QtWidgets.QAbstractItemView.NoSelection)
         self.tableWidget.setObjectName("tableWidget")
         self.tableWidget.setColumnCount(8)
-        self.tableWidget.setRowCount(self.leggiNumeroClientiAbbonati())
+        self.tableWidget.setRowCount(self.leggiNumeroAbbonamentiAttivi())
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(0, item)
         item = QtWidgets.QTableWidgetItem()
@@ -120,6 +120,7 @@ class VisualizzaClientiAbbonati(object):
         self.tableWidget.setHorizontalHeaderItem(6, item)
         item = QtWidgets.QTableWidgetItem()
         self.tableWidget.setHorizontalHeaderItem(7, item)
+
         self.tableWidget.horizontalHeader().setVisible(True)
         self.tableWidget.horizontalHeader().setDefaultSectionSize(200)
         self.tableWidget.verticalHeader().setVisible(False)
@@ -142,17 +143,18 @@ class VisualizzaClientiAbbonati(object):
                                              "color:white;\n"
                                              "}")
         icon2 = QtGui.QIcon()
-        icon2.addPixmap(QtGui.QPixmap("Images\\magnifying-glass.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon2.addPixmap(QtGui.QPixmap("Images\\magnifying-glass.png"), QtGui.QIcon.Normal,
+                        QtGui.QIcon.Off)
         self.pushButtonRicerca.setIcon(icon2)
         self.pushButtonRicerca.setObjectName("pushButton_5")
+        self.pushButtonRicerca.clicked.connect(self.openRicercaAbbonamento)
         self.pushButtonLogout.clicked.connect(self.openLogin)
         self.pushButtonGestioneAbbonamentiPrincipale.clicked.connect(self.openGestioneAbbonamentiPrincipale)
-        self.pushButtonRicerca.clicked.connect(self.openRicercaAbbonamento)
 
         # Utilizzato per creare la tabella su cui inserire i vari
-        # clienti abbonati salvati all'interno del
+        # abbonamenti salvati all'interno del
         # file di testo "Abbonamenti.txt".
-        for riga in range(0, self.leggiNumeroClientiAbbonati()):
+        for riga in range(0, self.leggiNumeroAbbonamentiAttivi()):
             for colonna in range(0, 8):
                 item = QtWidgets.QTableWidgetItem()
                 self.tableWidget.setItem(riga, colonna, item)
@@ -163,13 +165,15 @@ class VisualizzaClientiAbbonati(object):
     def retranslateUi(self, Frame):
         _translate = QtCore.QCoreApplication.translate
         Frame.setWindowTitle(_translate("Frame", "Fumetteria - Gestione Magazzino"))
-        self.label_4.setText(_translate("Frame", "VISUALIZZA CLIENTI ABBONATI"))
+        self.label_4.setText(_translate("Frame", "VISUALIZZA ABBONAMENTI ATTIVI"))
         self.label_5.setText(_translate("Frame",
-                                        "Di seguito sono riportate le informazioni relative ai clienti abbonati. Per "
-                                        "tornare indietro o effettuare il\n "
-                                        "logout utilizzare i pulsanti in basso a sinistra. Utilizza il pulsante "
-                                        "ricerca per effettuare la ricerca di un\n "
-                                        "abbonamento e modificare le informazioni relative al cliente."))
+                                        "Di seguito sono riportate le informazioni relative ai clienti che dispongono "
+                                        "di un abbonamento attivo.\n "
+                                        "Per tornare indietro o effettuare il logout utilizzare i pulsanti in basso a "
+                                        "sinistra. Utilizza il pulsante ricerca\n "
+                                        "per effettuare la ricerca di un abbonamento e modificare le informazioni "
+                                        "relative al cliente."))
+
         self.pushButtonGestioneAbbonamentiPrincipale.setText(_translate("Frame", " Indietro"))
         self.pushButtonLogout.setText(_translate("Frame", " Logout"))
         self.pushButtonRicerca.setText(_translate("Frame", " Ricerca"))
@@ -193,24 +197,29 @@ class VisualizzaClientiAbbonati(object):
         # Utilizzato per popolare la tabella con i vari
         # clienti che sono salvati all'interno del
         # file di testo "Abbonamenti.txt".
-        for riga in range(0, self.leggiNumeroClientiAbbonati()):
-            clienteAbbonato = self.clientiabbonati.getAbbonamenti()[riga]
+        for riga in range(0, self.leggiNumeroAbbonamentiAttivi()):
+            abbonamentoAttivo = self.abbonamentiAttivi.getAbbonamentiAttivi()[riga]
             item = self.tableWidget.item(riga, 0)
-            item.setText(_translate("Frame", clienteAbbonato.getCliente().getNome()))
+            item.setText(_translate("Frame", abbonamentoAttivo.getCliente().getNome()))
             item = self.tableWidget.item(riga, 1)
-            item.setText(_translate("Frame", clienteAbbonato.getCliente().getCognome()))
+            item.setText(_translate("Frame", abbonamentoAttivo.getCliente().getCognome()))
             item = self.tableWidget.item(riga, 2)
-            item.setText(_translate("Frame", clienteAbbonato.getCliente().getCodiceFiscale()))
+            item.setText(_translate("Frame", abbonamentoAttivo.getCliente().getCodiceFiscale()))
             item = self.tableWidget.item(riga, 3)
-            item.setText(_translate("Frame", clienteAbbonato.getCliente().getTelefono()))
+            item.setText(_translate("Frame", abbonamentoAttivo.getCliente().getTelefono()))
             item = self.tableWidget.item(riga, 4)
-            item.setText(_translate("Frame", clienteAbbonato.getCliente().getEmail()))
+            item.setText(_translate("Frame", abbonamentoAttivo.getCliente().getEmail()))
             item = self.tableWidget.item(riga, 5)
-            item.setText(_translate("Frame", clienteAbbonato.getDataEmissione()))
+            item.setText(_translate("Frame", abbonamentoAttivo.getDataEmissione()))
             item = self.tableWidget.item(riga, 6)
-            item.setText(_translate("Frame", clienteAbbonato.getDataScadenza()))
+            item.setText(_translate("Frame", abbonamentoAttivo.getDataScadenza()))
             item = self.tableWidget.item(riga, 7)
-            item.setText(_translate("Frame", clienteAbbonato.getCodiceIdentificativo()))
+            item.setText(_translate("Frame", abbonamentoAttivo.getCodiceIdentificativo()))
+
+    # Metodo che calcola il numero degli abbonamenti attivi salvati
+    # all'interno del file di testo "Abbonamenti.txt"
+    def leggiNumeroAbbonamentiAttivi(self):
+        return len(self.abbonamentiAttivi.getAbbonamentiAttivi())
 
     # Metodo che permette di ritornare all'interfaccia iniziale
     # del programma, ovvero LoginAmministratore.
@@ -239,9 +248,3 @@ class VisualizzaClientiAbbonati(object):
         self.ui.setupUi(self.ricercaAbbonamento)
         self.ricercaAbbonamento.show()
         self.frame.close()
-
-    # Metodo che calcola il numero dei clienti che sono salvati
-    # all'interno del file di testo "Abbonamenti.txt"
-    def leggiNumeroClientiAbbonati(self):
-
-        return len(self.clientiabbonati.getAbbonamenti())

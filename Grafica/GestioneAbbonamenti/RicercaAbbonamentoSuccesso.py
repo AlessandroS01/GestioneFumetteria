@@ -36,14 +36,14 @@ class RicercaAbbonamentoSuccesso(object):
         self.pushButtonLogout.setFont(font)
         self.pushButtonLogout.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pushButtonLogout.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
+                                            "border: 2px solid black;\n"
+                                            "border-radius: 10px;\n"
+                                            "}\n"
+                                            "QPushButton:hover{\n"
+                                            "\n"
+                                            "background-color: #14626c;\n"
+                                            "color:white;\n"
+                                            "}")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("Images\\log.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButtonLogout.setIcon(icon)
@@ -79,14 +79,14 @@ class RicercaAbbonamentoSuccesso(object):
         self.pushButtonRicerca.setFont(font)
         self.pushButtonRicerca.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pushButtonRicerca.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
+                                             "border: 2px solid black;\n"
+                                             "border-radius: 10px;\n"
+                                             "}\n"
+                                             "QPushButton:hover{\n"
+                                             "\n"
+                                             "background-color: #14626c;\n"
+                                             "color:white;\n"
+                                             "}")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("Images\\left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButtonRicerca.setIcon(icon1)

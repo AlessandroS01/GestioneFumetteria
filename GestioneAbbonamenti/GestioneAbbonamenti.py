@@ -1,28 +1,32 @@
 import os
+from datetime import datetime
 from pathlib import Path
 
 from GestioneAbbonamenti.Abbonamento import Abbonamento
 from GestioneAbbonamenti.Cliente import Cliente
+from GestioneMagazzino.Magazzino import Magazzino
 
 # Classe necessaria per andare a leggere dal file "Abbonamenti.txt"
 # e popolare la lista degli abbonamenti con la lettura.
-from GestioneMagazzino.Magazzino import Magazzino
-
-
 class GestioneAbbonamenti:
 
     def __init__(self):
 
-        self.prezzoAbbonamento = float(50)
+        pathRelativoPrezzo = Path("PrezzoAbbonamenti")
+        pathAssolutoPrezzo = pathRelativoPrezzo.absolute()
 
-        pathRelativo = Path("Abbonamenti")
-        pathAssoluto = pathRelativo.absolute()
+        with open(pathAssolutoPrezzo, 'r') as f:
+            self.prezzoAbbonamento = f.read()
+            f.close()
 
-        with open(pathAssoluto, 'r') as f:
+        pathRelativoAbbonamenti = Path("Abbonamenti")
+        pathAssolutoAbbonamenti = pathRelativoAbbonamenti.absolute()
+
+        with open(pathAssolutoAbbonamenti, 'r') as f:
             storage = f.read()
             f.close()
 
-        if os.stat(pathAssoluto).st_size == 0:
+        if os.stat(pathAssolutoAbbonamenti).st_size == 0:
             self.listaAbbonamenti = []
         else:
 
@@ -52,7 +56,13 @@ class GestioneAbbonamenti:
         return self.prezzoAbbonamento
 
     def setPrezzoAbbonamento(self, prezzoAbbonamento):
-        self.prezzoAbbonamento = prezzoAbbonamento
+
+        pathRelativoPrezzo = Path("PrezzoAbbonamenti")
+        pathAssolutoPrezzo = pathRelativoPrezzo.absolute()
+
+        with open(pathAssolutoPrezzo, 'w') as f:
+            f.write(prezzoAbbonamento)
+            f.close()
 
     # Metodo che ritorna una lista di abbonamenti che è stata
     # popolata grazie al costruttore.
@@ -68,21 +78,40 @@ class GestioneAbbonamenti:
         listaProdottiTotale = magazzino.getMagazzino()
 
         listaProdottiOffertaAbbonati = []
+
         for prodotto in listaProdottiTotale:
+
             if prodotto.getTipoOfferta() == "Abbonati":
                 listaProdottiOffertaAbbonati.append(prodotto)
 
         return listaProdottiOffertaAbbonati
 
+    # Metodo che ritorna una lista degli abbonamenti attivi salvati all'interno
+    # del file di testo "Abbonamenti.txt".
+    def getAbbonamentiAttivi(self):
+
+        listaAbbonamentiAttivi = []
+        dataOdierna = datetime.now().date()
+
+        for abbonamento in self.getAbbonamenti():
+
+            dataScadenzaAbbonamento = datetime.strptime(abbonamento.getDataScadenza(), '%d/%m/%Y').date()
+
+            if dataScadenzaAbbonamento >= dataOdierna:
+                listaAbbonamentiAttivi.append(abbonamento)
+
+        return listaAbbonamentiAttivi
+
     # Metodo che serve per ricercare un abbonamento tramite il suo codice seriale.
     def ricercaAbbonamentoCodice(self, codiceIdentificativoAbbonamento):
+
         for index, element in enumerate(self.listaAbbonamenti):
+
             if element != "":
                 codiceIdentificativoEsistente = self.listaAbbonamenti[index].getCodiceIdentificativo()
+
                 if codiceIdentificativoEsistente == codiceIdentificativoAbbonamento:
                     return True, self.listaAbbonamenti[index]
 
-        return False, self.invioMessaggioErroreRicerca()
+        return False, ""
 
-    def invioMessaggioErroreRicerca(self):
-        return ""

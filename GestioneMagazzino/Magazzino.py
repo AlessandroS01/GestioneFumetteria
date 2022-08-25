@@ -97,7 +97,6 @@ class Magazzino:
                                           prezzoProdotto, codiceSeriale)
             return True
         else:
-            self.invioMessaggioErroreInserimentoProdotto()
             return False
 
     # Metodo che serve per ricercare un prodotto all'interno del
@@ -109,7 +108,7 @@ class Magazzino:
                 if codiceProdottoEsistente == codiceSerialeProdotto:
                     return True, self.listaProdotti[index]
 
-        return False, self.invioMessaggioErroreRicerca()
+        return False, ""
 
     # Metodo che serve per ricercare un prodotto all'interno
     # del magazzino tramite l'utilizzo del suo nome.
@@ -120,13 +119,4 @@ class Magazzino:
                 if nomeProdottoEsistente == nomeProdotto:
                     return True, self.listaProdotti[index]
 
-        return False, self.invioMessaggioErroreRicerca()
-
-    def invioMessaggioErroreRicerca(self):
-        return "Il prodotto cercato non si trova all'interno del magazzino"
-
-    def invioMessaggioErroreOfferta(self):
-        return "Il prodotto cercato non si trova all'interno del magazzino"
-
-    def invioMessaggioErroreInserimentoProdotto(self):
-        return "Non è possibile aggiungere il prodotto al magazzino perchè il codice seriale è già stato utilizzato"
+        return False, ""

@@ -1,8 +1,9 @@
 import os
+from datetime import datetime
 from unittest import TestCase
 
 
-class TestMagazzino(TestCase):
+class TestVari(TestCase):
 
     # Il test viene superato se alla fine si riesce
     # a leggere il contenuto del file.
@@ -21,3 +22,13 @@ class TestMagazzino(TestCase):
             fileContent = f.read()
 
         assert fileContent != ""
+
+    # Test utilizzato per capire se le date
+    # utilizzate sono le stesse
+    def test_lettura_datetime(self):
+
+        today = datetime.now().date()
+
+        dateTest = datetime.strptime("25/8/2022", '%d/%m/%Y').date()
+
+        assert today == dateTest
