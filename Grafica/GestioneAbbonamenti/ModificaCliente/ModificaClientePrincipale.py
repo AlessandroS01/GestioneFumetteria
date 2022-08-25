@@ -110,16 +110,16 @@ class ModificaClientePrincipale(object):
                                         "}")
         self.pushButtonModificaEmail.setCheckable(False)
         self.pushButtonModificaEmail.setObjectName("pushButton_9")
-        self.pushButton_12 = QtWidgets.QPushButton(Frame)
-        self.pushButton_12.setGeometry(QtCore.QRect(230, 120, 201, 51))
+        self.pushButtonModificaCodiceFiscale = QtWidgets.QPushButton(Frame)
+        self.pushButtonModificaCodiceFiscale.setGeometry(QtCore.QRect(230, 120, 201, 51))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_12.setFont(font)
-        self.pushButton_12.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_12.setStyleSheet("QPushButton{\n"
+        self.pushButtonModificaCodiceFiscale.setFont(font)
+        self.pushButtonModificaCodiceFiscale.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonModificaCodiceFiscale.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -128,8 +128,8 @@ class ModificaClientePrincipale(object):
                                         "background-color: #14626c;\n"
                                         "color:white;\n"
                                         "}")
-        self.pushButton_12.setCheckable(False)
-        self.pushButton_12.setObjectName("pushButton_12")
+        self.pushButtonModificaCodiceFiscale.setCheckable(False)
+        self.pushButtonModificaCodiceFiscale.setObjectName("pushButton_12")
         self.pushButton_13 = QtWidgets.QPushButton(Frame)
         self.pushButton_13.setGeometry(QtCore.QRect(230, 180, 201, 51))
         font = QtGui.QFont()
@@ -164,6 +164,7 @@ class ModificaClientePrincipale(object):
         self.pushButtonRicercaSuccesso.clicked.connect(self.openRicercaSuccesso)
         self.pushButtonNomeCognome.clicked.connect(self.openModificaNomeCognomeCliente)
         self.pushButtonModificaEmail.clicked.connect(self.openModificaEmailCliente)
+        self.pushButtonModificaCodiceFiscale.clicked.connect(self.openModificaCodiceFiscaleCliente)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -178,7 +179,7 @@ class ModificaClientePrincipale(object):
                                             "Cognome Cliente"))
         self.pushButtonModificaEmail.setText(_translate("Frame", "Modifica\n"
                                             "Email"))
-        self.pushButton_12.setText(_translate("Frame", "Modifica \n"
+        self.pushButtonModificaCodiceFiscale.setText(_translate("Frame", "Modifica \n"
                                             "Codice Fiscale"))
         self.pushButton_13.setText(_translate("Frame", "Modifica \n"
                                                 " Telefono"))
@@ -215,4 +216,11 @@ class ModificaClientePrincipale(object):
         self.ui = ModificaEmailCliente()
         self.ui.setupUi(self.modificaEmailCliente,self.abbonamentoTrovato)
         self.modificaEmailCliente.show()
+        self.frame.close()
+    def openModificaCodiceFiscaleCliente(self):
+        from Grafica.GestioneAbbonamenti.ModificaCliente.ModificaCodiceFiscaleCliente import ModificaCodiceFiscaleCliente
+        self.modificaCodiceFiscaleCliente = QtWidgets.QFrame()
+        self.ui = ModificaCodiceFiscaleCliente()
+        self.ui.setupUi(self.modificaCodiceFiscaleCliente,self.abbonamentoTrovato)
+        self.modificaCodiceFiscaleCliente.show()
         self.frame.close()
