@@ -103,6 +103,8 @@ class VisualizzaProdottiAbbonati(object):
                                        "    gridline-color: black;\n"
                                        "    font-size: 14px;\n"
                                        "font-family:Helvetica,sans-serif;\n"
+                                       "border:2px solid black;\n"
+                                       "border-radius:6px;\n"
                                        "}\n"
                                        "\n"
                                        "QTableWidget QTableCornerButton::section {\n"

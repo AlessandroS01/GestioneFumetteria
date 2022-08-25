@@ -1,4 +1,5 @@
 import sys
+from pathlib import Path
 
 from PyQt5 import QtWidgets
 
@@ -8,6 +9,9 @@ from GestioneMagazzino.Magazzino import Magazzino
 from Grafica.GestioneLogin.LoginAmministratore import LoginAmministratore
 
 # L'inizio del programma avvia la finestra LoginAmministratore.
+
+
+
 if __name__ == "__main__":
     app = QtWidgets.QApplication(sys.argv)
     Frame = QtWidgets.QFrame()
