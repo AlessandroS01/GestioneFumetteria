@@ -1,19 +1,19 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
-class ModificaNomeCognomeCliente(object):
+class ModificaEmailCliente(object):
 
-    def setupUi(self, Frame,abbonamento):
-        self.abbonamentoTrovato=abbonamento
+    def setupUi(self, Frame, abbonamento):
+        self.abbonamentoTrovato = abbonamento
         Frame.setObjectName("Frame")
-        Frame.resize(411, 331)
+        Frame.resize(411, 243)
         Frame.setStyleSheet("QFrame{\n"
                             "background-color: rgb(255, 255, 255);\n"
                             "}")
         Frame.setFrameShape(QtWidgets.QFrame.NoFrame)
         self.frame = Frame
         self.label = QtWidgets.QLabel(Frame)
-        self.label.setGeometry(QtCore.QRect(10, 150, 391, 31))
+        self.label.setGeometry(QtCore.QRect(10, 70, 391, 21))
         self.label.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label.setStyleSheet("QLabel{\n"
                                 "font-family: Helvetica, sans-serif;\n"
@@ -23,7 +23,7 @@ class ModificaNomeCognomeCliente(object):
         self.label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.label.setObjectName("label")
         self.lineEdit = QtWidgets.QLineEdit(Frame)
-        self.lineEdit.setGeometry(QtCore.QRect(10, 190, 391, 31))
+        self.lineEdit.setGeometry(QtCore.QRect(10, 100, 391, 31))
         self.lineEdit.setStyleSheet("QLineEdit{\n"
                                     "border: 2px solid black;\n"
                                     "border-radius: 6px;\n"
@@ -44,7 +44,7 @@ class ModificaNomeCognomeCliente(object):
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
         self.pushButtonLogout = QtWidgets.QPushButton(Frame)
-        self.pushButtonLogout.setGeometry(QtCore.QRect(10, 290, 141, 31))
+        self.pushButtonLogout.setGeometry(QtCore.QRect(10, 200, 141, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
@@ -67,7 +67,7 @@ class ModificaNomeCognomeCliente(object):
         self.pushButtonLogout.setCheckable(False)
         self.pushButtonLogout.setObjectName("pushButton_5")
         self.pushButton_6 = QtWidgets.QPushButton(Frame)
-        self.pushButton_6.setGeometry(QtCore.QRect(10, 230, 391, 31))
+        self.pushButton_6.setGeometry(QtCore.QRect(10, 140, 391, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
@@ -86,16 +86,16 @@ class ModificaNomeCognomeCliente(object):
                                         "}")
         self.pushButton_6.setCheckable(False)
         self.pushButton_6.setObjectName("pushButton_6")
-        self.pushButtonModificaClientePrinciaple = QtWidgets.QPushButton(Frame)
-        self.pushButtonModificaClientePrinciaple.setGeometry(QtCore.QRect(160, 290, 141, 31))
+        self.pushButtonModificaClientePrincipale = QtWidgets.QPushButton(Frame)
+        self.pushButtonModificaClientePrincipale.setGeometry(QtCore.QRect(160, 200, 141, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButtonModificaClientePrinciaple.setFont(font)
-        self.pushButtonModificaClientePrinciaple.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButtonModificaClientePrinciaple.setStyleSheet("QPushButton{\n"
+        self.pushButtonModificaClientePrincipale.setFont(font)
+        self.pushButtonModificaClientePrincipale.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonModificaClientePrincipale.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -106,50 +106,22 @@ class ModificaNomeCognomeCliente(object):
                                         "}")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("Images\\left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButtonModificaClientePrinciaple.setIcon(icon1)
-        self.pushButtonModificaClientePrinciaple.setObjectName("pushButton_4")
-        self.radioButton_2 = QtWidgets.QRadioButton(Frame)
-        self.radioButton_2.setGeometry(QtCore.QRect(11, 120, 91, 21))
-        self.radioButton_2.setStyleSheet("QRadioButton{\n"
-                                            "font-family: Helvetica, sans-serif;\n"
-                                            "font-size:13px;\n"
-                                            "}")
-        self.radioButton_2.setObjectName("radioButton_2")
-        self.radioButton = QtWidgets.QRadioButton(Frame)
-        self.radioButton.setGeometry(QtCore.QRect(11, 96, 91, 21))
-        self.radioButton.setStyleSheet("QRadioButton{\n"
-                                        "font-family: Helvetica, sans-serif;\n"
-                                        "font-size:13px;\n"
-                                        "}")
-        self.radioButton.setChecked(True)
-        self.radioButton.setObjectName("radioButton")
-        self.label_2 = QtWidgets.QLabel(Frame)
-        self.label_2.setGeometry(QtCore.QRect(10, 60, 391, 31))
-        self.label_2.setLayoutDirection(QtCore.Qt.LeftToRight)
-        self.label_2.setStyleSheet("QLabel{\n"
-                                    "font-family: Helvetica, sans-serif;\n"
-                                    "font-weight: 400;\n"
-                                    "font-size: 16px\n"
-                                    "}")
-        self.label_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
-        self.label_2.setObjectName("label_2")
+        self.pushButtonModificaClientePrincipale.setIcon(icon1)
+        self.pushButtonModificaClientePrincipale.setObjectName("pushButton_4")
         self.pushButtonLogout.clicked.connect(self.openLogin)
-        self.pushButtonModificaClientePrinciaple.clicked.connect(self.openModificaClientePrincipale)
+        self.pushButtonModificaClientePrincipale.clicked.connect(self.openModificaClientePrincipale)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
 
     def retranslateUi(self, Frame):
         _translate = QtCore.QCoreApplication.translate
-        Frame.setWindowTitle(_translate("Frame", "Fumetteria - Modifica Generalità Cliente"))
-        self.label.setText(_translate("Frame", "Inserisci il nome/cognome del cliente"))
-        self.label_4.setText(_translate("Frame", "MODIFICA GENERALITA\' CLIENTE"))
+        Frame.setWindowTitle(_translate("Frame", "Fumetteria - Modifica Email Cliente"))
+        self.label.setText(_translate("Frame", "Inserisci nuova e-mail del cliente:"))
+        self.label_4.setText(_translate("Frame", "MODIFICA EMAIL CLIENTE"))
         self.pushButtonLogout.setText(_translate("Frame", " Logout"))
         self.pushButton_6.setText(_translate("Frame", "Modifica"))
-        self.pushButtonModificaClientePrinciaple.setText(_translate("Frame", " Indietro"))
-        self.radioButton_2.setText(_translate("Frame", "Cognome"))
-        self.radioButton.setText(_translate("Frame", "Nome"))
-        self.label_2.setText(_translate("Frame", "Seleziona quale campo del cliente vuoi modificare:"))
+        self.pushButtonModificaClientePrincipale.setText(_translate("Frame", " Indietro"))
 
     def openLogin(self):
         from Grafica.GestioneLogin.LoginAmministratore import LoginAmministratore

@@ -44,7 +44,7 @@ class ModificaClientePrincipale(object):
                                         "color:white;\n"
                                         "}")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("C:\\Users\\dsant\\Desktop\\Mockup\\log.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("Images\\log.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButtonLogout.setIcon(icon)
         self.pushButtonLogout.setCheckable(False)
         self.pushButtonLogout.setObjectName("pushButton_5")
@@ -67,7 +67,7 @@ class ModificaClientePrincipale(object):
                                         "color:white;\n"
                                         "}")
         icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("C:\\Users\\dsant\\Desktop\\Mockup\\left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        icon1.addPixmap(QtGui.QPixmap("Images\\left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButtonRicercaSuccesso.setIcon(icon1)
         self.pushButtonRicercaSuccesso.setObjectName("pushButton_4")
         self.pushButtonNomeCognome = QtWidgets.QPushButton(Frame)
@@ -90,16 +90,16 @@ class ModificaClientePrincipale(object):
                                         "}")
         self.pushButtonNomeCognome.setCheckable(False)
         self.pushButtonNomeCognome.setObjectName("pushButton_8")
-        self.pushButton_9 = QtWidgets.QPushButton(Frame)
-        self.pushButton_9.setGeometry(QtCore.QRect(20, 180, 201, 51))
+        self.pushButtonModificaEmail = QtWidgets.QPushButton(Frame)
+        self.pushButtonModificaEmail.setGeometry(QtCore.QRect(20, 180, 201, 51))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_9.setFont(font)
-        self.pushButton_9.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_9.setStyleSheet("QPushButton{\n"
+        self.pushButtonModificaEmail.setFont(font)
+        self.pushButtonModificaEmail.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonModificaEmail.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -108,8 +108,8 @@ class ModificaClientePrincipale(object):
                                         "background-color: #14626c;\n"
                                         "color:white;\n"
                                         "}")
-        self.pushButton_9.setCheckable(False)
-        self.pushButton_9.setObjectName("pushButton_9")
+        self.pushButtonModificaEmail.setCheckable(False)
+        self.pushButtonModificaEmail.setObjectName("pushButton_9")
         self.pushButton_12 = QtWidgets.QPushButton(Frame)
         self.pushButton_12.setGeometry(QtCore.QRect(230, 120, 201, 51))
         font = QtGui.QFont()
@@ -163,6 +163,7 @@ class ModificaClientePrincipale(object):
         self.pushButtonLogout.clicked.connect(self.openLogin)
         self.pushButtonRicercaSuccesso.clicked.connect(self.openRicercaSuccesso)
         self.pushButtonNomeCognome.clicked.connect(self.openModificaNomeCognomeCliente)
+        self.pushButtonModificaEmail.clicked.connect(self.openModificaEmailCliente)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -175,7 +176,7 @@ class ModificaClientePrincipale(object):
         self.pushButtonRicercaSuccesso.setText(_translate("Frame", " Indietro"))
         self.pushButtonNomeCognome.setText(_translate("Frame", "Modifica Nome/\n"
                                             "Cognome Cliente"))
-        self.pushButton_9.setText(_translate("Frame", "Modifica\n"
+        self.pushButtonModificaEmail.setText(_translate("Frame", "Modifica\n"
                                             "Email"))
         self.pushButton_12.setText(_translate("Frame", "Modifica \n"
                                             "Codice Fiscale"))
@@ -206,4 +207,12 @@ class ModificaClientePrincipale(object):
         self.ui = ModificaNomeCognomeCliente()
         self.ui.setupUi(self.modificaNomeCognomeCliente,self.abbonamentoTrovato)
         self.modificaNomeCognomeCliente.show()
+        self.frame.close()
+
+    def openModificaEmailCliente(self):
+        from Grafica.GestioneAbbonamenti.ModificaCliente.ModificaEmailCliente import ModificaEmailCliente
+        self.modificaEmailCliente = QtWidgets.QFrame()
+        self.ui = ModificaEmailCliente()
+        self.ui.setupUi(self.modificaEmailCliente,self.abbonamentoTrovato)
+        self.modificaEmailCliente.show()
         self.frame.close()
