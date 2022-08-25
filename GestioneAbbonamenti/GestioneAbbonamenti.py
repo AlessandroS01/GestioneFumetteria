@@ -1,12 +1,15 @@
 import os
 from pathlib import Path
 
-
 from GestioneAbbonamenti.Abbonamento import Abbonamento
 from GestioneAbbonamenti.Cliente import Cliente
 
+
 # Classe necessaria per andare a leggere dal file "Abbonamenti.txt"
 # e popolare la lista degli abbonamenti con la lettura.
+from GestioneMagazzino.Magazzino import Magazzino
+
+
 class GestioneAbbonamenti:
 
     def __init__(self):
@@ -14,8 +17,6 @@ class GestioneAbbonamenti:
         pathRelativo = Path("Abbonamenti")
         pathAssoluto = pathRelativo.absolute()
 
-        print(pathRelativo)
-        print(pathAssoluto)
         with open(pathAssoluto, 'r') as f:
             storage = f.read()
             f.close()
@@ -47,7 +48,23 @@ class GestioneAbbonamenti:
 
                 self.listaAbbonamenti.append(abbonamentoAppoggio)
 
-    # Ritorna tutti gli abbonamenti che sono stati salvati all'interno della lista
+    # Metodo che ritorna una lista di abbonamenti che è stata
     # popolata grazie al costruttore.
     def getAbbonamenti(self):
         return self.listaAbbonamenti
+
+    # Metodo che ritorna una lista di prodotti salvati all'interno
+    # del file di testo "Magazzino.txt" con un'offerta esclusiva
+    # per gli abbonati.
+    def getProdottiOffertaAbbonati(self):
+
+        magazzino = Magazzino()
+        listaProdottiTotale = magazzino.getMagazzino()
+
+        listaProdottiOffertaAbbonati = []
+        for prodotto in listaProdottiTotale:
+            if prodotto.getTipoOfferta() == "Abbonati":
+                listaProdottiOffertaAbbonati.append(prodotto)
+
+        return listaProdottiOffertaAbbonati
+

@@ -25,16 +25,16 @@ class GestioneAbbonamentiPrincipale(object):
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
-        self.pushButton_5 = QtWidgets.QPushButton(Frame)
-        self.pushButton_5.setGeometry(QtCore.QRect(10, 360, 141, 31))
+        self.pushButtonLogout = QtWidgets.QPushButton(Frame)
+        self.pushButtonLogout.setGeometry(QtCore.QRect(10, 360, 141, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_5.setFont(font)
-        self.pushButton_5.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_5.setStyleSheet("QPushButton{\n"
+        self.pushButtonLogout.setFont(font)
+        self.pushButtonLogout.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonLogout.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -45,19 +45,19 @@ class GestioneAbbonamentiPrincipale(object):
                                         "}")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("Images\\log.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_5.setIcon(icon)
-        self.pushButton_5.setCheckable(False)
-        self.pushButton_5.setObjectName("pushButton_5")
-        self.pushButton_4 = QtWidgets.QPushButton(Frame)
-        self.pushButton_4.setGeometry(QtCore.QRect(160, 360, 141, 31))
+        self.pushButtonLogout.setIcon(icon)
+        self.pushButtonLogout.setCheckable(False)
+        self.pushButtonLogout.setObjectName("pushButton_5")
+        self.pushButtonVistaHome = QtWidgets.QPushButton(Frame)
+        self.pushButtonVistaHome.setGeometry(QtCore.QRect(160, 360, 141, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_4.setFont(font)
-        self.pushButton_4.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_4.setStyleSheet("QPushButton{\n"
+        self.pushButtonVistaHome.setFont(font)
+        self.pushButtonVistaHome.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonVistaHome.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -68,8 +68,8 @@ class GestioneAbbonamentiPrincipale(object):
                                         "}")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("Images\\home.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_4.setIcon(icon1)
-        self.pushButton_4.setObjectName("pushButton_4")
+        self.pushButtonVistaHome.setIcon(icon1)
+        self.pushButtonVistaHome.setObjectName("pushButton_4")
         self.pushButton_2 = QtWidgets.QPushButton(Frame)
         self.pushButton_2.setGeometry(QtCore.QRect(240, 160, 201, 51))
         font = QtGui.QFont()
@@ -165,16 +165,16 @@ class GestioneAbbonamentiPrincipale(object):
                                         "color:white;\n"
                                         "}")
         self.pushButton_7.setObjectName("pushButton_7")
-        self.pushButton_8 = QtWidgets.QPushButton(Frame)
-        self.pushButton_8.setGeometry(QtCore.QRect(240, 280, 201, 51))
+        self.pushButtonVisualizzaProdottiAbbonati = QtWidgets.QPushButton(Frame)
+        self.pushButtonVisualizzaProdottiAbbonati.setGeometry(QtCore.QRect(240, 280, 201, 51))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_8.setFont(font)
-        self.pushButton_8.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_8.setStyleSheet("QPushButton{\n"
+        self.pushButtonVisualizzaProdottiAbbonati.setFont(font)
+        self.pushButtonVisualizzaProdottiAbbonati.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonVisualizzaProdottiAbbonati.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -183,7 +183,7 @@ class GestioneAbbonamentiPrincipale(object):
                                         "background-color: #14626c;\n"
                                         "color:white;\n"
                                         "}")
-        self.pushButton_8.setObjectName("pushButton_8")
+        self.pushButtonVisualizzaProdottiAbbonati.setObjectName("pushButton_8")
         self.label = QtWidgets.QLabel(Frame)
         self.label.setGeometry(QtCore.QRect(0, 60, 451, 81))
         self.label.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -194,6 +194,9 @@ class GestioneAbbonamentiPrincipale(object):
                                  "}")
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
+        self.pushButtonLogout.clicked.connect(self.openLogin)
+        self.pushButtonVistaHome.clicked.connect(self.openVistaHome)
+        self.pushButtonVisualizzaProdottiAbbonati.clicked.connect(self.openVisualizzaProdottiAbbonati)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -202,8 +205,8 @@ class GestioneAbbonamentiPrincipale(object):
         _translate = QtCore.QCoreApplication.translate
         Frame.setWindowTitle(_translate("Frame", "Fumetteria - Gestione Abbonamenti"))
         self.label_4.setText(_translate("Frame", "GESTIONE ABBONAMENTI"))
-        self.pushButton_5.setText(_translate("Frame", " Logout"))
-        self.pushButton_4.setText(_translate("Frame", "Home"))
+        self.pushButtonLogout.setText(_translate("Frame", " Logout"))
+        self.pushButtonVistaHome.setText(_translate("Frame", "Home"))
         self.pushButton_2.setText(_translate("Frame", "Statistiche \n"
                                                       " Abbonamenti "))
         self.pushButton_3.setText(_translate("Frame", "Ricerca \n"
@@ -213,8 +216,38 @@ class GestioneAbbonamentiPrincipale(object):
                                                     "Cliente Abbonato"))
         self.pushButton_7.setText(_translate("Frame", "Visualizza\n"
                                                       "Abbonamenti Attivi"))
-        self.pushButton_8.setText(_translate("Frame", "Visualizza Prodotti\nper Abbonati"))
+        self.pushButtonVisualizzaProdottiAbbonati.setText(_translate("Frame", "Visualizza Prodotti\nper Abbonati"))
         self.label.setText(_translate("Frame", "Utilizza i pulsanti per navigare tra le attività. Se vuoi\n"
                                                " visualizzare quanti abbonamenti sono stati emessi in un giorno\n"
                                                " clicca Statistiche Abbonamenti. I prodotti per abbonati sono\n"
-                                               "prodotti che hanno un offerta per abbonati"))
+                                               "prodotti che hanno un'offerta per abbonati."))
+
+    # Metodo che permette di ritornare all'interfaccia VistaHome.
+    def openVistaHome(self):
+        from Grafica.GestioneGeneraleProgramma.VistaHome import VistaHome
+        self.home = QtWidgets.QFrame()
+        self.ui = VistaHome()
+        self.ui.setupUi(self.home)
+        self.home.show()
+        self.frame.close()
+
+    # Metodo che permette di ritornare all'interfaccia iniziale
+    # del programma, ovvero LoginAmministratore.
+    def openLogin(self):
+        from Grafica.GestioneLogin.LoginAmministratore import LoginAmministratore
+        self.login = QtWidgets.QFrame()
+        self.ui = LoginAmministratore()
+        self.ui.setupUi(self.login)
+        self.login.show()
+        self.frame.close()
+
+    # Metodo che permette di aprire l'interfaccia sulla quale si
+    # possono visualizzare i prodotti in offerta per gli abbonati.
+    # L'interfaccia è : VisualizzaProdottiAbbonati
+    def openVisualizzaProdottiAbbonati(self):
+        from Grafica.GestioneAbbonamenti.VisualizzaProdottiAbbonati import VisualizzaProdottiAbbonati
+        self.visualizzaProdottiAbbonati = QtWidgets.QFrame()
+        self.ui = VisualizzaProdottiAbbonati()
+        self.ui.setupUi(self.visualizzaProdottiAbbonati)
+        self.visualizzaProdottiAbbonati.show()
+        self.frame.close()
