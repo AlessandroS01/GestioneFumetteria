@@ -42,14 +42,14 @@ class VistaHome(object):
         self.pushButtonGestioneAbbonamentiPrincipale.setFont(font)
         self.pushButtonGestioneAbbonamentiPrincipale.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pushButtonGestioneAbbonamentiPrincipale.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
+                                                                   "border: 2px solid black;\n"
+                                                                   "border-radius: 10px;\n"
+                                                                   "}\n"
+                                                                   "QPushButton:hover{\n"
+                                                                   "\n"
+                                                                   "background-color: #14626c;\n"
+                                                                   "color:white;\n"
+                                                                   "}")
         self.pushButtonGestioneAbbonamentiPrincipale.setObjectName("pushButton_2")
         self.pushButton_3 = QtWidgets.QPushButton(Frame)
         self.pushButton_3.setGeometry(QtCore.QRect(30, 220, 161, 51))
@@ -152,7 +152,7 @@ class VistaHome(object):
         self.pushButtonGestioneMagazzino.setText(_translate("frame", "Gestione\n"
                                                                      "  Magazzino"))
         self.pushButtonGestioneAbbonamentiPrincipale.setText(_translate("frame", "Gestione \n"
-                                                      " Abbonamenti"))
+                                                                                 " Abbonamenti"))
         self.pushButton_3.setText(_translate("frame", "Gestione \n"
                                                       " Vendite"))
         self.pushButtonGestioneAccount.setText(_translate("frame", "Gestione \n"
