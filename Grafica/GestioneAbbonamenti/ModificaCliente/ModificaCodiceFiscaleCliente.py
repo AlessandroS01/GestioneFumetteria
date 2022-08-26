@@ -22,13 +22,13 @@ class ModificaCodiceFiscaleCliente(object):
                                 "}")
         self.label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
         self.label.setObjectName("label")
-        self.lineEdit = QtWidgets.QLineEdit(Frame)
-        self.lineEdit.setGeometry(QtCore.QRect(10, 100, 391, 31))
-        self.lineEdit.setStyleSheet("QLineEdit{\n"
+        self.lineEditCodiceFiscale = QtWidgets.QLineEdit(Frame)
+        self.lineEditCodiceFiscale.setGeometry(QtCore.QRect(10, 100, 391, 31))
+        self.lineEditCodiceFiscale.setStyleSheet("QLineEdit{\n"
                                     "border: 2px solid black;\n"
                                     "border-radius: 6px;\n"
                                     "}")
-        self.lineEdit.setObjectName("lineEdit")
+        self.lineEditCodiceFiscale.setObjectName("lineEdit")
         self.label_4 = QtWidgets.QLabel(Frame)
         self.label_4.setGeometry(QtCore.QRect(10, 20, 391, 31))
         self.label_4.setStyleSheet("QLabel{\n"
@@ -66,16 +66,16 @@ class ModificaCodiceFiscaleCliente(object):
         self.pushButtonLogout.setIcon(icon)
         self.pushButtonLogout.setCheckable(False)
         self.pushButtonLogout.setObjectName("pushButton_5")
-        self.pushButton_6 = QtWidgets.QPushButton(Frame)
-        self.pushButton_6.setGeometry(QtCore.QRect(10, 140, 391, 31))
+        self.pushButtonModifica = QtWidgets.QPushButton(Frame)
+        self.pushButtonModifica.setGeometry(QtCore.QRect(10, 140, 391, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_6.setFont(font)
-        self.pushButton_6.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_6.setStyleSheet("QPushButton{\n"
+        self.pushButtonModifica.setFont(font)
+        self.pushButtonModifica.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonModifica.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -84,8 +84,8 @@ class ModificaCodiceFiscaleCliente(object):
                                         "background-color: #14626c;\n"
                                         "color:white;\n"
                                         "}")
-        self.pushButton_6.setCheckable(False)
-        self.pushButton_6.setObjectName("pushButton_6")
+        self.pushButtonModifica.setCheckable(False)
+        self.pushButtonModifica.setObjectName("pushButton_6")
         self.pushButtonModificaClientePrincipale = QtWidgets.QPushButton(Frame)
         self.pushButtonModificaClientePrincipale.setGeometry(QtCore.QRect(160, 200, 141, 31))
         font = QtGui.QFont()
@@ -110,7 +110,7 @@ class ModificaCodiceFiscaleCliente(object):
         self.pushButtonModificaClientePrincipale.setObjectName("pushButton_4")
         self.pushButtonLogout.clicked.connect(self.openLogin)
         self.pushButtonModificaClientePrincipale.clicked.connect(self.openModificaClientePrincipale)
-
+        self.pushButtonModifica.clicked.connect(self.clickModifica)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -121,9 +121,11 @@ class ModificaCodiceFiscaleCliente(object):
         self.label.setText(_translate("Frame", "Inserisci il codice fiscale del cliente:"))
         self.label_4.setText(_translate("Frame", "MODIFICA CODICE FISCALE"))
         self.pushButtonLogout.setText(_translate("Frame", " Logout"))
-        self.pushButton_6.setText(_translate("Frame", "Modifica"))
+        self.pushButtonModifica.setText(_translate("Frame", "Modifica"))
         self.pushButtonModificaClientePrincipale.setText(_translate("Frame", " Indietro"))
 
+    # Metodo che permette di ritornare all'interfaccia iniziale
+    # del programma, ovvero LoginAmministratore.
     def openLogin(self):
         from Grafica.GestioneLogin.LoginAmministratore import LoginAmministratore
         self.login = QtWidgets.QFrame()
@@ -132,10 +134,33 @@ class ModificaCodiceFiscaleCliente(object):
         self.login.show()
         self.frame.close()
 
+    # Metodo che permette di ritornare all'interfaccia ModificaClientePrincipale.
     def openModificaClientePrincipale(self):
         from Grafica.GestioneAbbonamenti.ModificaCliente.ModificaClientePrincipale import ModificaClientePrincipale
         self.modificaClientePrincipale = QtWidgets.QFrame()
         self.ui = ModificaClientePrincipale()
         self.ui.setupUi(self.modificaClientePrincipale, self.abbonamentoTrovato)
         self.modificaClientePrincipale.show()
+        self.frame.close()
+
+    # Metodo che permette di modificare il codice fiscale del cliente trovato
+    # dopo aver cliccato il pulsante Modifica.
+    # Viene richiamato il metodo "sovrascriviDati" della classe
+    # Abbonamento per cambiare l'attributo codice fiscale del cliente trovato
+    # all'interno del file di testo "Abbonamenti.txt".
+    # Successivamente viene richiamato il metodo "self.openModificaEffettuata".
+    def clickModifica(self):
+
+        nuovoCodiceFiscale = self.lineEditCodiceFiscale.text()
+
+        self.abbonamentoTrovato.modificaCodiceFiscale(nuovoCodiceFiscale)
+        self.openModificaEffettuata()
+
+    # Metodo che fa visualizzare a schermo l'interfaccia ModificaClienteSuccesso.
+    def openModificaEffettuata(self):
+        from Grafica.GestioneAbbonamenti.ModificaCliente.ModificaClienteSuccesso import ModificaClienteSuccesso
+        self.modificaEffettuta = QtWidgets.QFrame()
+        self.ui = ModificaClienteSuccesso()
+        self.ui.setupUi(self.modificaEffettuta)
+        self.modificaEffettuta.show()
         self.frame.close()

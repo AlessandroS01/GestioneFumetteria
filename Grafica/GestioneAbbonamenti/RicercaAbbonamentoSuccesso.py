@@ -49,26 +49,26 @@ class RicercaAbbonamentoSuccesso(object):
         self.pushButtonLogout.setIcon(icon)
         self.pushButtonLogout.setCheckable(False)
         self.pushButtonLogout.setObjectName("pushButton_5")
-        self.pushButtonModficaCliente = QtWidgets.QPushButton(Frame)
-        self.pushButtonModficaCliente.setGeometry(QtCore.QRect(20, 280, 361, 31))
+        self.pushButtonModificaCliente = QtWidgets.QPushButton(Frame)
+        self.pushButtonModificaCliente.setGeometry(QtCore.QRect(20, 280, 361, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButtonModficaCliente.setFont(font)
-        self.pushButtonModficaCliente.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButtonModficaCliente.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
-        self.pushButtonModficaCliente.setCheckable(False)
-        self.pushButtonModficaCliente.setObjectName("pushButton_6")
+        self.pushButtonModificaCliente.setFont(font)
+        self.pushButtonModificaCliente.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonModificaCliente.setStyleSheet("QPushButton{\n"
+                                                     "border: 2px solid black;\n"
+                                                     "border-radius: 10px;\n"
+                                                     "}\n"
+                                                     "QPushButton:hover{\n"
+                                                     "\n"
+                                                     "background-color: #14626c;\n"
+                                                     "color:white;\n"
+                                                     "}")
+        self.pushButtonModificaCliente.setCheckable(False)
+        self.pushButtonModificaCliente.setObjectName("pushButton_6")
         self.pushButtonRicerca = QtWidgets.QPushButton(Frame)
         self.pushButtonRicerca.setGeometry(QtCore.QRect(160, 340, 141, 31))
         font = QtGui.QFont()
@@ -214,7 +214,7 @@ class RicercaAbbonamentoSuccesso(object):
         self.listWidget.addItem(item)
         self.pushButtonRicerca.clicked.connect(self.openRicercaAbbonamento)
         self.pushButtonLogout.clicked.connect(self.openLogin)
-        self.pushButtonModficaCliente.clicked.connect(self.openModifciaClientePrincipale)
+        self.pushButtonModificaCliente.clicked.connect(self.openModificaClientePrincipale)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -224,7 +224,7 @@ class RicercaAbbonamentoSuccesso(object):
         Frame.setWindowTitle(_translate("Frame", "Fumetteria - Abbonamento Trovato"))
         self.label_4.setText(_translate("Frame", "ABBONAMENTO TROVATO"))
         self.pushButtonLogout.setText(_translate("Frame", " Logout"))
-        self.pushButtonModficaCliente.setText(_translate("Frame", "Modifica"))
+        self.pushButtonModificaCliente.setText(_translate("Frame", "Modifica"))
         self.pushButtonRicerca.setText(_translate("Frame", " Indietro"))
         self.label.setText(_translate("Frame", "La ricerca è andata a buon fine. Cliccare il pulsante\n"
                                                "modifica per modificare le informazioni del cliente."))
@@ -266,12 +266,14 @@ class RicercaAbbonamentoSuccesso(object):
         self.ui.setupUi(self.login)
         self.login.show()
         self.frame.close()
-    def openModifciaClientePrincipale(self):
+
+    # Metodo che permette di aprire l'interfaccia sulla quale si
+    # possono cambiare gli attributi dei clienti.
+    # L'interfaccia è : ModificaClientePrincipale
+    def openModificaClientePrincipale(self):
         from Grafica.GestioneAbbonamenti.ModificaCliente.ModificaClientePrincipale import ModificaClientePrincipale
-        self.modificaclienteprincipale= QtWidgets.QFrame()
+        self.modificaClientePrincipale = QtWidgets.QFrame()
         self.ui = ModificaClientePrincipale()
-        self.ui.setupUi(self.modificaclienteprincipale, self.abbonamentoTrovato)
-        self.modificaclienteprincipale.show()
+        self.ui.setupUi(self.modificaClientePrincipale, self.abbonamentoTrovato)
+        self.modificaClientePrincipale.show()
         self.frame.close()
-
-

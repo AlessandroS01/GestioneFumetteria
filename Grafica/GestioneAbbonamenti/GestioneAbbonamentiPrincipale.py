@@ -70,16 +70,16 @@ class GestioneAbbonamentiPrincipale(object):
         icon1.addPixmap(QtGui.QPixmap("Images\\home.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButtonVistaHome.setIcon(icon1)
         self.pushButtonVistaHome.setObjectName("pushButton_4")
-        self.pushButton_2 = QtWidgets.QPushButton(Frame)
-        self.pushButton_2.setGeometry(QtCore.QRect(240, 160, 201, 51))
+        self.pushButtonStatisticheAbbonamenti = QtWidgets.QPushButton(Frame)
+        self.pushButtonStatisticheAbbonamenti.setGeometry(QtCore.QRect(240, 160, 201, 51))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_2.setFont(font)
-        self.pushButton_2.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_2.setStyleSheet("QPushButton{\n"
+        self.pushButtonStatisticheAbbonamenti.setFont(font)
+        self.pushButtonStatisticheAbbonamenti.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonStatisticheAbbonamenti.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -88,7 +88,7 @@ class GestioneAbbonamentiPrincipale(object):
                                         "background-color: #14626c;\n"
                                         "color:white;\n"
                                         "}")
-        self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButtonStatisticheAbbonamenti.setObjectName("pushButton_2")
         self.pushButtonRicercaAbbonamento = QtWidgets.QPushButton(Frame)
         self.pushButtonRicercaAbbonamento.setGeometry(QtCore.QRect(20, 220, 201, 51))
         font = QtGui.QFont()
@@ -201,6 +201,7 @@ class GestioneAbbonamentiPrincipale(object):
         self.pushButtonVisualizzaClientiAbbonati.clicked.connect(self.openVisualizzaClientiAbbonati)
         self.pushButtonVisualizzaAbbonamentiAttivi.clicked.connect(self.openVisualizzaAbbonamentiAttivi)
         self.pushButtonModificaPrezzoAbbonamento.clicked.connect(self.openModificaPrezzoAbbonamento)
+        self.pushButtonStatisticheAbbonamenti.clicked.connect(self.openInserisciDataEmissione)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -211,7 +212,7 @@ class GestioneAbbonamentiPrincipale(object):
         self.label_4.setText(_translate("Frame", "GESTIONE ABBONAMENTI"))
         self.pushButtonLogout.setText(_translate("Frame", " Logout"))
         self.pushButtonVistaHome.setText(_translate("Frame", " Home"))
-        self.pushButton_2.setText(_translate("Frame", "Statistiche \n"
+        self.pushButtonStatisticheAbbonamenti.setText(_translate("Frame", "Statistiche \n"
                                                       " Abbonamenti "))
         self.pushButtonRicercaAbbonamento.setText(_translate("Frame", "Ricerca \n"
                                                                       " Abbonamento"))
@@ -300,4 +301,16 @@ class GestioneAbbonamentiPrincipale(object):
         self.ui = ModificaPrezzoAbbonamenti()
         self.ui.setupUi(self.modificaPrezzoAbbonamento)
         self.modificaPrezzoAbbonamento.show()
+        self.frame.close()
+
+    # Metodo che permette di aprire l'interfaccia sulla quale si
+    # può ricercare quali sono gli abbonamenti emessi durante una data
+    # immessa.
+    # L'interfaccia è : InserisciDataEmissione.
+    def openInserisciDataEmissione(self):
+        from Grafica.GestioneAbbonamenti.InserisciDataEmissione import InserisciDataEmissione
+        self.inserisciDataEmissione = QtWidgets.QFrame()
+        self.ui = InserisciDataEmissione()
+        self.ui.setupUi(self.inserisciDataEmissione)
+        self.inserisciDataEmissione.show()
         self.frame.close()

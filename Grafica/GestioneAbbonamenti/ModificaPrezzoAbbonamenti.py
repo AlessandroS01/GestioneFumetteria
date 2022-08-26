@@ -192,14 +192,15 @@ class ModificaPrezzoAbbonamenti(object):
         from GestioneAbbonamenti.GestioneAbbonamenti import GestioneAbbonamenti
         prezzoInserito = self.doubleSpinBoxPrezzo.text()
 
+        # Risolve un problema d'incompatibilità dello spinBox
+        # tra le versione di Windows10 e Windows11.
         if "," in prezzoInserito:
             prezzoVector = prezzoInserito.split(",")
             prezzoInserito = prezzoVector[0] + "." + prezzoVector[1]
 
         gestoreAbbonamenti = GestioneAbbonamenti()
 
-        if float(prezzoInserito) != float(gestoreAbbonamenti.getPrezzoAbbonamento()):
-
+        if float(prezzoInserito) != gestoreAbbonamenti.getPrezzoAbbonamento():
             gestoreAbbonamenti.setPrezzoAbbonamento(prezzoInserito)
             self.openModificaEffettuata()
 

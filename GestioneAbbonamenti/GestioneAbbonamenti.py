@@ -2,6 +2,8 @@ import os
 from datetime import datetime
 from pathlib import Path
 
+from cffi.backend_ctypes import long
+
 from GestioneAbbonamenti.Abbonamento import Abbonamento
 from GestioneAbbonamenti.Cliente import Cliente
 from GestioneMagazzino.Magazzino import Magazzino
@@ -38,11 +40,11 @@ class GestioneAbbonamenti:
                 stringaSplittata = str(self.abbonamentiDaFile[index]).split('-')
 
                 clienteAppoggio = Cliente(None, None, None, None, None)
-                clienteAppoggio.setNome(stringaSplittata[0])
-                clienteAppoggio.setCognome(stringaSplittata[1])
-                clienteAppoggio.setCodiceFiscale(stringaSplittata[2])
-                clienteAppoggio.setTelefono(stringaSplittata[3])
-                clienteAppoggio.setEmail(stringaSplittata[4])
+                clienteAppoggio.setNomeBasico(stringaSplittata[0])
+                clienteAppoggio.setCognomeBasico(stringaSplittata[1])
+                clienteAppoggio.setCodiceFiscaleBasico(stringaSplittata[2])
+                clienteAppoggio.setTelefonoBasico(stringaSplittata[3])
+                clienteAppoggio.setEmailBasico(stringaSplittata[4])
 
                 abbonamentoAppoggio = Abbonamento(None, None, None, None)
                 abbonamentoAppoggio.setCliente(clienteAppoggio)
@@ -53,7 +55,7 @@ class GestioneAbbonamenti:
                 self.listaAbbonamenti.append(abbonamentoAppoggio)
 
     def getPrezzoAbbonamento(self):
-        return self.prezzoAbbonamento
+        return float(self.prezzoAbbonamento)
 
     def setPrezzoAbbonamento(self, prezzoAbbonamento):
 
@@ -102,9 +104,23 @@ class GestioneAbbonamenti:
 
         return listaAbbonamentiAttivi
 
+    # Metodo che ritorna una lista degli abbonamenti emessi durante
+    # una giornata salvati all'interno del file di testo "Abbonamenti.txt".
+    def getAbbonamentiEmessi(self, dataEmissione):
+
+        listaAbbonamentiEmessi = []
+        dataImmessa = datetime.strptime(dataEmissione, '%d/%m/%Y').date()
+
+        for index in range(0, len(self.getAbbonamenti())):
+            date = datetime.strptime(self.getAbbonamenti()[index].getDataEmissione(), '%d/%m/%Y').date()
+
+            if dataImmessa == date:
+                listaAbbonamentiEmessi.append(self.getAbbonamenti()[index])
+
+        return listaAbbonamentiEmessi
+
     # Metodo che serve per ricercare un abbonamento tramite il suo codice seriale.
     def ricercaAbbonamentoCodice(self, codiceIdentificativoAbbonamento):
-
         for index, element in enumerate(self.listaAbbonamenti):
 
             if element != "":
@@ -115,3 +131,42 @@ class GestioneAbbonamenti:
 
         return False, ""
 
+    # Metodo che serve per ricercare un abbonamento tramite l'email.
+    def ricercaEmail(self, email):
+        for index, element in enumerate(self.listaAbbonamenti):
+
+            if element != "":
+                emailEsistente = self.listaAbbonamenti[index].getCliente().getEmail()
+
+                if emailEsistente == email:
+                    return True, self.listaAbbonamenti[index]
+
+        return False, ""
+
+    # Metodo che serve per ricercare un abbonamento tramite il telefono.
+    def ricercaTelefono(self, telefono):
+        for index, element in enumerate(self.listaAbbonamenti):
+
+            if element != "":
+                telefonoEsistente = self.listaAbbonamenti[index].getCliente().getTelefono()
+
+                if telefonoEsistente == telefono:
+                    return True, self.listaAbbonamenti[index]
+
+        return False, ""
+
+    # Metodo richiamato se si vuole ad andare a sostituire una
+    # linea all'interno del file "Abbonamenti.txt".
+    def sovrascriviDati(self, stringaDaCambiare, stringaModificata):
+        pathRelativo = Path("Abbonamenti")
+        pathAssoluto = pathRelativo.absolute()
+
+        with open(pathAssoluto, 'r') as file:
+            filedata = file.read()
+
+        # Replace the target string
+        filedata = filedata.replace(stringaDaCambiare, stringaModificata)
+
+        # Write the file out again
+        with open(pathAssoluto, 'w') as file:
+            file.write(filedata)

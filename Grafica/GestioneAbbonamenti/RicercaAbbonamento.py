@@ -25,9 +25,9 @@ class RicercaAbbonamento(object):
         self.lineEditCodiceAbbonamento = QtWidgets.QLineEdit(Frame)
         self.lineEditCodiceAbbonamento.setGeometry(QtCore.QRect(10, 140, 371, 31))
         self.lineEditCodiceAbbonamento.setStyleSheet("QLineEdit{\n"
-                                    "border: 2px solid black;\n"
-                                    "border-radius: 6px;\n"
-                                    "}")
+                                                     "border: 2px solid black;\n"
+                                                     "border-radius: 6px;\n"
+                                                     "}")
         self.lineEditCodiceAbbonamento.setObjectName("lineEdit")
         self.label_4 = QtWidgets.QLabel(Frame)
         self.label_4.setGeometry(QtCore.QRect(10, 20, 371, 31))
@@ -76,14 +76,14 @@ class RicercaAbbonamento(object):
         self.pushButtonRicerca.setFont(font)
         self.pushButtonRicerca.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pushButtonRicerca.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
+                                             "border: 2px solid black;\n"
+                                             "border-radius: 10px;\n"
+                                             "}\n"
+                                             "QPushButton:hover{\n"
+                                             "\n"
+                                             "background-color: #14626c;\n"
+                                             "color:white;\n"
+                                             "}")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("Images\\magnifying-glass.png"), QtGui.QIcon.Normal,
                         QtGui.QIcon.Off)
