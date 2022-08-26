@@ -200,12 +200,15 @@ class ModificaPrezzoAbbonamenti(object):
 
         gestoreAbbonamenti = GestioneAbbonamenti()
 
-        if float(prezzoInserito) != gestoreAbbonamenti.getPrezzoAbbonamento():
-            gestoreAbbonamenti.setPrezzoAbbonamento(prezzoInserito)
-            self.openModificaEffettuata()
+        if float(prezzoInserito) != 0:
+            if float(prezzoInserito) != gestoreAbbonamenti.getPrezzoAbbonamento():
+                gestoreAbbonamenti.setPrezzoAbbonamento(prezzoInserito)
+                self.openModificaEffettuata()
 
+            else:
+                self.ErrorPrezzoPrecedente()
         else:
-            self.ErrorPrezzoPrecedente()
+            self.ErrorPrezzo()
 
     # Metodo che fa visualizzare a schermo l'interfaccia ModificaPrezzoAbbonamentiSuccesso.
     def openModificaEffettuata(self):
@@ -220,6 +223,16 @@ class ModificaPrezzoAbbonamenti(object):
         self.ErrorBox = QMessageBox()
         self.ErrorBox.setWindowTitle("Errore")
         self.ErrorBox.setText("Il prezzo immesso non può essere \nuguale al prezzo precedente.")
+        self.ErrorBox.setStyleSheet(
+            "QLabel{min-width:300 px; font-size: 14px; font-family: Helvetica, Sans-Serif; } QPushButton:hover{"
+            "background-color: #14626c;color:white; }QPushButton{ width:40px; height:20px; font-size: 10px; "
+            "font-family: Helvetica, Sans-Serif; border: 1px solid black; border-radius: 5px; }")
+        self.ErrorBox.exec()
+
+    def ErrorPrezzo(self):
+        self.ErrorBox = QMessageBox()
+        self.ErrorBox.setWindowTitle("Errore")
+        self.ErrorBox.setText("Il prezzo immesso non può essere 0.")
         self.ErrorBox.setStyleSheet(
             "QLabel{min-width:300 px; font-size: 14px; font-family: Helvetica, Sans-Serif; } QPushButton:hover{"
             "background-color: #14626c;color:white; }QPushButton{ width:40px; height:20px; font-size: 10px; "
