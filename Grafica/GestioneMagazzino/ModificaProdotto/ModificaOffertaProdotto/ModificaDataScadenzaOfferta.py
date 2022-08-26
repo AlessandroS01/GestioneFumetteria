@@ -160,7 +160,13 @@ class ModificaDataScadenzaOfferta(object):
     # In seguito viene richiamato il metodo "self.openModificaOffertaSuccesso".
     def clickModifica(self):
 
-        dataScadenzaOffertaText = self.dateEditDataScadenzaOfferta.text()
+        giornoScadenzaOffertaText = self.dateEditDataScadenzaOfferta.date().day()
+        meseScadenzaOffertaText = self.dateEditDataScadenzaOfferta.date().month()
+        annoScadenzaOffertaText = self.dateEditDataScadenzaOfferta.date().year()
+
+        dataScadenzaOffertaText = str(str(giornoScadenzaOffertaText) + "/" +
+                                      str(meseScadenzaOffertaText) + "/" +
+                                      str(annoScadenzaOffertaText))
 
         dataScadenzaOffertaDatetime = datetime.strptime(dataScadenzaOffertaText, '%d/%m/%Y').date()
         today = datetime.now().date()

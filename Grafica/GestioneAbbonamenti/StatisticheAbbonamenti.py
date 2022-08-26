@@ -39,16 +39,16 @@ class StatisticheAbbonamenti(object):
                                    "}")
         self.label_5.setAlignment(QtCore.Qt.AlignCenter)
         self.label_5.setObjectName("label_5")
-        self.pushButton_4 = QtWidgets.QPushButton(Frame)
-        self.pushButton_4.setGeometry(QtCore.QRect(160, 610, 141, 31))
+        self.pushButtonGestioneAbbonamentiPrincipale = QtWidgets.QPushButton(Frame)
+        self.pushButtonGestioneAbbonamentiPrincipale.setGeometry(QtCore.QRect(160, 610, 141, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_4.setFont(font)
-        self.pushButton_4.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_4.setStyleSheet("QPushButton{\n"
+        self.pushButtonGestioneAbbonamentiPrincipale.setFont(font)
+        self.pushButtonGestioneAbbonamentiPrincipale.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonGestioneAbbonamentiPrincipale.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -60,18 +60,18 @@ class StatisticheAbbonamenti(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("Images\\left.png"), QtGui.QIcon.Normal,
                        QtGui.QIcon.Off)
-        self.pushButton_4.setIcon(icon)
-        self.pushButton_4.setObjectName("pushButton_4")
-        self.pushButton_8 = QtWidgets.QPushButton(Frame)
-        self.pushButton_8.setGeometry(QtCore.QRect(10, 610, 141, 31))
+        self.pushButtonGestioneAbbonamentiPrincipale.setIcon(icon)
+        self.pushButtonGestioneAbbonamentiPrincipale.setObjectName("pushButton_4")
+        self.pushButtonLogout = QtWidgets.QPushButton(Frame)
+        self.pushButtonLogout.setGeometry(QtCore.QRect(10, 610, 141, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_8.setFont(font)
-        self.pushButton_8.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_8.setStyleSheet("QPushButton{\n"
+        self.pushButtonLogout.setFont(font)
+        self.pushButtonLogout.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonLogout.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -83,9 +83,9 @@ class StatisticheAbbonamenti(object):
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("Images\\log.png"), QtGui.QIcon.Normal,
                         QtGui.QIcon.Off)
-        self.pushButton_8.setIcon(icon1)
-        self.pushButton_8.setCheckable(False)
-        self.pushButton_8.setObjectName("pushButton_8")
+        self.pushButtonLogout.setIcon(icon1)
+        self.pushButtonLogout.setCheckable(False)
+        self.pushButtonLogout.setObjectName("pushButton_8")
         self.tableWidget = QtWidgets.QTableWidget(Frame)
         self.tableWidget.setGeometry(QtCore.QRect(50, 160, 771, 401))
         self.tableWidget.setStyleSheet("\n"
@@ -136,16 +136,16 @@ class StatisticheAbbonamenti(object):
         self.tableWidget.horizontalHeader().setVisible(True)
         self.tableWidget.horizontalHeader().setDefaultSectionSize(200)
         self.tableWidget.verticalHeader().setVisible(False)
-        self.pushButton_5 = QtWidgets.QPushButton(Frame)
-        self.pushButton_5.setGeometry(QtCore.QRect(670, 570, 151, 31))
+        self.pushButtonRicerca = QtWidgets.QPushButton(Frame)
+        self.pushButtonRicerca.setGeometry(QtCore.QRect(670, 570, 151, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_5.setFont(font)
-        self.pushButton_5.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_5.setStyleSheet("QPushButton{\n"
+        self.pushButtonRicerca.setFont(font)
+        self.pushButtonRicerca.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonRicerca.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -157,8 +157,11 @@ class StatisticheAbbonamenti(object):
         icon2 = QtGui.QIcon()
         icon2.addPixmap(QtGui.QPixmap("Images\\magnifying-glass.png"),
                         QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButton_5.setIcon(icon2)
-        self.pushButton_5.setObjectName("pushButton_5")
+        self.pushButtonRicerca.setIcon(icon2)
+        self.pushButtonRicerca.setObjectName("pushButton_5")
+        self.pushButtonGestioneAbbonamentiPrincipale.clicked.connect(self.openGestioneAbbonamentiPrincipale)
+        self.pushButtonLogout.clicked.connect(self.openLogin)
+        self.pushButtonRicerca.clicked.connect(self.openRicercaAbbonamento)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -175,8 +178,10 @@ class StatisticheAbbonamenti(object):
                                         "in basso a sinistra. Utilizza il pulsante ricerca per effettuare la ricerca "
                                         "di un abbonamento\n "
                                         " e modificare le informazioni relative al cliente."))
-        self.pushButton_4.setText(_translate("Frame", " Indietro"))
-        self.pushButton_8.setText(_translate("Frame", " Logout"))
+        self.pushButtonGestioneAbbonamentiPrincipale.setText(_translate("Frame", " Indietro"))
+        self.pushButtonLogout.setText(_translate("Frame", " Logout"))
+        self.pushButtonRicerca.setText(_translate("Frame", " Ricerca"))
+
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("Frame", "Nome:"))
         item = self.tableWidget.horizontalHeaderItem(1)
@@ -215,5 +220,31 @@ class StatisticheAbbonamenti(object):
             item.setText(_translate("Frame", abbonamentiEmessi.getDataScadenza()))
             item = self.tableWidget.item(riga, 7)
             item.setText(_translate("Frame", abbonamentiEmessi.getCodiceIdentificativo()))
-        self.pushButton_5.setText(_translate("Frame", " Ricerca"))
 
+    # Metodo che permette di ritornare all'interfaccia iniziale
+    # del programma, ovvero LoginAmministratore.
+    def openLogin(self):
+        from Grafica.GestioneLogin.LoginAmministratore import LoginAmministratore
+        self.login = QtWidgets.QFrame()
+        self.ui = LoginAmministratore()
+        self.ui.setupUi(self.login)
+        self.login.show()
+        self.frame.close()
+
+    # Metodo che permette di ritornare all'interfaccia GestioneAbbonamentiPrincipale.
+    def openGestioneAbbonamentiPrincipale(self):
+        from Grafica.GestioneAbbonamenti.GestioneAbbonamentiPrincipale import GestioneAbbonamentiPrincipale
+        self.gestioneAbbonamentiPrincipale = QtWidgets.QFrame()
+        self.ui = GestioneAbbonamentiPrincipale()
+        self.ui.setupUi(self.gestioneAbbonamentiPrincipale)
+        self.gestioneAbbonamentiPrincipale.show()
+        self.frame.close()
+
+    # Metodo che permette di aprire l'interfaccia RicercaAbbonamento.
+    def openRicercaAbbonamento(self):
+        from Grafica.GestioneAbbonamenti.RicercaAbbonamento import RicercaAbbonamento
+        self.ricercaAbbonamento = QtWidgets.QFrame()
+        self.ui = RicercaAbbonamento()
+        self.ui.setupUi(self.ricercaAbbonamento)
+        self.ricercaAbbonamento.show()
+        self.frame.close()

@@ -233,7 +233,14 @@ class AggiungiOffertaDopoRicerca(object):
 
         tipoOfferta = self.TipoOfferta.checkedButton().text()
         prezzoOfferta = self.doubleSpinBoxPrezzo.text()
-        dataScadenzaOffertaText = self.dateEditDataScadenzaOfferta.text()
+        giornoScadenzaOffertaText = self.dateEditDataScadenzaOfferta.date().day()
+        meseScadenzaOffertaText = self.dateEditDataScadenzaOfferta.date().month()
+        annoScadenzaOffertaText = self.dateEditDataScadenzaOfferta.date().year()
+
+        dataScadenzaOffertaText = str(str(giornoScadenzaOffertaText) + "/" +
+                                      str(meseScadenzaOffertaText) + "/" +
+                                      str(annoScadenzaOffertaText))
+
 
         dataScadenzaOffertaDatetime = datetime.strptime(dataScadenzaOffertaText, '%d/%m/%Y').date()
         today = datetime.now().date()

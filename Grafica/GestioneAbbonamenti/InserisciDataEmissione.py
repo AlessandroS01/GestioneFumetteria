@@ -83,14 +83,14 @@ class InserisciDataEmissione(object):
         self.pushButtonRicerca.setFont(font)
         self.pushButtonRicerca.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pushButtonRicerca.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
+                                             "border: 2px solid black;\n"
+                                             "border-radius: 10px;\n"
+                                             "}\n"
+                                             "QPushButton:hover{\n"
+                                             "\n"
+                                             "background-color: #14626c;\n"
+                                             "color:white;\n"
+                                             "}")
         self.pushButtonRicerca.setCheckable(False)
         self.pushButtonRicerca.setObjectName("pushButton_6")
         icon1 = QtGui.QIcon()
@@ -162,7 +162,14 @@ class InserisciDataEmissione(object):
         from GestioneAbbonamenti.GestioneAbbonamenti import GestioneAbbonamenti
         gestoreAbbonamenti = GestioneAbbonamenti()
 
-        dataEmissione = self.dateEdit.text()
+        giornoScadenzaOffertaText = self.dateEdit.date().day()
+        meseScadenzaOffertaText = self.dateEdit.date().month()
+        annoScadenzaOffertaText = self.dateEdit.date().year()
+
+        dataEmissione = str(str(giornoScadenzaOffertaText) + "/" +
+                            str(meseScadenzaOffertaText) + "/" +
+                            str(annoScadenzaOffertaText))
+
         lunghezzaLista = len(gestoreAbbonamenti.getAbbonamentiEmessi(dataEmissione))
 
         if lunghezzaLista != 0:
