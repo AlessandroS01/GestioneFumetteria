@@ -2,8 +2,6 @@ import os
 from datetime import datetime
 from pathlib import Path
 
-from cffi.backend_ctypes import long
-
 from GestioneAbbonamenti.Abbonamento import Abbonamento
 from GestioneAbbonamenti.Cliente import Cliente
 from GestioneMagazzino.Magazzino import Magazzino

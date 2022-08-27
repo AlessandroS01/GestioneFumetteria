@@ -1,3 +1,5 @@
+from operator import contains
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QMessageBox
@@ -251,6 +253,8 @@ class AggiungiAcquisto(object):
     # Metodo utilizzato per vedere quali e quanti sono i prodotti
     # che sono stati venduti.
     def clickAggiungiAcquisto(self):
+        self.gestoreVendite.getListaAcquisti().clear()
+        numeroProdottiAcquistati = 0
 
         for riga in range(self.leggiNumeroRighe()):
 
@@ -260,7 +264,8 @@ class AggiungiAcquisto(object):
 
                 if quantitaAcquistate.isnumeric():
                     if int(quantitaAcquistate) != 0:
-                        if int(quantitaAcquistate) < int(prodotto.getQuantitaMagazzino()):
+                        if int(quantitaAcquistate) <= int(prodotto.getQuantitaMagazzino()):
+                            numeroProdottiAcquistati += 1
                             acquistoAppoggio = Acquisto(prodotto, quantitaAcquistate)
                             self.gestoreVendite.aggiungiAcquisto(acquistoAppoggio)
                         else:
@@ -270,7 +275,20 @@ class AggiungiAcquisto(object):
                 else:
                     self.ErrorNumero()
 
-        self.gestoreVendite.creaScontrino()
+        if numeroProdottiAcquistati != 0 :
+            self.openScontrino(self.gestoreVendite.getListaAcquisti())
+        else:
+            self.ErrorAcquisti()
+
+    # Metodo che permette di aprire l'interfaccia sulla quale
+    # si può creare lo scontrino.
+    def openScontrino(self, acquisti):
+        from Grafica.GestioneVendite.Scontrino import Scontrino
+        self.scontrino = QtWidgets.QFrame()
+        self.ui = Scontrino()
+        self.ui.setupUi(self.scontrino, acquisti, self.frame)
+        self.scontrino.show()
+        self.frame.hide()
 
     def ErrorQuantitaMagazzino(self):
         self.ErrorBox = QMessageBox()
@@ -296,6 +314,16 @@ class AggiungiAcquisto(object):
         self.ErrorBox = QMessageBox()
         self.ErrorBox.setWindowTitle("Errore")
         self.ErrorBox.setText("La quantità da acquistare può essere\nsolo un numero.")
+        self.ErrorBox.setStyleSheet(
+            "QLabel{min-width:300 px; font-size: 14px; font-family: Helvetica, Sans-Serif; } QPushButton:hover{"
+            "background-color: #14626c;color:white; }QPushButton{ width:40px; height:20px; font-size: 10px; "
+            "font-family: Helvetica, Sans-Serif; border: 1px solid black; border-radius: 5px; }")
+        self.ErrorBox.exec()
+
+    def ErrorAcquisti(self):
+        self.ErrorBox = QMessageBox()
+        self.ErrorBox.setWindowTitle("Errore")
+        self.ErrorBox.setText("Per creare uno scontrino è necessario \n selezionare uno o più prodotti.")
         self.ErrorBox.setStyleSheet(
             "QLabel{min-width:300 px; font-size: 14px; font-family: Helvetica, Sans-Serif; } QPushButton:hover{"
             "background-color: #14626c;color:white; }QPushButton{ width:40px; height:20px; font-size: 10px; "

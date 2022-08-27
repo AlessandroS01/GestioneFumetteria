@@ -17,26 +17,26 @@ class ModificaTelefonoCliente(object):
         self.label.setGeometry(QtCore.QRect(10, 70, 391, 21))
         self.label.setLayoutDirection(QtCore.Qt.LeftToRight)
         self.label.setStyleSheet("QLabel{\n"
-                                "font-family: Helvetica, sans-serif;\n"
-                                "font-weight: 400;\n"
-                                "font-size: 16px\n"
-                                "}")
-        self.label.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignVCenter)
+                                 "font-family: Helvetica, sans-serif;\n"
+                                 "font-weight: 400;\n"
+                                 "font-size: 16px\n"
+                                 "}")
+        self.label.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
         self.label.setObjectName("label")
         self.lineEditTelefono = QtWidgets.QLineEdit(Frame)
         self.lineEditTelefono.setGeometry(QtCore.QRect(10, 100, 391, 31))
         self.lineEditTelefono.setStyleSheet("QLineEdit{\n"
-                                    "border: 2px solid black;\n"
-                                    "border-radius: 6px;\n"
-                                    "}")
+                                            "border: 2px solid black;\n"
+                                            "border-radius: 6px;\n"
+                                            "}")
         self.lineEditTelefono.setObjectName("lineEdit")
         self.label_4 = QtWidgets.QLabel(Frame)
         self.label_4.setGeometry(QtCore.QRect(10, 20, 391, 31))
         self.label_4.setStyleSheet("QLabel{\n"
-                                    "font-family: impact, sans-serif;\n"
-                                    "font-size:30px;\n"
-                                    "\n"
-                                    "}")
+                                   "font-family: impact, sans-serif;\n"
+                                   "font-size:30px;\n"
+                                   "\n"
+                                   "}")
         self.label_4.setAlignment(QtCore.Qt.AlignCenter)
         self.label_4.setObjectName("label_4")
         self.line = QtWidgets.QFrame(Frame)
@@ -54,14 +54,14 @@ class ModificaTelefonoCliente(object):
         self.pushButtonLogout.setFont(font)
         self.pushButtonLogout.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pushButtonLogout.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
+                                            "border: 2px solid black;\n"
+                                            "border-radius: 10px;\n"
+                                            "}\n"
+                                            "QPushButton:hover{\n"
+                                            "\n"
+                                            "background-color: #14626c;\n"
+                                            "color:white;\n"
+                                            "}")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("Images\\log.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButtonLogout.setIcon(icon)
@@ -77,14 +77,14 @@ class ModificaTelefonoCliente(object):
         self.pushButtonModifica.setFont(font)
         self.pushButtonModifica.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pushButtonModifica.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
+                                              "border: 2px solid black;\n"
+                                              "border-radius: 10px;\n"
+                                              "}\n"
+                                              "QPushButton:hover{\n"
+                                              "\n"
+                                              "background-color: #14626c;\n"
+                                              "color:white;\n"
+                                              "}")
         self.pushButtonModifica.setCheckable(False)
         self.pushButtonModifica.setObjectName("pushButton_6")
         self.pushButtonModificaClientePrincipale = QtWidgets.QPushButton(Frame)
@@ -97,14 +97,14 @@ class ModificaTelefonoCliente(object):
         self.pushButtonModificaClientePrincipale.setFont(font)
         self.pushButtonModificaClientePrincipale.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pushButtonModificaClientePrincipale.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
+                                                               "border: 2px solid black;\n"
+                                                               "border-radius: 10px;\n"
+                                                               "}\n"
+                                                               "QPushButton:hover{\n"
+                                                               "\n"
+                                                               "background-color: #14626c;\n"
+                                                               "color:white;\n"
+                                                               "}")
         icon1 = QtGui.QIcon()
         icon1.addPixmap(QtGui.QPixmap("Images\\left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButtonModificaClientePrincipale.setIcon(icon1)
