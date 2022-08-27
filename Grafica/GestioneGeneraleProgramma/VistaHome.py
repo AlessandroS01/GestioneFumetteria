@@ -51,16 +51,16 @@ class VistaHome(object):
                                                                    "color:white;\n"
                                                                    "}")
         self.pushButtonGestioneAbbonamentiPrincipale.setObjectName("pushButton_2")
-        self.pushButton_3 = QtWidgets.QPushButton(Frame)
-        self.pushButton_3.setGeometry(QtCore.QRect(30, 220, 161, 51))
+        self.pushButtonGestioneVendite = QtWidgets.QPushButton(Frame)
+        self.pushButtonGestioneVendite.setGeometry(QtCore.QRect(30, 220, 161, 51))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_3.setFont(font)
-        self.pushButton_3.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_3.setStyleSheet("QPushButton{\n"
+        self.pushButtonGestioneVendite.setFont(font)
+        self.pushButtonGestioneVendite.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonGestioneVendite.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -69,7 +69,7 @@ class VistaHome(object):
                                         "background-color: #14626c;\n"
                                         "color:white;\n"
                                         "}")
-        self.pushButton_3.setObjectName("pushButton_3")
+        self.pushButtonGestioneVendite.setObjectName("pushButton_3")
         self.pushButtonGestioneAccount = QtWidgets.QPushButton(Frame)
         self.pushButtonGestioneAccount.setGeometry(QtCore.QRect(220, 220, 161, 51))
         font = QtGui.QFont()
@@ -142,6 +142,7 @@ class VistaHome(object):
         self.pushButtonGestioneAccount.clicked.connect(self.openGestioneAccount)
         self.pushButtonGestioneMagazzino.clicked.connect(self.openGestioneMagazzino)
         self.pushButtonGestioneAbbonamentiPrincipale.clicked.connect(self.openGestioneAbbonamenti)
+        self.pushButtonGestioneVendite.clicked.connect(self.openGestioneVendite)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -153,7 +154,7 @@ class VistaHome(object):
                                                                      "  Magazzino"))
         self.pushButtonGestioneAbbonamentiPrincipale.setText(_translate("frame", "Gestione \n"
                                                                                  " Abbonamenti"))
-        self.pushButton_3.setText(_translate("frame", "Gestione \n"
+        self.pushButtonGestioneVendite.setText(_translate("frame", "Gestione \n"
                                                       " Vendite"))
         self.pushButtonGestioneAccount.setText(_translate("frame", "Gestione \n"
                                                                    " Account"))
@@ -201,4 +202,15 @@ class VistaHome(object):
         self.ui = GestioneAbbonamentiPrincipale()
         self.ui.setupUi(self.gestioneAbbonamentiPrincipale)
         self.gestioneAbbonamentiPrincipale.show()
+        self.frame.close()
+
+    # Metodo che permette di aprire l'interfaccia sulla quale si
+    # può gestire interamente la parte relativa alle vendite.
+    # L'interfaccia è : GestioneVenditePrincipale
+    def openGestioneVendite(self):
+        from Grafica.GestioneVendite.GestioneVenditePrincipale import GestioneVenditePrincipale
+        self.gestioneVenditePrincipale = QtWidgets.QFrame()
+        self.ui = GestioneVenditePrincipale()
+        self.ui.setupUi(self.gestioneVenditePrincipale)
+        self.gestioneVenditePrincipale.show()
         self.frame.close()

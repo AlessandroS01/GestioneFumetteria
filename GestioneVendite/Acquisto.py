@@ -1,14 +1,14 @@
 class Acquisto:
 
-    def __init__(self, codiceProdottoAcquistato,
+    def __init__(self, prodotto,
                  quantitaAcquistate):
-        self.codiceProdottoAcquistato = codiceProdottoAcquistato
+        self.prodottoAcquistato = prodotto
         self.quantitaAcquistate = quantitaAcquistate
 
-    def getCodiceProdottoAcquistato(self):
-        return self.codiceProdottoAcquistato.getCodiceSeriale()
+    def getAcquisto(self):
+        return self.prodottoAcquistato
 
-    def setCodiceProdottoAcquistato(self):
+    def getQuantitaAcquistate(self):
         return self.quantitaAcquistate
 
     def setQuantitaAcquistate(self, quantita):
