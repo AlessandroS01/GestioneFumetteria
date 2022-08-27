@@ -19,6 +19,9 @@ class GestoreVendite:
 
         self.listaAcquistiNuovoScontrino = []
 
+    # Serve a popolare una lista di acquisti ogni
+    # volta che viene poi utilizzata per creare uno scontrino
+    # e salvare l'acquisto nel file di testo "ScontriniProdotti.txt"
     def aggiungiAcquisto(self, acquisto):
         self.listaAcquistiNuovoScontrino.append(acquisto)
 
