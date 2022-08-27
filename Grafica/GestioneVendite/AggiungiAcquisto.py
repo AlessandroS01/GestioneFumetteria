@@ -257,6 +257,7 @@ class AggiungiAcquisto(object):
     def clickAggiungiAcquisto(self):
         self.gestoreVendite.getListaAcquisti().clear()
         numeroProdottiAcquistati = 0
+        ControlloQuantita = False
 
         for riga in range(self.leggiNumeroRighe()):
 
@@ -273,11 +274,13 @@ class AggiungiAcquisto(object):
                         else:
                             self.ErrorQuantitaMagazzino()
                     else:
+                        ControlloQuantita = True
                         self.ErrorQuantita()
                 else:
                     self.ErrorNumero()
+                    ControlloQuantita = True
 
-        if numeroProdottiAcquistati != 0 :
+        if numeroProdottiAcquistati != 0 and ControlloQuantita == False:
             self.openScontrino(self.gestoreVendite.getListaAcquisti())
         else:
             self.ErrorAcquisti()
