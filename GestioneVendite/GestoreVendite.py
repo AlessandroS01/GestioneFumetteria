@@ -46,7 +46,10 @@ class GestoreVendite:
         prezzoTotale = scontrinoCreato.getPrezzoTotale()
         dataEmissioneScontrino = scontrinoCreato.getDataEmissione()
 
-        scontrinoNuovo += ";" + prezzoTotale + ";" + dataEmissioneScontrino + ";" + str(numeroScontrino+1) + "\n"
+        scontrinoNuovo += str(";" + str(prezzoTotale) + ";"
+                              + str(dataEmissioneScontrino)
+                              + ";" + str(numeroScontrino+1)
+                              + "\n")
 
         with open(self.pathAbsolute, 'a') as f:
             f.write(scontrinoNuovo)

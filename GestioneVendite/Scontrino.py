@@ -10,8 +10,8 @@ class Scontrino:
         self.prezzoTotale = 0
 
         for index in range(len(acquisti)):
-
-            self.prezzoTotale += float(float(acquisti[index].getQuantitaAcquistate()) * float(acquisti[index].getAcquisto().getPrezzo()))
+            self.prezzoTotale += float(float(acquisti[index].getQuantitaAcquistate())
+                                       * float(acquisti[index].getAcquisto().getPrezzo()))
 
     def getAcquisti(self):
         return self.acquisti
