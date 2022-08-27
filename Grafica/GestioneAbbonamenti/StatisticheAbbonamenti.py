@@ -131,6 +131,7 @@ class StatisticheAbbonamenti(object):
         for riga in range(0, self.numeroRighe):
             for colonna in range(0, 8):
                 item = QtWidgets.QTableWidgetItem()
+                item.setFlags(QtCore.Qt.ItemIsEnabled)
                 self.tableWidget.setItem(riga, colonna, item)
 
         self.tableWidget.horizontalHeader().setVisible(True)

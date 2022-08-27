@@ -157,6 +157,7 @@ class VisualizzaAbbonamentiAttivi(object):
         for riga in range(0, self.leggiNumeroAbbonamentiAttivi()):
             for colonna in range(0, 8):
                 item = QtWidgets.QTableWidgetItem()
+                item.setFlags(QtCore.Qt.ItemIsEnabled)
                 self.tableWidget.setItem(riga, colonna, item)
 
         self.retranslateUi(Frame)

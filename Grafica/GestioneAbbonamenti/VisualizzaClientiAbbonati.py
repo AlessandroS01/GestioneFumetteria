@@ -155,6 +155,7 @@ class VisualizzaClientiAbbonati(object):
         for riga in range(0, self.leggiNumeroClientiAbbonati()):
             for colonna in range(0, 8):
                 item = QtWidgets.QTableWidgetItem()
+                item.setFlags(QtCore.Qt.ItemIsEnabled)
                 self.tableWidget.setItem(riga, colonna, item)
 
         self.retranslateUi(Frame)
