@@ -138,6 +138,8 @@ class AggiungiAcquisto(object):
                     self.tableWidget.setItem(riga, colonna, itemBox)
                 else:
                     item = QtWidgets.QTableWidgetItem()
+                    if colonna == 1:
+                        item.setFlags(QtCore.Qt.ItemIsEnabled)
                     self.tableWidget.setItem(riga, colonna, item)
 
         self.tableWidget.horizontalHeader().setVisible(True)
