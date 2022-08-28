@@ -2,8 +2,6 @@ from datetime import datetime
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
-from GestioneVendite.GestoreVendite import GestoreVendite
-
 
 class Scontrino(object):
 
