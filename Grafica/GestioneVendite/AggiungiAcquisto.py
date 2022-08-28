@@ -11,7 +11,8 @@ from GestioneVendite.GestoreVendite import GestoreVendite
 
 class AggiungiAcquisto(object):
 
-    def setupUi(self, Frame):
+    def setupUi(self, Frame, controllo):
+        self.controllo = controllo
         self.gestoreVendite = GestoreVendite()
         self.magazzino = Magazzino()
         Frame.setObjectName("Frame")
@@ -44,28 +45,28 @@ class AggiungiAcquisto(object):
                                    "}")
         self.label_5.setAlignment(QtCore.Qt.AlignCenter)
         self.label_5.setObjectName("label_5")
-        self.pushButtonGestioneVenditePrincipale = QtWidgets.QPushButton(Frame)
-        self.pushButtonGestioneVenditePrincipale.setGeometry(QtCore.QRect(160, 690, 141, 31))
+        self.pushButtonInserisciCodiceAbbonamento = QtWidgets.QPushButton(Frame)
+        self.pushButtonInserisciCodiceAbbonamento.setGeometry(QtCore.QRect(160, 690, 141, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButtonGestioneVenditePrincipale.setFont(font)
-        self.pushButtonGestioneVenditePrincipale.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButtonGestioneVenditePrincipale.setStyleSheet("QPushButton{\n"
-                                                               "border: 2px solid black;\n"
-                                                               "border-radius: 10px;\n"
-                                                               "}\n"
-                                                               "QPushButton:hover{\n"
-                                                               "\n"
-                                                               "background-color: #14626c;\n"
-                                                               "color:white;\n"
-                                                               "}")
+        self.pushButtonInserisciCodiceAbbonamento.setFont(font)
+        self.pushButtonInserisciCodiceAbbonamento.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonInserisciCodiceAbbonamento.setStyleSheet("QPushButton{\n"
+                                                                "border: 2px solid black;\n"
+                                                                "border-radius: 10px;\n"
+                                                                "}\n"
+                                                                "QPushButton:hover{\n"
+                                                                "\n"
+                                                                "background-color: #14626c;\n"
+                                                                "color:white;\n"
+                                                                "}")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("Images\\left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
-        self.pushButtonGestioneVenditePrincipale.setIcon(icon)
-        self.pushButtonGestioneVenditePrincipale.setObjectName("pushButton_4")
+        self.pushButtonInserisciCodiceAbbonamento.setIcon(icon)
+        self.pushButtonInserisciCodiceAbbonamento.setObjectName("pushButton_4")
         self.pushButtonLogout = QtWidgets.QPushButton(Frame)
         self.pushButtonLogout.setGeometry(QtCore.QRect(10, 690, 141, 31))
         font = QtGui.QFont()
@@ -178,7 +179,7 @@ class AggiungiAcquisto(object):
         self.lineEditRicerca.textChanged.connect(self.search)
         self.pushButtonAggiungiAcquisto.clicked.connect(self.clickAggiungiAcquisto)
         self.pushButtonLogout.clicked.connect(self.openLogin)
-        self.pushButtonGestioneVenditePrincipale.clicked.connect(self.openGestioneVenditePrincipale)
+        self.pushButtonInserisciCodiceAbbonamento.clicked.connect(self.openInserisciCodiceAbbonamento)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -196,7 +197,7 @@ class AggiungiAcquisto(object):
                                         "cliccare su Aggiungi Acquisto\n "
                                         "una volta terminata la selezione. Immettere nel campo Quantità il numero di "
                                         "pezzi acquistati."))
-        self.pushButtonGestioneVenditePrincipale.setText(_translate("Frame", " Indietro"))
+        self.pushButtonInserisciCodiceAbbonamento.setText(_translate("Frame", " Indietro"))
         self.pushButtonLogout.setText(_translate("Frame", " Logout"))
         item = self.tableWidget.horizontalHeaderItem(0)
         item.setText(_translate("Frame", "Prodotto"))
@@ -235,13 +236,13 @@ class AggiungiAcquisto(object):
         self.login.show()
         self.frame.close()
 
-    # Metodo che permette di ritornare all'interfaccia GestioneVenditePrincipale.
-    def openGestioneVenditePrincipale(self):
-        from Grafica.GestioneVendite.GestioneVenditePrincipale import GestioneVenditePrincipale
-        self.gestioneVenditePrincipale = QtWidgets.QFrame()
-        self.ui = GestioneVenditePrincipale()
-        self.ui.setupUi(self.gestioneVenditePrincipale)
-        self.gestioneVenditePrincipale.show()
+    # Metodo che permette di ritornare all'interfaccia InserisciCodiceAbbonamento.
+    def openInserisciCodiceAbbonamento(self):
+        from Grafica.GestioneVendite.InserisciCodiceAbbonamento import InserisciCodiceAbbonamento
+        self.inserisciCodiceAbbonamento = QtWidgets.QFrame()
+        self.ui = InserisciCodiceAbbonamento()
+        self.ui.setupUi(self.inserisciCodiceAbbonamento)
+        self.inserisciCodiceAbbonamento.show()
         self.frame.close()
 
     # Metodo utilizzato per ritrovare all'interno della tabella
@@ -255,43 +256,71 @@ class AggiungiAcquisto(object):
     # Metodo utilizzato per vedere quali e quanti sono i prodotti
     # che sono stati venduti.
     def clickAggiungiAcquisto(self):
+        self.gestoreVendite.getListaPrezziProdotti().clear()
         self.gestoreVendite.getListaAcquisti().clear()
         numeroProdottiAcquistati = 0
-        ControlloQuantita = False
+        checkBoxChecked = 0
 
         for riga in range(self.leggiNumeroRighe()):
 
             if self.tableWidget.item(riga, 0).checkState() == QtCore.Qt.Checked:
+                checkBoxChecked += 1
                 quantitaAcquistate = self.tableWidget.item(riga, 2).text()
                 prodotto = self.magazzino.getMagazzino()[riga]
-
                 if quantitaAcquistate.isnumeric():
                     if int(quantitaAcquistate) != 0:
                         if int(quantitaAcquistate) <= int(prodotto.getQuantitaMagazzino()):
-                            numeroProdottiAcquistati += 1
-                            acquistoAppoggio = Acquisto(prodotto, quantitaAcquistate)
-                            self.gestoreVendite.aggiungiAcquisto(acquistoAppoggio)
+                            if self.controllo is True:
+                                if prodotto.getTipoOfferta() == "Abbonati":
+                                    numeroProdottiAcquistati += 1
+                                    prezzo = prodotto.getPrezzoOfferta()
+                                    self.gestoreVendite.aggiungiPrezzoProdotto(prezzo)
+                                    acquistoAppoggio = Acquisto(prodotto, quantitaAcquistate)
+                                    self.gestoreVendite.aggiungiAcquisto(acquistoAppoggio)
+                                else:
+                                    if prodotto.getTipoOfferta() == "Generale":
+                                        numeroProdottiAcquistati += 1
+                                        prezzo = prodotto.getPrezzoOfferta()
+                                        self.gestoreVendite.aggiungiPrezzoProdotto(prezzo)
+                                        acquistoAppoggio = Acquisto(prodotto, quantitaAcquistate)
+                                        self.gestoreVendite.aggiungiAcquisto(acquistoAppoggio)
+                                    else:
+                                        numeroProdottiAcquistati += 1
+                                        prezzo = prodotto.getPrezzo()
+                                        self.gestoreVendite.aggiungiPrezzoProdotto(prezzo)
+                                        acquistoAppoggio = Acquisto(prodotto, quantitaAcquistate)
+                                        self.gestoreVendite.aggiungiAcquisto(acquistoAppoggio)
+                            else:
+                                if prodotto.getTipoOfferta() == "Generale":
+                                    numeroProdottiAcquistati += 1
+                                    prezzo = prodotto.getPrezzoOfferta()
+                                    self.gestoreVendite.aggiungiPrezzoProdotto(prezzo)
+                                    acquistoAppoggio = Acquisto(prodotto, quantitaAcquistate)
+                                    self.gestoreVendite.aggiungiAcquisto(acquistoAppoggio)
+                                else:
+                                    numeroProdottiAcquistati += 1
+                                    prezzo = prodotto.getPrezzo()
+                                    self.gestoreVendite.aggiungiPrezzoProdotto(prezzo)
+                                    acquistoAppoggio = Acquisto(prodotto, quantitaAcquistate)
+                                    self.gestoreVendite.aggiungiAcquisto(acquistoAppoggio)
                         else:
                             self.ErrorQuantitaMagazzino()
                     else:
-                        ControlloQuantita = True
                         self.ErrorQuantita()
                 else:
                     self.ErrorNumero()
-                    ControlloQuantita = True
 
-        if numeroProdottiAcquistati != 0 and ControlloQuantita == False:
-            self.openScontrino(self.gestoreVendite.getListaAcquisti())
+        if numeroProdottiAcquistati != 0 and checkBoxChecked == numeroProdottiAcquistati:
+            self.openScontrino(self.gestoreVendite.getListaAcquisti(), self.gestoreVendite.getListaPrezziProdotti())
         else:
             self.ErrorAcquisti()
-
     # Metodo che permette di aprire l'interfaccia sulla quale
     # si può creare lo scontrino.
-    def openScontrino(self, acquisti):
+    def openScontrino(self, acquisti, listaPrezziProdotti):
         from Grafica.GestioneVendite.Scontrino import Scontrino
         self.scontrino = QtWidgets.QFrame()
         self.ui = Scontrino()
-        self.ui.setupUi(self.scontrino, acquisti, self.frame)
+        self.ui.setupUi(self.scontrino, acquisti, listaPrezziProdotti, self.frame)
         self.scontrino.show()
         self.frame.hide()
 
@@ -334,4 +363,3 @@ class AggiungiAcquisto(object):
             "background-color: #14626c;color:white; }QPushButton{ width:40px; height:20px; font-size: 10px; "
             "font-family: Helvetica, Sans-Serif; border: 1px solid black; border-radius: 5px; }")
         self.ErrorBox.exec()
-

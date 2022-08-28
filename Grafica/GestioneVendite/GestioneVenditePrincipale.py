@@ -160,7 +160,7 @@ class GestioneVenditePrincipale(object):
         self.pushButton_6.setObjectName("pushButton_6")
         self.pushButtonLogout.clicked.connect(self.openLogin)
         self.pushButtonVistaHome.clicked.connect(self.openVistaHome)
-        self.pushButtonRegistrazioneAcquisto.clicked.connect(self.openAggiungiAcquisto)
+        self.pushButtonRegistrazioneAcquisto.clicked.connect(self.openInserisciCodiceAbbonamento)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -206,12 +206,13 @@ class GestioneVenditePrincipale(object):
         self.frame.close()
 
     # Metodo che permette di aprire l'interfaccia sulla quale si
-    # possono registrare gli acquisti.
-    # L'interfaccia è : AggiungiAcquisto
-    def openAggiungiAcquisto(self):
-        from Grafica.GestioneVendite.AggiungiAcquisto import AggiungiAcquisto
-        self.aggiungiAcquisto = QtWidgets.QFrame()
-        self.ui = AggiungiAcquisto()
-        self.ui.setupUi(self.aggiungiAcquisto)
-        self.aggiungiAcquisto.show()
+    # può immettere il codice abbonamento per ricercare un abbonamento
+    # prima di effettuare un acquisto.
+    # L'interfaccia è : InserisciCodiceAbbonamento
+    def openInserisciCodiceAbbonamento(self):
+        from Grafica.GestioneVendite.InserisciCodiceAbbonamento import InserisciCodiceAbbonamento
+        self.inserisciCodiceAbbonamento = QtWidgets.QFrame()
+        self.ui = InserisciCodiceAbbonamento()
+        self.ui.setupUi(self.inserisciCodiceAbbonamento)
+        self.inserisciCodiceAbbonamento.show()
         self.frame.close()

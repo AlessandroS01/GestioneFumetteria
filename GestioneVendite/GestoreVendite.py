@@ -18,6 +18,7 @@ class GestoreVendite:
         self.listaScontrini.append(self.content.split("\n"))
 
         self.listaAcquistiNuovoScontrino = []
+        self.listaPrezziProdotti = []
 
     # Serve a popolare una lista di acquisti ogni
     # volta che viene poi utilizzata per creare uno scontrino
@@ -57,3 +58,9 @@ class GestoreVendite:
         with open(self.pathAbsolute, 'a') as f:
             f.write(scontrinoNuovo)
             f.close()
+
+    def aggiungiPrezzoProdotto(self, prezzi):
+        self.listaPrezziProdotti.append(prezzi)
+
+    def getListaPrezziProdotti(self):
+        return self.listaPrezziProdotti

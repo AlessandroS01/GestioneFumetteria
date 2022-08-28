@@ -5,7 +5,8 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 
 class Scontrino(object):
 
-    def setupUi(self, Frame, acquisti, frameDaAprire):
+    def setupUi(self, Frame, acquisti, listaPrezziProdotti, frameDaAprire):
+        self.listaPrezziProdotti = listaPrezziProdotti
         self.frameDaAprire = frameDaAprire
         self.acquisti = acquisti
         Frame.setObjectName("Frame")
@@ -183,8 +184,13 @@ class Scontrino(object):
         for index in range(len(self.acquisti)):
             acquisto = self.acquisti[index]
             item = self.listWidget.item(index + 1)
-            stringa = str(str(acquisto.getQuantitaAcquistate()) + "  " + acquisto.getAcquisto().getNomeProdotto() +
-                          "  " + str(acquisto.getAcquisto().getPrezzo()) + "€")
+            if str(acquisto.getAcquisto().getPrezzo()) != str(self.listaPrezziProdotti[index]):
+                prezzoProdotto = str(" | | Scontato a : " + str(self.listaPrezziProdotti[index]) + "€")
+                stringa = str(str(acquisto.getQuantitaAcquistate()) + "  " + acquisto.getAcquisto().getNomeProdotto() +
+                              "  " + str(acquisto.getAcquisto().getPrezzo()) + "€" + prezzoProdotto)
+            else:
+                stringa = str(str(acquisto.getQuantitaAcquistate()) + "  " + acquisto.getAcquisto().getNomeProdotto() +
+                              "  " + str(acquisto.getAcquisto().getPrezzo()) + "€")
             item.setText(_translate("Frame", stringa))
 
         item = self.listWidget.item(len(self.acquisti) + 1)
@@ -194,7 +200,7 @@ class Scontrino(object):
         self.prezzoTotale = 0
         for index in range(len(self.acquisti)):
             self.prezzoTotale += float(float(self.acquisti[index].getQuantitaAcquistate())
-                                       * float(self.acquisti[index].getAcquisto().getPrezzo()))
+                                       * float(self.listaPrezziProdotti[index]))
         item.setText(_translate("Frame", str("Spesa totale : " + str(self.prezzoTotale) + "€")))
 
     # Metodo che permette di aprire l'interfaccia per modificare
