@@ -257,7 +257,7 @@ class AggiungiAcquisto(object):
     # che sono stati venduti.
     def clickAggiungiAcquisto(self):
         self.gestoreVendite.getListaPrezziProdotti().clear()
-        self.gestoreVendite.getListaAcquisti().clear()
+        self.gestoreVendite.listaAcquisti().clear()
         numeroProdottiAcquistati = 0
         checkBoxChecked = 0
 
@@ -311,7 +311,7 @@ class AggiungiAcquisto(object):
                     self.ErrorNumero()
 
         if numeroProdottiAcquistati != 0 and checkBoxChecked == numeroProdottiAcquistati:
-            self.openScontrino(self.gestoreVendite.getListaAcquisti(), self.gestoreVendite.getListaPrezziProdotti())
+            self.openScontrino(self.gestoreVendite.listaAcquisti(), self.gestoreVendite.getListaPrezziProdotti())
         else:
             self.ErrorAcquisti()
     # Metodo che permette di aprire l'interfaccia sulla quale
@@ -320,7 +320,7 @@ class AggiungiAcquisto(object):
         from Grafica.GestioneVendite.Scontrino import Scontrino
         self.scontrino = QtWidgets.QFrame()
         self.ui = Scontrino()
-        self.ui.setupUi(self.scontrino, acquisti, listaPrezziProdotti, self.frame)
+        self.ui.setupUi(self.scontrino, acquisti, listaPrezziProdotti, self.gestoreVendite, self.frame)
         self.scontrino.show()
         self.frame.hide()
 

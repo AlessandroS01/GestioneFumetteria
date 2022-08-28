@@ -16,9 +16,23 @@ class GestoreVendite:
 
         self.listaScontrini = []
         self.listaScontrini.append(self.content.split("\n"))
+        self.numeroScontrino = 0
 
         self.listaAcquistiNuovoScontrino = []
         self.listaPrezziProdotti = []
+
+    # Metodo utilizzato per settare il numero dello scontrino
+    # leggendo le righe del file "ScontriniProdotti.txt".
+    def getNumeroScontrino(self):
+        with open(self.pathAbsolute, 'r') as f:
+            self.content = f.read()
+            f.close()
+
+        numeroScontriniEsistenti = 0
+        for index in range(len(str(self.content).split("\n"))):
+            numeroScontriniEsistenti = index
+
+        return numeroScontriniEsistenti
 
     # Serve a popolare una lista di acquisti ogni
     # volta che viene poi utilizzata per creare uno scontrino
@@ -26,33 +40,35 @@ class GestoreVendite:
     def aggiungiAcquisto(self, acquisto):
         self.listaAcquistiNuovoScontrino.append(acquisto)
 
-    def getListaAcquisti(self):
+    def listaAcquisti(self):
         return self.listaAcquistiNuovoScontrino
 
     # Metodo utilizzato per salvare all'interno del file
     # "ScontriniProdotti.txt" un nuovo acquisto a seguito
     # della creazione dello scontrino.
-    def creaScontrino(self):
+    def creaScontrino(self, listaPrezzi):
         scontrinoNuovo = ""
+        numeroScontrino = self.getNumeroScontrino() + 1
+        listaAcquisti = self.listaAcquistiNuovoScontrino
+        prezzoTotale = 0
 
-        for index in range(len(self.getListaAcquisti())):
-
-            acquisto = self.getListaAcquisti()[index].getAcquisto()
+        for index in range(len(listaAcquisti)):
+            prezzo = listaPrezzi[index]
+            prezzoTotale += float(prezzo)
+            prodottoAcquistato = listaAcquisti[index].getAcquisto()
             if index == 0:
-                scontrinoNuovo = str(acquisto.getNomeProdotto() + "|" + acquisto.getCodiceSeriale() + "|"
-                                     + self.getListaAcquisti()[index].getQuantitaAcquistate() + "|" + acquisto.getPrezzo())
+                scontrinoNuovo = str(prodottoAcquistato.getNomeProdotto() + "|" + prodottoAcquistato.getCodiceSeriale() + "|"
+                                     + listaAcquisti[index].getQuantitaAcquistate() + "|" + str(prezzo) + "€")
             else:
-                scontrinoNuovo += str("-" + acquisto.getNomeProdotto() + "|" + acquisto.getCodiceSeriale() + "|"
-                                      + self.getListaAcquisti()[index].getQuantitaAcquistate() + "|" + acquisto.getPrezzo())
+                scontrinoNuovo += str("-" + prodottoAcquistato.getNomeProdotto() + "|" + prodottoAcquistato.getCodiceSeriale() + "|"
+                                      + listaAcquisti[index].getQuantitaAcquistate() + "|" + str(prezzo) + "€")
 
-        numeroScontrino = len(self.getListaAcquisti())
-        scontrinoCreato = Scontrino(self.listaAcquistiNuovoScontrino, numeroScontrino + 1)
-        prezzoTotale = scontrinoCreato.getPrezzoTotale()
+        scontrinoCreato = Scontrino(listaAcquisti, numeroScontrino)
         dataEmissioneScontrino = scontrinoCreato.getDataEmissione()
 
-        scontrinoNuovo += str(";" + str(prezzoTotale) + ";"
+        scontrinoNuovo += str(";" + str(prezzoTotale) + "€" + ";"
                               + str(dataEmissioneScontrino)
-                              + ";" + str(numeroScontrino+1)
+                              + ";" + str(numeroScontrino)
                               + "\n")
 
         with open(self.pathAbsolute, 'a') as f:

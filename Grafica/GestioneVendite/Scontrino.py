@@ -2,10 +2,13 @@ from datetime import datetime
 
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+from GestioneVendite.GestoreVendite import GestoreVendite
+
 
 class Scontrino(object):
 
-    def setupUi(self, Frame, acquisti, listaPrezziProdotti, frameDaAprire):
+    def setupUi(self, Frame, acquisti, listaPrezziProdotti, gestoreVendite, frameDaAprire):
+        self.gestoreVendite = gestoreVendite
         self.listaPrezziProdotti = listaPrezziProdotti
         self.frameDaAprire = frameDaAprire
         self.acquisti = acquisti
@@ -30,50 +33,50 @@ class Scontrino(object):
         self.line.setFrameShape(QtWidgets.QFrame.HLine)
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
-        self.pushButton_5 = QtWidgets.QPushButton(Frame)
-        self.pushButton_5.setGeometry(QtCore.QRect(10, 530, 141, 31))
+        self.pushButtonLogout = QtWidgets.QPushButton(Frame)
+        self.pushButtonLogout.setGeometry(QtCore.QRect(10, 530, 141, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_5.setFont(font)
-        self.pushButton_5.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_5.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
+        self.pushButtonLogout.setFont(font)
+        self.pushButtonLogout.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonLogout.setStyleSheet("QPushButton{\n"
+                                            "border: 2px solid black;\n"
+                                            "border-radius: 10px;\n"
+                                            "}\n"
+                                            "QPushButton:hover{\n"
+                                            "\n"
+                                            "background-color: #14626c;\n"
+                                            "color:white;\n"
+                                            "}")
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("Images\\log.png"), QtGui.QIcon.Normal,
                        QtGui.QIcon.Off)
-        self.pushButton_5.setIcon(icon)
-        self.pushButton_5.setCheckable(False)
-        self.pushButton_5.setObjectName("pushButton_5")
-        self.pushButton_6 = QtWidgets.QPushButton(Frame)
-        self.pushButton_6.setGeometry(QtCore.QRect(20, 440, 361, 31))
+        self.pushButtonLogout.setIcon(icon)
+        self.pushButtonLogout.setCheckable(False)
+        self.pushButtonLogout.setObjectName("pushButton_5")
+        self.pushButtonRegistrazioneScontrino = QtWidgets.QPushButton(Frame)
+        self.pushButtonRegistrazioneScontrino.setGeometry(QtCore.QRect(20, 440, 361, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_6.setFont(font)
-        self.pushButton_6.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_6.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
-        self.pushButton_6.setCheckable(False)
-        self.pushButton_6.setObjectName("pushButton_6")
+        self.pushButtonRegistrazioneScontrino.setFont(font)
+        self.pushButtonRegistrazioneScontrino.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonRegistrazioneScontrino.setStyleSheet("QPushButton{\n"
+                                                            "border: 2px solid black;\n"
+                                                            "border-radius: 10px;\n"
+                                                            "}\n"
+                                                            "QPushButton:hover{\n"
+                                                            "\n"
+                                                            "background-color: #14626c;\n"
+                                                            "color:white;\n"
+                                                            "}")
+        self.pushButtonRegistrazioneScontrino.setCheckable(False)
+        self.pushButtonRegistrazioneScontrino.setObjectName("pushButton_6")
         self.pushButtonAggiungiAcquisto = QtWidgets.QPushButton(Frame)
         self.pushButtonAggiungiAcquisto.setGeometry(QtCore.QRect(20, 480, 361, 31))
         font = QtGui.QFont()
@@ -165,6 +168,8 @@ class Scontrino(object):
             self.listWidget.addItem(item)
 
         self.pushButtonAggiungiAcquisto.clicked.connect(self.openModificaAcquisto)
+        self.pushButtonLogout.clicked.connect(self.openLogin)
+        self.pushButtonRegistrazioneScontrino.clicked.connect(self.clickRegistrazioneScontrino)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -173,8 +178,8 @@ class Scontrino(object):
         _translate = QtCore.QCoreApplication.translate
         Frame.setWindowTitle(_translate("Frame", "Fumetteria - Scontrino"))
         self.label_4.setText(_translate("Frame", "SCONTRINO"))
-        self.pushButton_5.setText(_translate("Frame", " Logout"))
-        self.pushButton_6.setText(_translate("Frame", "Registrazione Scontrino"))
+        self.pushButtonLogout.setText(_translate("Frame", " Logout"))
+        self.pushButtonRegistrazioneScontrino.setText(_translate("Frame", "Registrazione Scontrino"))
         self.pushButtonAggiungiAcquisto.setText(_translate("Frame", " Modifica Scontrino"))
 
         item = self.listWidget.item(0)
@@ -207,4 +212,48 @@ class Scontrino(object):
     # lo scontrino.
     def openModificaAcquisto(self):
         self.frameDaAprire.show()
+        self.frame.close()
+
+    # Metodo che permette di ritornare all'interfaccia iniziale
+    # del programma, ovvero LoginAmministratore.
+    def openLogin(self):
+        from Grafica.GestioneLogin.LoginAmministratore import LoginAmministratore
+        self.login = QtWidgets.QFrame()
+        self.ui = LoginAmministratore()
+        self.ui.setupUi(self.login)
+        self.login.show()
+        self.frame.close()
+
+    # Metodo utilizzato per creare uno scontrino all'interno
+    # del file di testo "ScontriniProdotti.txt" dopo aver cliccato
+    # sul pulsante Registrazione Scontrino.
+    def clickRegistrazioneScontrino(self):
+
+        for index in range(len(self.acquisti)):
+            prodottoAcquistato = self.acquisti[index].getAcquisto()
+            quantitaAcquistate = self.acquisti[index].getQuantitaAcquistate()
+
+            nuovaQuantita = (int(prodottoAcquistato.getQuantitaMagazzino())
+                             - int(quantitaAcquistate))
+
+            datoProdottoSuFile = prodottoAcquistato.getProdotto()
+            replacement = str(prodottoAcquistato.getNomeProdotto() + "-" + str(nuovaQuantita) + "-"
+                              + prodottoAcquistato.getPrezzo() + "-" + prodottoAcquistato.getCodiceSeriale() + "-"
+                              + prodottoAcquistato.getOfferta() + "-" + prodottoAcquistato.getTipoOfferta()
+                              + "-" + prodottoAcquistato.getPrezzoOfferta() + "-" + prodottoAcquistato.getDataScadenzaOfferta())
+
+            prodottoAcquistato.sovrascriviDati(datoProdottoSuFile, replacement)
+
+        self.gestoreVendite.creaScontrino(self.listaPrezziProdotti)
+        self.openScontrinoRegistrato()
+
+    # Metodo che permette di aprire l'interfaccia di conferma
+    # per la corretta creazione di uno scontrino,
+    # ovvero ScontrinoRegistrato.
+    def openScontrinoRegistrato(self):
+        from Grafica.GestioneVendite.ScontrinoRegistrato import ScontrinoRegistrato
+        self.scontrinoRegistrato = QtWidgets.QFrame()
+        self.ui = ScontrinoRegistrato()
+        self.ui.setupUi(self.scontrinoRegistrato)
+        self.scontrinoRegistrato.show()
         self.frame.close()

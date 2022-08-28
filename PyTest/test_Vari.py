@@ -28,7 +28,6 @@ class TestVari(TestCase):
     def test_lettura_datetime(self):
 
         today = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
-        print(today)
         dateTest = datetime.strptime("25/8/2022", '%d/%m/%Y').date()
 
-       # assert today == dateTest
+        assert today == dateTest
