@@ -27,6 +27,7 @@ class LoginAmministratore(object):
         self.lineEditPassword.setGeometry(QtCore.QRect(20, 220, 451, 31))
         self.lineEditPassword.setStyleSheet("border: 1px solid black;\n"
                                             "border-radius: 10px;")
+        self.lineEditPassword.setEchoMode(QtWidgets.QLineEdit.Password)
         self.lineEditPassword.setObjectName("lineEdit_2")
         self.label = QtWidgets.QLabel(Frame)
         self.label.setGeometry(QtCore.QRect(20, 120, 111, 21))

@@ -59,6 +59,8 @@ class ModificaUtente(object):
                                             "border-radius: 6px;\n"
                                             "}")
         self.lineEditPassword.setObjectName("lineEdit_2")
+        self.lineEditPassword.setEchoMode(QtWidgets.QLineEdit.Password)
+
         self.lineEditUtenteNuovo = QtWidgets.QLineEdit(Frame)
         self.lineEditUtenteNuovo.setGeometry(QtCore.QRect(10, 220, 371, 31))
         self.lineEditUtenteNuovo.setStyleSheet("QLineEdit{\n"
