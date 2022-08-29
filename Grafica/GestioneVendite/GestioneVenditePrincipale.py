@@ -120,16 +120,16 @@ class GestioneVenditePrincipale(object):
                                  "}")
         self.label.setAlignment(QtCore.Qt.AlignCenter)
         self.label.setObjectName("label")
-        self.pushButton_3 = QtWidgets.QPushButton(Frame)
-        self.pushButton_3.setGeometry(QtCore.QRect(30, 250, 201, 51))
+        self.pushButtonVenditeGiornaliere = QtWidgets.QPushButton(Frame)
+        self.pushButtonVenditeGiornaliere.setGeometry(QtCore.QRect(30, 250, 201, 51))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_3.setFont(font)
-        self.pushButton_3.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_3.setStyleSheet("QPushButton{\n"
+        self.pushButtonVenditeGiornaliere.setFont(font)
+        self.pushButtonVenditeGiornaliere.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonVenditeGiornaliere.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -138,7 +138,7 @@ class GestioneVenditePrincipale(object):
                                         "background-color: #14626c;\n"
                                         "color:white;\n"
                                         "}")
-        self.pushButton_3.setObjectName("pushButton_3")
+        self.pushButtonVenditeGiornaliere.setObjectName("pushButton_3")
         self.pushButton_6 = QtWidgets.QPushButton(Frame)
         self.pushButton_6.setGeometry(QtCore.QRect(250, 250, 201, 51))
         font = QtGui.QFont()
@@ -162,6 +162,7 @@ class GestioneVenditePrincipale(object):
         self.pushButtonVistaHome.clicked.connect(self.openVistaHome)
         self.pushButtonRegistrazioneAcquisto.clicked.connect(self.openInserisciCodiceAbbonamento)
         self.pushButtonAcquistoAbbonamento.clicked.connect(self.openAcquistoAbbonamento)
+        self.pushButtonVenditeGiornaliere.clicked.connect(self.openInserisciDataVendite)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -182,7 +183,7 @@ class GestioneVenditePrincipale(object):
                                                "cliente abbonato, cliccare Acquisto Abbonamento. Se si vogliono\n"
                                                " le vendite o l\'incasso totale durante una giornata, cliccare sui\n"
                                                " due relativi pulsanti."))
-        self.pushButton_3.setText(_translate("Frame", "Visualizza\n"
+        self.pushButtonVenditeGiornaliere.setText(_translate("Frame", "Visualizza\n"
                                                       " Vendite Giornata"))
         self.pushButton_6.setText(_translate("Frame", "Visualizza\n"
                                                       " Incasso Giornata"))
@@ -227,4 +228,15 @@ class GestioneVenditePrincipale(object):
         self.ui = InserisciAbbonamento()
         self.ui.setupUi(self.inserisciAbbonamento)
         self.inserisciAbbonamento.show()
+        self.frame.close()
+
+    # Metodo che permette di aprire l'interfaccia sulla quale si
+    # possono cercare le vendite avvenute durante una giornata.
+    # L'interfaccia è : InserisciDataVendite
+    def openInserisciDataVendite(self):
+        from Grafica.GestioneVendite.InserisciDataVendite import InserisciDataVendite
+        self.inserisciDataVendite = QtWidgets.QFrame()
+        self.ui = InserisciDataVendite()
+        self.ui.setupUi(self.inserisciDataVendite)
+        self.inserisciDataVendite.show()
         self.frame.close()
