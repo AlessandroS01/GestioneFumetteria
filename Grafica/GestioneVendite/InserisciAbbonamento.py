@@ -1,5 +1,7 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+from GestioneAbbonamenti.GestioneAbbonamenti import GestioneAbbonamenti
+
 
 class InserisciAbbonamento(object):
 
@@ -21,13 +23,13 @@ class InserisciAbbonamento(object):
                                  "}")
         self.label.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
         self.label.setObjectName("label")
-        self.lineEdit = QtWidgets.QLineEdit(Frame)
-        self.lineEdit.setGeometry(QtCore.QRect(10, 100, 371, 31))
-        self.lineEdit.setStyleSheet("QLineEdit{\n"
+        self.lineEditNomeCliente = QtWidgets.QLineEdit(Frame)
+        self.lineEditNomeCliente.setGeometry(QtCore.QRect(10, 100, 371, 31))
+        self.lineEditNomeCliente.setStyleSheet("QLineEdit{\n"
                                     "border: 2px solid black;\n"
                                     "border-radius: 6px;\n"
                                     "}")
-        self.lineEdit.setObjectName("lineEdit")
+        self.lineEditNomeCliente.setObjectName("lineEdit")
         self.label_4 = QtWidgets.QLabel(Frame)
         self.label_4.setGeometry(QtCore.QRect(10, 20, 371, 31))
         self.label_4.setStyleSheet("QLabel{\n"
@@ -65,16 +67,16 @@ class InserisciAbbonamento(object):
         self.pushButtonLogout.setIcon(icon)
         self.pushButtonLogout.setCheckable(False)
         self.pushButtonLogout.setObjectName("pushButton_5")
-        self.pushButton_6 = QtWidgets.QPushButton(Frame)
-        self.pushButton_6.setGeometry(QtCore.QRect(10, 460, 371, 31))
+        self.pushButtonInserisci = QtWidgets.QPushButton(Frame)
+        self.pushButtonInserisci.setGeometry(QtCore.QRect(10, 460, 371, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_6.setFont(font)
-        self.pushButton_6.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_6.setStyleSheet("QPushButton{\n"
+        self.pushButtonInserisci.setFont(font)
+        self.pushButtonInserisci.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonInserisci.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -83,8 +85,8 @@ class InserisciAbbonamento(object):
                                         "background-color: #14626c;\n"
                                         "color:white;\n"
                                         "}")
-        self.pushButton_6.setCheckable(False)
-        self.pushButton_6.setObjectName("pushButton_6")
+        self.pushButtonInserisci.setCheckable(False)
+        self.pushButtonInserisci.setObjectName("pushButton_6")
         self.pushButtonGestioneVenditePrincipale = QtWidgets.QPushButton(Frame)
         self.pushButtonGestioneVenditePrincipale.setGeometry(QtCore.QRect(160, 520, 141, 31))
         font = QtGui.QFont()
@@ -107,13 +109,13 @@ class InserisciAbbonamento(object):
         icon1.addPixmap(QtGui.QPixmap("Images\\left.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButtonGestioneVenditePrincipale.setIcon(icon1)
         self.pushButtonGestioneVenditePrincipale.setObjectName("pushButton_4")
-        self.lineEdit_2 = QtWidgets.QLineEdit(Frame)
-        self.lineEdit_2.setGeometry(QtCore.QRect(10, 170, 371, 31))
-        self.lineEdit_2.setStyleSheet("QLineEdit{\n"
+        self.lineEditCognomeCliente = QtWidgets.QLineEdit(Frame)
+        self.lineEditCognomeCliente.setGeometry(QtCore.QRect(10, 170, 371, 31))
+        self.lineEditCognomeCliente.setStyleSheet("QLineEdit{\n"
                                       "border: 2px solid black;\n"
                                       "border-radius: 6px;\n"
                                       "}")
-        self.lineEdit_2.setObjectName("lineEdit_2")
+        self.lineEditCognomeCliente.setObjectName("lineEdit_2")
         self.label_3 = QtWidgets.QLabel(Frame)
         self.label_3.setGeometry(QtCore.QRect(10, 140, 391, 21))
         self.label_3.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -134,13 +136,13 @@ class InserisciAbbonamento(object):
                                    "}")
         self.label_5.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
         self.label_5.setObjectName("label_5")
-        self.lineEdit_3 = QtWidgets.QLineEdit(Frame)
-        self.lineEdit_3.setGeometry(QtCore.QRect(10, 240, 371, 31))
-        self.lineEdit_3.setStyleSheet("QLineEdit{\n"
+        self.lineEditCodiceFiscaleCliente = QtWidgets.QLineEdit(Frame)
+        self.lineEditCodiceFiscaleCliente.setGeometry(QtCore.QRect(10, 240, 371, 31))
+        self.lineEditCodiceFiscaleCliente.setStyleSheet("QLineEdit{\n"
                                       "border: 2px solid black;\n"
                                       "border-radius: 6px;\n"
                                       "}")
-        self.lineEdit_3.setObjectName("lineEdit_3")
+        self.lineEditCodiceFiscaleCliente.setObjectName("lineEdit_3")
         self.label_6 = QtWidgets.QLabel(Frame)
         self.label_6.setGeometry(QtCore.QRect(10, 280, 391, 21))
         self.label_6.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -151,13 +153,13 @@ class InserisciAbbonamento(object):
                                    "}")
         self.label_6.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
         self.label_6.setObjectName("label_6")
-        self.lineEdit_4 = QtWidgets.QLineEdit(Frame)
-        self.lineEdit_4.setGeometry(QtCore.QRect(10, 310, 371, 31))
-        self.lineEdit_4.setStyleSheet("QLineEdit{\n"
+        self.lineEditEmailCliente = QtWidgets.QLineEdit(Frame)
+        self.lineEditEmailCliente.setGeometry(QtCore.QRect(10, 310, 371, 31))
+        self.lineEditEmailCliente.setStyleSheet("QLineEdit{\n"
                                       "border: 2px solid black;\n"
                                       "border-radius: 6px;\n"
                                       "}")
-        self.lineEdit_4.setObjectName("lineEdit_4")
+        self.lineEditEmailCliente.setObjectName("lineEdit_4")
         self.label_7 = QtWidgets.QLabel(Frame)
         self.label_7.setGeometry(QtCore.QRect(10, 350, 391, 21))
         self.label_7.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -168,15 +170,16 @@ class InserisciAbbonamento(object):
                                    "}")
         self.label_7.setAlignment(QtCore.Qt.AlignLeading | QtCore.Qt.AlignLeft | QtCore.Qt.AlignVCenter)
         self.label_7.setObjectName("label_7")
-        self.lineEdit_5 = QtWidgets.QLineEdit(Frame)
-        self.lineEdit_5.setGeometry(QtCore.QRect(10, 380, 371, 31))
-        self.lineEdit_5.setStyleSheet("QLineEdit{\n"
+        self.lineEditTelefonoCliente = QtWidgets.QLineEdit(Frame)
+        self.lineEditTelefonoCliente.setGeometry(QtCore.QRect(10, 380, 371, 31))
+        self.lineEditTelefonoCliente.setStyleSheet("QLineEdit{\n"
                                       "border: 2px solid black;\n"
                                       "border-radius: 6px;\n"
                                       "}")
-        self.lineEdit_5.setObjectName("lineEdit_5")
+        self.lineEditTelefonoCliente.setObjectName("lineEdit_5")
         self.pushButtonGestioneVenditePrincipale.clicked.connect(self.openGestioneVenditePrincipale)
         self.pushButtonLogout.clicked.connect(self.openLogin)
+        self.pushButtonInserisci.clicked.connect(self.clickInserisciAbbonamento)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -187,7 +190,7 @@ class InserisciAbbonamento(object):
         self.label.setText(_translate("Frame", "Inserisci nome cliente:"))
         self.label_4.setText(_translate("Frame", "INSERISCI ABBONAMENTO"))
         self.pushButtonLogout.setText(_translate("Frame", " Logout"))
-        self.pushButton_6.setText(_translate("Frame", "Inserisci"))
+        self.pushButtonInserisci.setText(_translate("Frame", "Inserisci"))
         self.pushButtonGestioneVenditePrincipale.setText(_translate("Frame", " Indietro"))
         self.label_3.setText(_translate("Frame", "Inserisci cognome cliente:"))
         self.label_5.setText(_translate("Frame", "Inserisci codice fiscale cliente:"))
@@ -216,4 +219,18 @@ class InserisciAbbonamento(object):
     # Metodo utilizzato per andare ad inserire sul file un
     # nuovo abbonamento a seguito delle verifiche necessarie
     # per settare email e telefono del cliente.
+    # Se tutti i vari controlli vengono superati,
+    # viene aperte l'interfaccia di conferma dell'inserimento del
+    # nuovo abbonamento.
     def clickInserisciAbbonamento(self):
+
+        gestoreAbbonamenti = GestioneAbbonamenti()
+
+        nome = self.lineEditNomeCliente.text()
+        cognome = self.lineEditCognomeCliente.text()
+        codiceFiscale = self.lineEditCodiceFiscaleCliente.text()
+        telefono = self.lineEditTelefonoCliente.text()
+        email = self.lineEditEmailCliente.text()
+
+
+

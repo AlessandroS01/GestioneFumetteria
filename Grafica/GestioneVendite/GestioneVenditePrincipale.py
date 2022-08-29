@@ -72,16 +72,16 @@ class GestioneVenditePrincipale(object):
                         QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButtonVistaHome.setIcon(icon1)
         self.pushButtonVistaHome.setObjectName("pushButton_4")
-        self.pushButton_2 = QtWidgets.QPushButton(Frame)
-        self.pushButton_2.setGeometry(QtCore.QRect(250, 180, 201, 51))
+        self.pushButtonAcquistoAbbonamento = QtWidgets.QPushButton(Frame)
+        self.pushButtonAcquistoAbbonamento.setGeometry(QtCore.QRect(250, 180, 201, 51))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_2.setFont(font)
-        self.pushButton_2.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_2.setStyleSheet("QPushButton{\n"
+        self.pushButtonAcquistoAbbonamento.setFont(font)
+        self.pushButtonAcquistoAbbonamento.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonAcquistoAbbonamento.setStyleSheet("QPushButton{\n"
                                         "border: 2px solid black;\n"
                                         "border-radius: 10px;\n"
                                         "}\n"
@@ -90,7 +90,7 @@ class GestioneVenditePrincipale(object):
                                         "background-color: #14626c;\n"
                                         "color:white;\n"
                                         "}")
-        self.pushButton_2.setObjectName("pushButton_2")
+        self.pushButtonAcquistoAbbonamento.setObjectName("pushButton_2")
         self.pushButtonRegistrazioneAcquisto = QtWidgets.QPushButton(Frame)
         self.pushButtonRegistrazioneAcquisto.setGeometry(QtCore.QRect(30, 180, 201, 51))
         font = QtGui.QFont()
@@ -161,6 +161,7 @@ class GestioneVenditePrincipale(object):
         self.pushButtonLogout.clicked.connect(self.openLogin)
         self.pushButtonVistaHome.clicked.connect(self.openVistaHome)
         self.pushButtonRegistrazioneAcquisto.clicked.connect(self.openInserisciCodiceAbbonamento)
+        self.pushButtonAcquistoAbbonamento.clicked.connect(self.openAcquistoAbbonamento)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -171,7 +172,7 @@ class GestioneVenditePrincipale(object):
         self.label_4.setText(_translate("Frame", "GESTIONE VENDITE"))
         self.pushButtonLogout.setText(_translate("Frame", " Logout"))
         self.pushButtonVistaHome.setText(_translate("Frame", "Home"))
-        self.pushButton_2.setText(_translate("Frame", "Acquisto\n"
+        self.pushButtonAcquistoAbbonamento.setText(_translate("Frame", "Acquisto\n"
                                                       " Abbonamento"))
         self.pushButtonRegistrazioneAcquisto.setText(_translate("Frame", "Registrazione\n"
                                                                          " Acquisto"))
@@ -215,4 +216,15 @@ class GestioneVenditePrincipale(object):
         self.ui = InserisciCodiceAbbonamento()
         self.ui.setupUi(self.inserisciCodiceAbbonamento)
         self.inserisciCodiceAbbonamento.show()
+        self.frame.close()
+
+    # Metodo che permette di aprire l'interfaccia sulla quale si
+    # può creare e salvare un nuovo abbonamento.
+    # L'interfaccia è : InserisciAbbonamento
+    def openAcquistoAbbonamento(self):
+        from Grafica.GestioneVendite.InserisciAbbonamento import InserisciAbbonamento
+        self.inserisciAbbonamento = QtWidgets.QFrame()
+        self.ui = InserisciAbbonamento()
+        self.ui.setupUi(self.inserisciAbbonamento)
+        self.inserisciAbbonamento.show()
         self.frame.close()
