@@ -186,7 +186,6 @@ class ModificaUtente(object):
         if amministratore.controlloCredenziali(nomeUtenteVecchio, password):
             amministratore.setNomeUtente(nomeUtenteNuovo)
             self.openModificaEffettuata()
-
         else:
             self.ErrorMessageCambioUtente()
 

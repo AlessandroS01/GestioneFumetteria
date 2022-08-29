@@ -183,10 +183,21 @@ class ModificaPassword(object):
         passwordVecchia = self.lineEditPasswordVecchia.text()
         passwordNuova = self.lineEditPasswordNuova.text()
 
-        if amministratore.controlloCredenziali(nomeUtente, passwordVecchia):
-            amministratore.setPassword(passwordNuova)
-            self.openModificaEffettuata()
+        controllo = False
 
+        for char in passwordNuova:
+            if char.isupper():
+                controllo = True
+
+        if amministratore.controlloCredenziali(nomeUtente, passwordVecchia):
+            if len(passwordNuova) >= 8:
+                if controllo is True:
+                        amministratore.setPassword(passwordNuova)
+                        self.openModificaEffettuata()
+                else:
+                    self.ErrorMaiuscola()
+            else:
+                self.ErrorLunghezza()
         else:
             self.ErrorMessageCambioPassword()
 
@@ -224,6 +235,26 @@ class ModificaPassword(object):
         self.ErrorBox.setText("Nome utente o password errati")
         self.ErrorBox.setStyleSheet(
             "QLabel{min-width:200 px; font-size: 14px; font-family: Helvetica, Sans-Serif; } QPushButton:hover{"
+            "background-color: #14626c;color:white; }QPushButton{ width:40px; height:20px; font-size: 10px; "
+            "font-family: Helvetica, Sans-Serif; border: 1px solid black; border-radius: 5px; }")
+        self.ErrorBox.exec()
+
+    def ErrorLunghezza(self):
+        self.ErrorBox = QMessageBox()
+        self.ErrorBox.setWindowTitle("Errore")
+        self.ErrorBox.setText("La password deve contenere almeno\n8 caratteri")
+        self.ErrorBox.setStyleSheet(
+            "QLabel{min-width:300 px; font-size: 14px; font-family: Helvetica, Sans-Serif; } QPushButton:hover{"
+            "background-color: #14626c;color:white; }QPushButton{ width:40px; height:20px; font-size: 10px; "
+            "font-family: Helvetica, Sans-Serif; border: 1px solid black; border-radius: 5px; }")
+        self.ErrorBox.exec()
+
+    def ErrorMaiuscola(self):
+        self.ErrorBox = QMessageBox()
+        self.ErrorBox.setWindowTitle("Errore")
+        self.ErrorBox.setText("La password deve contenere almeno\nuna maiuscola.")
+        self.ErrorBox.setStyleSheet(
+            "QLabel{min-width:300 px; font-size: 14px; font-family: Helvetica, Sans-Serif; } QPushButton:hover{"
             "background-color: #14626c;color:white; }QPushButton{ width:40px; height:20px; font-size: 10px; "
             "font-family: Helvetica, Sans-Serif; border: 1px solid black; border-radius: 5px; }")
         self.ErrorBox.exec()
