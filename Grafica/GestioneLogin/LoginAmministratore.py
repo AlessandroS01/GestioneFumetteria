@@ -21,12 +21,12 @@ class LoginAmministratore(object):
         self.lineEditNomeUtente = QtWidgets.QLineEdit(Frame)
         self.lineEditNomeUtente.setGeometry(QtCore.QRect(20, 150, 451, 31))
         self.lineEditNomeUtente.setStyleSheet("border: 1px solid black;\n"
-                                    "border-radius: 10px;")
+                                              "border-radius: 10px;")
         self.lineEditNomeUtente.setObjectName("lineEdit")
         self.lineEditPassword = QtWidgets.QLineEdit(Frame)
         self.lineEditPassword.setGeometry(QtCore.QRect(20, 220, 451, 31))
         self.lineEditPassword.setStyleSheet("border: 1px solid black;\n"
-                                      "border-radius: 10px;")
+                                            "border-radius: 10px;")
         self.lineEditPassword.setObjectName("lineEdit_2")
         self.label = QtWidgets.QLabel(Frame)
         self.label.setGeometry(QtCore.QRect(20, 120, 111, 21))
@@ -65,6 +65,7 @@ class LoginAmministratore(object):
         self.label_4.setStyleSheet("border: 1px solid black;\n"
                                    "border-radius:10px;")
         self.label_4.setObjectName("label_4")
+        self.label_4.setAlignment(QtCore.Qt.AlignCenter)
         self.pushButtonLogin = QtWidgets.QPushButton(Frame)
         self.pushButtonLogin.setGeometry(QtCore.QRect(20, 270, 451, 41))
         font = QtGui.QFont()
@@ -134,4 +135,3 @@ class LoginAmministratore(object):
             "background-color: #14626c;color:white; }QPushButton{ width:40px; height:20px; font-size: 10px; "
             "font-family: Helvetica, Sans-Serif; border: 1px solid black; border-radius: 5px; }")
         self.ErrorBox.exec()
-
