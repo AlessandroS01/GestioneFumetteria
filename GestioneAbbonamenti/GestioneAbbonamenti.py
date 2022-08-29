@@ -169,25 +169,29 @@ class GestioneAbbonamenti:
                         codiceFiscale, telefono,
                         email):
 
-        dataEmissione = str(datetime.now().date())
         dataOdierna = datetime.now()
-        dataScadenza = str(dataOdierna.day) + "/" + str(dataOdierna.month) + "/" + str(dataOdierna.year +1)
+
+        dataEmissione = str(dataOdierna.day) + "/" + str(dataOdierna.month) + "/" + str(dataOdierna.year)
+        dataScadenza = str(dataOdierna.day) + "/" + str(dataOdierna.month) + "/" + str(dataOdierna.year + 1)
 
         with open(self.pathAssolutoAbbonamenti, 'r') as file:
+            numeroLinee = file.readlines()
             filedata = file.read()
             file.close()
 
-        numeroAbbonamentiEsistenti = 0
-        for index in range(len(str(filedata).split("\n"))):
-            numeroAbbonamentiEsistenti = index
+        numeroAbbonamentiEsistenti = len(numeroLinee)
 
         clienteAppoggio = Cliente(nome, cognome,
                                   codiceFiscale, telefono,
                                   email)
 
         abbonamentoAppoggio = Abbonamento(clienteAppoggio, dataEmissione,
-                                          dataScadenza, str(numeroAbbonamentiEsistenti+1) )
+                                          dataScadenza, str(numeroAbbonamentiEsistenti + 1))
 
         with open(self.pathAssolutoAbbonamenti, 'a') as file:
-            file.write(abbonamentoAppoggio.getAbbonamento() + "\n")
-            file.close()
+            if os.stat(self.pathAssolutoAbbonamenti).st_size == 0:
+                file.write(abbonamentoAppoggio.getAbbonamento())
+                file.close()
+            else:
+                file.write("\n" + abbonamentoAppoggio.getAbbonamento())
+                file.close()

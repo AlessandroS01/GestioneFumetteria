@@ -1,4 +1,5 @@
 from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtWidgets import QMessageBox
 
 from GestioneAbbonamenti.GestioneAbbonamenti import GestioneAbbonamenti
 
@@ -7,7 +8,7 @@ class InserisciAbbonamento(object):
 
     def setupUi(self, Frame):
         Frame.setObjectName("Frame")
-        Frame.resize(387, 562)
+        Frame.resize(387, 541)
         Frame.setStyleSheet("QFrame{\n"
                             "background-color: rgb(255, 255, 255);\n"
                             "}")
@@ -26,9 +27,9 @@ class InserisciAbbonamento(object):
         self.lineEditNomeCliente = QtWidgets.QLineEdit(Frame)
         self.lineEditNomeCliente.setGeometry(QtCore.QRect(10, 100, 371, 31))
         self.lineEditNomeCliente.setStyleSheet("QLineEdit{\n"
-                                    "border: 2px solid black;\n"
-                                    "border-radius: 6px;\n"
-                                    "}")
+                                               "border: 2px solid black;\n"
+                                               "border-radius: 6px;\n"
+                                               "}")
         self.lineEditNomeCliente.setObjectName("lineEdit")
         self.label_4 = QtWidgets.QLabel(Frame)
         self.label_4.setGeometry(QtCore.QRect(10, 20, 371, 31))
@@ -45,7 +46,7 @@ class InserisciAbbonamento(object):
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
         self.pushButtonLogout = QtWidgets.QPushButton(Frame)
-        self.pushButtonLogout.setGeometry(QtCore.QRect(10, 520, 141, 31))
+        self.pushButtonLogout.setGeometry(QtCore.QRect(10, 500, 141, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
@@ -68,7 +69,7 @@ class InserisciAbbonamento(object):
         self.pushButtonLogout.setCheckable(False)
         self.pushButtonLogout.setObjectName("pushButton_5")
         self.pushButtonInserisci = QtWidgets.QPushButton(Frame)
-        self.pushButtonInserisci.setGeometry(QtCore.QRect(10, 460, 371, 31))
+        self.pushButtonInserisci.setGeometry(QtCore.QRect(10, 430, 371, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
@@ -77,18 +78,18 @@ class InserisciAbbonamento(object):
         self.pushButtonInserisci.setFont(font)
         self.pushButtonInserisci.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pushButtonInserisci.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
+                                               "border: 2px solid black;\n"
+                                               "border-radius: 10px;\n"
+                                               "}\n"
+                                               "QPushButton:hover{\n"
+                                               "\n"
+                                               "background-color: #14626c;\n"
+                                               "color:white;\n"
+                                               "}")
         self.pushButtonInserisci.setCheckable(False)
         self.pushButtonInserisci.setObjectName("pushButton_6")
         self.pushButtonGestioneVenditePrincipale = QtWidgets.QPushButton(Frame)
-        self.pushButtonGestioneVenditePrincipale.setGeometry(QtCore.QRect(160, 520, 141, 31))
+        self.pushButtonGestioneVenditePrincipale.setGeometry(QtCore.QRect(160, 500, 141, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
@@ -112,9 +113,9 @@ class InserisciAbbonamento(object):
         self.lineEditCognomeCliente = QtWidgets.QLineEdit(Frame)
         self.lineEditCognomeCliente.setGeometry(QtCore.QRect(10, 170, 371, 31))
         self.lineEditCognomeCliente.setStyleSheet("QLineEdit{\n"
-                                      "border: 2px solid black;\n"
-                                      "border-radius: 6px;\n"
-                                      "}")
+                                                  "border: 2px solid black;\n"
+                                                  "border-radius: 6px;\n"
+                                                  "}")
         self.lineEditCognomeCliente.setObjectName("lineEdit_2")
         self.label_3 = QtWidgets.QLabel(Frame)
         self.label_3.setGeometry(QtCore.QRect(10, 140, 391, 21))
@@ -139,9 +140,9 @@ class InserisciAbbonamento(object):
         self.lineEditCodiceFiscaleCliente = QtWidgets.QLineEdit(Frame)
         self.lineEditCodiceFiscaleCliente.setGeometry(QtCore.QRect(10, 240, 371, 31))
         self.lineEditCodiceFiscaleCliente.setStyleSheet("QLineEdit{\n"
-                                      "border: 2px solid black;\n"
-                                      "border-radius: 6px;\n"
-                                      "}")
+                                                        "border: 2px solid black;\n"
+                                                        "border-radius: 6px;\n"
+                                                        "}")
         self.lineEditCodiceFiscaleCliente.setObjectName("lineEdit_3")
         self.label_6 = QtWidgets.QLabel(Frame)
         self.label_6.setGeometry(QtCore.QRect(10, 280, 391, 21))
@@ -156,9 +157,9 @@ class InserisciAbbonamento(object):
         self.lineEditEmailCliente = QtWidgets.QLineEdit(Frame)
         self.lineEditEmailCliente.setGeometry(QtCore.QRect(10, 310, 371, 31))
         self.lineEditEmailCliente.setStyleSheet("QLineEdit{\n"
-                                      "border: 2px solid black;\n"
-                                      "border-radius: 6px;\n"
-                                      "}")
+                                                "border: 2px solid black;\n"
+                                                "border-radius: 6px;\n"
+                                                "}")
         self.lineEditEmailCliente.setObjectName("lineEdit_4")
         self.label_7 = QtWidgets.QLabel(Frame)
         self.label_7.setGeometry(QtCore.QRect(10, 350, 391, 21))
@@ -173,9 +174,9 @@ class InserisciAbbonamento(object):
         self.lineEditTelefonoCliente = QtWidgets.QLineEdit(Frame)
         self.lineEditTelefonoCliente.setGeometry(QtCore.QRect(10, 380, 371, 31))
         self.lineEditTelefonoCliente.setStyleSheet("QLineEdit{\n"
-                                      "border: 2px solid black;\n"
-                                      "border-radius: 6px;\n"
-                                      "}")
+                                                   "border: 2px solid black;\n"
+                                                   "border-radius: 6px;\n"
+                                                   "}")
         self.lineEditTelefonoCliente.setObjectName("lineEdit_5")
         self.pushButtonGestioneVenditePrincipale.clicked.connect(self.openGestioneVenditePrincipale)
         self.pushButtonLogout.clicked.connect(self.openLogin)
@@ -216,7 +217,7 @@ class InserisciAbbonamento(object):
         self.gestioneVenditePrincipale.show()
         self.frame.close()
 
-    # Metodo utilizzato per andare ad inserire sul file un
+    # Metodo utilizzato per andare a inserire sul file un
     # nuovo abbonamento a seguito delle verifiche necessarie
     # per settare email e telefono del cliente.
     # Se tutti i vari controlli vengono superati,
@@ -232,5 +233,72 @@ class InserisciAbbonamento(object):
         telefono = self.lineEditTelefonoCliente.text()
         email = self.lineEditEmailCliente.text()
 
+        ricercaEmail = gestoreAbbonamenti.ricercaEmail(email)[0]
+        ricercaTelefono = gestoreAbbonamenti.ricercaTelefono(telefono)[0]
 
+        if telefono.isnumeric():
+            if nome != "" and cognome != "" and codiceFiscale != "" and telefono != "" and email != "":
+                if ricercaEmail is False:
+                    if ricercaTelefono is False:
+                        gestoreAbbonamenti.creaAbbonamento(nome, cognome,
+                                                           codiceFiscale, telefono, email)
+                        self.openInserisciAbbonamentoEffettuato()
+                    else:
+                        self.ErrorRicercaTelefono()
+                else:
+                    self.ErrorRicercaEmail()
+            else:
+                self.ErrorCampiInseriti()
+        else:
+            self.ErrorTelefono()
 
+    # Metodo che permette di aprire l'interfaccia "InserisciAbbonamentoEffettuato" di
+    # conferma dell'inserimento di un nuovo abbonamento sul file
+    # "Abbonamenti.txt".
+    def openInserisciAbbonamentoEffettuato(self):
+        from Grafica.GestioneVendite.InserisciAbbonamentoEffettuato import InserisciAbbonamentoEffettuato
+        self.inserisciAbbonamentoEffettuato = QtWidgets.QFrame()
+        self.ui = InserisciAbbonamentoEffettuato()
+        self.ui.setupUi(self.inserisciAbbonamentoEffettuato)
+        self.inserisciAbbonamentoEffettuato.show()
+        self.frame.close()
+
+    def ErrorRicercaEmail(self):
+        self.ErrorBox = QMessageBox()
+        self.ErrorBox.setWindowTitle("Errore")
+        self.ErrorBox.setText("L'email inserita è già utilizzata")
+        self.ErrorBox.setStyleSheet(
+            "QLabel{min-width:300 px; font-size: 14px; font-family: Helvetica, Sans-Serif; } QPushButton:hover{"
+            "background-color: #14626c;color:white; }QPushButton{ width:40px; height:20px; font-size: 10px; "
+            "font-family: Helvetica, Sans-Serif; border: 1px solid black; border-radius: 5px; }")
+        self.ErrorBox.exec()
+
+    def ErrorRicercaTelefono(self):
+        self.ErrorBox = QMessageBox()
+        self.ErrorBox.setWindowTitle("Errore")
+        self.ErrorBox.setText("Il telefono inserito è già utilizzato.")
+        self.ErrorBox.setStyleSheet(
+            "QLabel{min-width:300 px; font-size: 14px; font-family: Helvetica, Sans-Serif; } QPushButton:hover{"
+            "background-color: #14626c;color:white; }QPushButton{ width:40px; height:20px; font-size: 10px; "
+            "font-family: Helvetica, Sans-Serif; border: 1px solid black; border-radius: 5px; }")
+        self.ErrorBox.exec()
+
+    def ErrorTelefono(self):
+        self.ErrorBox = QMessageBox()
+        self.ErrorBox.setWindowTitle("Errore")
+        self.ErrorBox.setText("Il telefono inserito può avere solo \ncaratteri numerici.")
+        self.ErrorBox.setStyleSheet(
+            "QLabel{min-width:300 px; font-size: 14px; font-family: Helvetica, Sans-Serif; } QPushButton:hover{"
+            "background-color: #14626c;color:white; }QPushButton{ width:40px; height:20px; font-size: 10px; "
+            "font-family: Helvetica, Sans-Serif; border: 1px solid black; border-radius: 5px; }")
+        self.ErrorBox.exec()
+
+    def ErrorCampiInseriti(self):
+        self.ErrorBox = QMessageBox()
+        self.ErrorBox.setWindowTitle("Errore")
+        self.ErrorBox.setText("Inserire tutti i campi.")
+        self.ErrorBox.setStyleSheet(
+            "QLabel{min-width:300 px; font-size: 14px; font-family: Helvetica, Sans-Serif; } QPushButton:hover{"
+            "background-color: #14626c;color:white; }QPushButton{ width:40px; height:20px; font-size: 10px; "
+            "font-family: Helvetica, Sans-Serif; border: 1px solid black; border-radius: 5px; }")
+        self.ErrorBox.exec()
