@@ -2,7 +2,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWidgets import QMessageBox
 
 
-class InserisciDataVendite(object):
+class InserisciDataIncasso(object):
 
     def setupUi(self, Frame):
         Frame.setObjectName("Frame")
@@ -45,8 +45,8 @@ class InserisciDataVendite(object):
                                             "color:white;\n"
                                             "}")
         icon = QtGui.QIcon()
-        icon.addPixmap(QtGui.QPixmap("Images\\log.png"), QtGui.QIcon.Normal,
-                       QtGui.QIcon.Off)
+        icon.addPixmap(QtGui.QPixmap("Images\\log.png"),
+                       QtGui.QIcon.Normal, QtGui.QIcon.Off)
         self.pushButtonLogout.setIcon(icon)
         self.pushButtonLogout.setCheckable(False)
         self.pushButtonLogout.setObjectName("pushButton_5")
@@ -93,10 +93,6 @@ class InserisciDataVendite(object):
                                              "}")
         self.pushButtonRicerca.setCheckable(False)
         self.pushButtonRicerca.setObjectName("pushButton_6")
-        icon1 = QtGui.QIcon()
-        icon1.addPixmap(QtGui.QPixmap("Images\\magnifying-glass.png"), QtGui.QIcon.Normal,
-                        QtGui.QIcon.Off)
-        self.pushButtonRicerca.setIcon(icon1)
         self.label_3 = QtWidgets.QLabel(Frame)
         self.label_3.setGeometry(QtCore.QRect(10, 70, 371, 21))
         self.label_3.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -117,8 +113,8 @@ class InserisciDataVendite(object):
         self.dateEdit.setCalendarPopup(False)
         self.dateEdit.setDate(QtCore.QDate(2023, 1, 1))
         self.dateEdit.setObjectName("dateEdit")
-        self.pushButtonGestioneVenditePrincipale.clicked.connect(self.openGestioneAbbonamentiPrincipale)
         self.pushButtonLogout.clicked.connect(self.openLogin)
+        self.pushButtonGestioneVenditePrincipale.clicked.connect(self.openGestioneVenditePrincipale)
         self.pushButtonRicerca.clicked.connect(self.clickRicerca)
 
         self.retranslateUi(Frame)
@@ -126,12 +122,12 @@ class InserisciDataVendite(object):
 
     def retranslateUi(self, Frame):
         _translate = QtCore.QCoreApplication.translate
-        Frame.setWindowTitle(_translate("Frame", "Fumetteria - Inserisci Data"))
-        self.label_4.setText(_translate("Frame", "IMMISSIONE DATA"))
+        Frame.setWindowTitle(_translate("Frame", "Fumetteria - Inserisci Data Incasso"))
+        self.label_4.setText(_translate("Frame", "DATA INCASSO"))
         self.pushButtonLogout.setText(_translate("Frame", " Logout"))
         self.pushButtonGestioneVenditePrincipale.setText(_translate("Frame", " Indietro"))
         self.pushButtonRicerca.setText(_translate("Frame", " Ricerca"))
-        self.label_3.setText(_translate("Frame", "Inserisci la data :"))
+        self.label_3.setText(_translate("Frame", "Inserisci la data per visualizzare l\'incasso:"))
 
     # Metodo che permette di ritornare all'interfaccia iniziale
     # del programma, ovvero LoginAmministratore.
@@ -144,7 +140,7 @@ class InserisciDataVendite(object):
         self.frame.close()
 
     # Metodo che permette di ritornare all'interfaccia GestioneVenditePrincipale.
-    def openGestioneAbbonamentiPrincipale(self):
+    def openGestioneVenditePrincipale(self):
         from Grafica.GestioneVendite.GestioneVenditePrincipale import GestioneVenditePrincipale
         self.gestioneVenditePrincipale = QtWidgets.QFrame()
         self.ui = GestioneVenditePrincipale()
@@ -152,11 +148,11 @@ class InserisciDataVendite(object):
         self.gestioneVenditePrincipale.show()
         self.frame.close()
 
-    # Metodo che permette di ricercare le vendite avvenute durante la giornata immessa.
+    # Metodo che permette di visualizza l'incasso durante la giornata immessa.
     # Nel caso in cui non fossero state effettuate vendite, viene visualizzata una schermata di errore.
     # Nel caso in cui esistessero invece,
-    # viene visualizzata la tabella contenente tutte le vendite effettuate durante quella giornata
-    # tramite "self.openStatisticheAbbonamenti".
+    # viene visualizzata una schermata contenente l'incasso durante quella giornata
+    # tramite "self.openIncassoGiornaliero".
     def clickRicerca(self):
         from GestioneVendite.GestoreVendite import GestoreVendite
         gestoreVendite = GestoreVendite()
@@ -172,17 +168,17 @@ class InserisciDataVendite(object):
         ritorno = gestoreVendite.getVenditeGiornata(dataImmessa)
 
         if len(ritorno[0]) != 0:
-            self.openVenditeGiornaliere(gestoreVendite, dataImmessa)
+            self.openIncassoGiornaliero(dataImmessa, gestoreVendite)
         else:
             self.ErrorData()
 
-    # Metodo che fa visualizzare a schermo l'interfaccia VenditeGiornaliere.
-    def openVenditeGiornaliere(self, gestoreVendite, dataEmissione):
-        from Grafica.GestioneVendite.VenditeGiornaliere import VenditeGiornaliere
-        self.venditeGiornaliere = QtWidgets.QFrame()
-        self.ui = VenditeGiornaliere()
-        self.ui.setupUi(self.venditeGiornaliere, gestoreVendite, dataEmissione)
-        self.venditeGiornaliere.show()
+    # Metodo che fa visualizzare a schermo l'interfaccia IncassoGiornaliero.
+    def openIncassoGiornaliero(self, dataEmissione, gestoreVendite):
+        from Grafica.GestioneVendite.IncassoGiornaliero import IncassoGiornaliero
+        self.incassoGiornaliero = QtWidgets.QFrame()
+        self.ui = IncassoGiornaliero()
+        self.ui.setupUi(self.incassoGiornaliero, dataEmissione, gestoreVendite)
+        self.incassoGiornaliero.show()
         self.frame.close()
 
     def ErrorData(self):

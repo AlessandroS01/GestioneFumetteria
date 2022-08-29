@@ -1,8 +1,6 @@
 from datetime import datetime
 from pathlib import Path
 
-from GestioneVendite.Scontrino import Scontrino
-
 
 class GestoreVendite:
 
@@ -58,13 +56,21 @@ class GestoreVendite:
             prezzoTotale += float(prezzo)
             prodottoAcquistato = listaAcquisti[index].getAcquisto()
             if index == 0:
-                scontrinoNuovo = str(prodottoAcquistato.getNomeProdotto() + "|" + prodottoAcquistato.getCodiceSeriale() + "|"
-                                     + listaAcquisti[index].getQuantitaAcquistate() + "|" + str(prezzo) + "€")
+                scontrinoNuovo = str(
+                    prodottoAcquistato.getNomeProdotto() + "|" + prodottoAcquistato.getCodiceSeriale() + "|"
+                    + listaAcquisti[index].getQuantitaAcquistate() + "|" + str(prezzo) + "€")
             else:
-                scontrinoNuovo += str("-" + prodottoAcquistato.getNomeProdotto() + "|" + prodottoAcquistato.getCodiceSeriale() + "|"
-                                      + listaAcquisti[index].getQuantitaAcquistate() + "|" + str(prezzo) + "€")
+                scontrinoNuovo += str(
+                    "-" + prodottoAcquistato.getNomeProdotto() + "|" + prodottoAcquistato.getCodiceSeriale() + "|"
+                    + listaAcquisti[index].getQuantitaAcquistate() + "|" + str(prezzo) + "€")
 
-        dataEmissioneScontrino = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
+        giorno = datetime.now().day
+        mese = datetime.now().month
+        anno = datetime.now().year
+
+        dataEmissioneScontrino = str(str(giorno) + "/" +
+                                     str(mese) + "/" +
+                                     str(anno))
 
         scontrinoNuovo += str(";" + str(prezzoTotale) + "€" + ";"
                               + str(dataEmissioneScontrino)
@@ -74,6 +80,31 @@ class GestoreVendite:
         with open(self.pathAbsolute, 'a') as f:
             f.write(scontrinoNuovo)
             f.close()
+
+    # Metodo utilizzato per ritrovare quali sono le vendite
+    # effettuata durante una giornata immessa da interfaccia.
+    def getVenditeGiornata(self, data):
+        prezzoTotale = 0
+        listaVenditeGiornata = []
+
+        with open(self.pathAbsolute, 'r') as f:
+            contenutoFile = f.read().split("\n")
+            f.close()
+
+        for index in range(len(contenutoFile)):
+            splitData = contenutoFile[index].split(";")
+            dataTotale = splitData[len(splitData) - 2].split(" ")
+            dataScontrino = dataTotale[0]
+
+            if dataScontrino == data:
+                vendite = splitData[len(splitData) - 4]
+                # Utilizzato per eliminare l'ultimo carattere (€) all'interno
+                # della stringa
+                prezzo = splitData[len(splitData) - 3][:-1]
+                prezzoTotale += float(prezzo)
+                listaVenditeGiornata.append(vendite)
+
+        return listaVenditeGiornata, prezzoTotale
 
     def aggiungiPrezzoProdotto(self, prezzi):
         self.listaPrezziProdotti.append(prezzi)

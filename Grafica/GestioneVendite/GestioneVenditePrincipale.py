@@ -82,14 +82,14 @@ class GestioneVenditePrincipale(object):
         self.pushButtonAcquistoAbbonamento.setFont(font)
         self.pushButtonAcquistoAbbonamento.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pushButtonAcquistoAbbonamento.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
+                                                         "border: 2px solid black;\n"
+                                                         "border-radius: 10px;\n"
+                                                         "}\n"
+                                                         "QPushButton:hover{\n"
+                                                         "\n"
+                                                         "background-color: #14626c;\n"
+                                                         "color:white;\n"
+                                                         "}")
         self.pushButtonAcquistoAbbonamento.setObjectName("pushButton_2")
         self.pushButtonRegistrazioneAcquisto = QtWidgets.QPushButton(Frame)
         self.pushButtonRegistrazioneAcquisto.setGeometry(QtCore.QRect(30, 180, 201, 51))
@@ -130,39 +130,40 @@ class GestioneVenditePrincipale(object):
         self.pushButtonVenditeGiornaliere.setFont(font)
         self.pushButtonVenditeGiornaliere.setFocusPolicy(QtCore.Qt.NoFocus)
         self.pushButtonVenditeGiornaliere.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
+                                                        "border: 2px solid black;\n"
+                                                        "border-radius: 10px;\n"
+                                                        "}\n"
+                                                        "QPushButton:hover{\n"
+                                                        "\n"
+                                                        "background-color: #14626c;\n"
+                                                        "color:white;\n"
+                                                        "}")
         self.pushButtonVenditeGiornaliere.setObjectName("pushButton_3")
-        self.pushButton_6 = QtWidgets.QPushButton(Frame)
-        self.pushButton_6.setGeometry(QtCore.QRect(250, 250, 201, 51))
+        self.pushButtonInserisciDataIncasso = QtWidgets.QPushButton(Frame)
+        self.pushButtonInserisciDataIncasso.setGeometry(QtCore.QRect(250, 250, 201, 51))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
         font.setBold(True)
         font.setWeight(75)
-        self.pushButton_6.setFont(font)
-        self.pushButton_6.setFocusPolicy(QtCore.Qt.NoFocus)
-        self.pushButton_6.setStyleSheet("QPushButton{\n"
-                                        "border: 2px solid black;\n"
-                                        "border-radius: 10px;\n"
-                                        "}\n"
-                                        "QPushButton:hover{\n"
-                                        "\n"
-                                        "background-color: #14626c;\n"
-                                        "color:white;\n"
-                                        "}")
-        self.pushButton_6.setObjectName("pushButton_6")
+        self.pushButtonInserisciDataIncasso.setFont(font)
+        self.pushButtonInserisciDataIncasso.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonInserisciDataIncasso.setStyleSheet("QPushButton{\n"
+                                                          "border: 2px solid black;\n"
+                                                          "border-radius: 10px;\n"
+                                                          "}\n"
+                                                          "QPushButton:hover{\n"
+                                                          "\n"
+                                                          "background-color: #14626c;\n"
+                                                          "color:white;\n"
+                                                          "}")
+        self.pushButtonInserisciDataIncasso.setObjectName("pushButton_6")
         self.pushButtonLogout.clicked.connect(self.openLogin)
         self.pushButtonVistaHome.clicked.connect(self.openVistaHome)
         self.pushButtonRegistrazioneAcquisto.clicked.connect(self.openInserisciCodiceAbbonamento)
         self.pushButtonAcquistoAbbonamento.clicked.connect(self.openAcquistoAbbonamento)
         self.pushButtonVenditeGiornaliere.clicked.connect(self.openInserisciDataVendite)
+        self.pushButtonInserisciDataIncasso.clicked.connect(self.openInserisciDataIncasso)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -174,7 +175,7 @@ class GestioneVenditePrincipale(object):
         self.pushButtonLogout.setText(_translate("Frame", " Logout"))
         self.pushButtonVistaHome.setText(_translate("Frame", "Home"))
         self.pushButtonAcquistoAbbonamento.setText(_translate("Frame", "Acquisto\n"
-                                                      " Abbonamento"))
+                                                                       " Abbonamento"))
         self.pushButtonRegistrazioneAcquisto.setText(_translate("Frame", "Registrazione\n"
                                                                          " Acquisto"))
         self.label.setText(_translate("Frame", "Utilizzare i pulsanti per navigare tra le attività. Se vuoi \n"
@@ -184,9 +185,9 @@ class GestioneVenditePrincipale(object):
                                                " le vendite o l\'incasso totale durante una giornata, cliccare sui\n"
                                                " due relativi pulsanti."))
         self.pushButtonVenditeGiornaliere.setText(_translate("Frame", "Visualizza\n"
-                                                      " Vendite Giornata"))
-        self.pushButton_6.setText(_translate("Frame", "Visualizza\n"
-                                                      " Incasso Giornata"))
+                                                                      " Vendite Giornata"))
+        self.pushButtonInserisciDataIncasso.setText(_translate("Frame", "Visualizza\n"
+                                                                        " Incasso Giornata"))
 
     # Metodo che permette di ritornare all'interfaccia VistaHome.
     def openVistaHome(self):
@@ -239,4 +240,15 @@ class GestioneVenditePrincipale(object):
         self.ui = InserisciDataVendite()
         self.ui.setupUi(self.inserisciDataVendite)
         self.inserisciDataVendite.show()
+        self.frame.close()
+
+    # Metodo che permette di aprire l'interfaccia sulla quale si
+    # può vedere l'incasso durante una giornata.
+    # L'interfaccia è : InserisciDataIncasso
+    def openInserisciDataIncasso(self):
+        from Grafica.GestioneVendite.InserisciDataIncasso import InserisciDataIncasso
+        self.inserisciDataIncasso = QtWidgets.QFrame()
+        self.ui = InserisciDataIncasso()
+        self.ui.setupUi(self.inserisciDataIncasso)
+        self.inserisciDataIncasso.show()
         self.frame.close()
