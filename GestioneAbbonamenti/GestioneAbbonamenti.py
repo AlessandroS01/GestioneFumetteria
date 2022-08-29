@@ -12,21 +12,21 @@ class GestioneAbbonamenti:
 
     def __init__(self):
 
-        pathRelativoPrezzo = Path("PrezzoAbbonamenti")
-        pathAssolutoPrezzo = pathRelativoPrezzo.absolute()
+        self.pathRelativoPrezzo = Path("PrezzoAbbonamenti")
+        self.pathAssolutoPrezzo = self.pathRelativoPrezzo.absolute()
 
-        with open(pathAssolutoPrezzo, 'r') as f:
+        with open(self.pathAssolutoPrezzo, 'r') as f:
             self.prezzoAbbonamento = f.read()
             f.close()
 
-        pathRelativoAbbonamenti = Path("Abbonamenti")
-        pathAssolutoAbbonamenti = pathRelativoAbbonamenti.absolute()
+        self.pathRelativoAbbonamenti = Path("Abbonamenti")
+        self.pathAssolutoAbbonamenti = self.pathRelativoAbbonamenti.absolute()
 
-        with open(pathAssolutoAbbonamenti, 'r') as f:
+        with open(self.pathAssolutoAbbonamenti, 'r') as f:
             storage = f.read()
             f.close()
 
-        if os.stat(pathAssolutoAbbonamenti).st_size == 0:
+        if os.stat(self.pathAssolutoAbbonamenti).st_size == 0:
             self.listaAbbonamenti = []
         else:
 
@@ -57,10 +57,7 @@ class GestioneAbbonamenti:
 
     def setPrezzoAbbonamento(self, prezzoAbbonamento):
 
-        pathRelativoPrezzo = Path("PrezzoAbbonamenti")
-        pathAssolutoPrezzo = pathRelativoPrezzo.absolute()
-
-        with open(pathAssolutoPrezzo, 'w') as f:
+        with open(self.pathAssolutoPrezzo, 'w') as f:
             f.write(prezzoAbbonamento)
             f.close()
 
@@ -156,15 +153,41 @@ class GestioneAbbonamenti:
     # Metodo richiamato se si vuole ad andare a sostituire una
     # linea all'interno del file "Abbonamenti.txt".
     def sovrascriviDati(self, stringaDaCambiare, stringaModificata):
-        pathRelativo = Path("Abbonamenti")
-        pathAssoluto = pathRelativo.absolute()
 
-        with open(pathAssoluto, 'r') as file:
+        with open(self.pathAssolutoAbbonamenti, 'r') as file:
             filedata = file.read()
 
         # Replace the target string
         filedata = filedata.replace(stringaDaCambiare, stringaModificata)
 
         # Write the file out again
-        with open(pathAssoluto, 'w') as file:
+        with open(self.pathAssolutoAbbonamenti, 'w') as file:
             file.write(filedata)
+
+    # Metodo utilizzato per creare e salvare su file un nuovo abbonamento.
+    def creaAbbonamento(self, nome, cognome,
+                        codiceFiscale, telefono,
+                        email):
+
+        dataEmissione = str(datetime.now().date())
+        dataOdierna = datetime.now()
+        dataScadenza = str(dataOdierna.day) + "/" + str(dataOdierna.month) + "/" + str(dataOdierna.year +1)
+
+        with open(self.pathAssolutoAbbonamenti, 'r') as file:
+            filedata = file.read()
+            file.close()
+
+        numeroAbbonamentiEsistenti = 0
+        for index in range(len(str(filedata).split("\n"))):
+            numeroAbbonamentiEsistenti = index
+
+        clienteAppoggio = Cliente(nome, cognome,
+                                  codiceFiscale, telefono,
+                                  email)
+
+        abbonamentoAppoggio = Abbonamento(clienteAppoggio, dataEmissione,
+                                          dataScadenza, str(numeroAbbonamentiEsistenti+1) )
+
+        with open(self.pathAssolutoAbbonamenti, 'a') as file:
+            file.write(abbonamentoAppoggio.getAbbonamento() + "\n")
+            file.close()

@@ -314,6 +314,7 @@ class AggiungiAcquisto(object):
             self.openScontrino(self.gestoreVendite.listaAcquisti(), self.gestoreVendite.getListaPrezziProdotti())
         else:
             self.ErrorAcquisti()
+
     # Metodo che permette di aprire l'interfaccia sulla quale
     # si può creare lo scontrino.
     def openScontrino(self, acquisti, listaPrezziProdotti):

@@ -1,3 +1,4 @@
+from datetime import datetime
 from pathlib import Path
 
 from GestioneVendite.Scontrino import Scontrino
@@ -63,8 +64,7 @@ class GestoreVendite:
                 scontrinoNuovo += str("-" + prodottoAcquistato.getNomeProdotto() + "|" + prodottoAcquistato.getCodiceSeriale() + "|"
                                       + listaAcquisti[index].getQuantitaAcquistate() + "|" + str(prezzo) + "€")
 
-        scontrinoCreato = Scontrino(listaAcquisti, numeroScontrino)
-        dataEmissioneScontrino = scontrinoCreato.getDataEmissione()
+        dataEmissioneScontrino = datetime.now().strftime("%d/%m/%Y %H:%M:%S")
 
         scontrinoNuovo += str(";" + str(prezzoTotale) + "€" + ";"
                               + str(dataEmissioneScontrino)
