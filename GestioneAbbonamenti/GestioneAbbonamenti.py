@@ -6,6 +6,7 @@ from GestioneAbbonamenti.Abbonamento import Abbonamento
 from GestioneAbbonamenti.Cliente import Cliente
 from GestioneMagazzino.Magazzino import Magazzino
 
+
 # Classe necessaria per andare a leggere dal file "Abbonamenti.txt"
 # e popolare la lista degli abbonamenti con la lettura.
 class GestioneAbbonamenti:
@@ -30,8 +31,8 @@ class GestioneAbbonamenti:
             self.listaAbbonamenti = []
         else:
 
-            abbonamento = storage.split("\n")
-            self.abbonamentiDaFile = abbonamento
+            abbonamenti = storage.split("\n")
+            self.abbonamentiDaFile = abbonamenti
             self.listaAbbonamenti = []
 
             for index, element in enumerate(self.abbonamentiDaFile):
@@ -176,7 +177,6 @@ class GestioneAbbonamenti:
 
         with open(self.pathAssolutoAbbonamenti, 'r') as file:
             numeroLinee = file.readlines()
-            filedata = file.read()
             file.close()
 
         numeroAbbonamentiEsistenti = len(numeroLinee)

@@ -63,6 +63,7 @@ class Cliente:
 
     def setEmailBasico(self, email):
         self.email = email
+
     def setEmail(self, email):
         return str(self.getNome() + "-" + self.getCognome() + "-" +
                    self.getCodiceFiscale() + "-" + self.getTelefono() + "-" +

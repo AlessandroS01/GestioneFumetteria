@@ -2,7 +2,6 @@ import sys
 
 from PyQt5 import QtWidgets
 
-from GestioneVendite.GestoreVendite import GestoreVendite
 from Grafica.GestioneLogin.LoginAmministratore import LoginAmministratore
 
 # L'inizio del programma avvia la finestra LoginAmministratore.
