@@ -38,5 +38,6 @@ l'amministratore può accedere al menu e navigare tra le seguenti sezioni e comp
     - Registrazione di un abbonamento 
     - Visualizzazione delle vendite in una giornata
     - Visualizzazione dell'incasso totale di una giornata
-    
-<img align="center"  src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/Homep.png?raw=true">
+<p align = "center">    
+<img align="center" src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/Homep.png?raw=true">
+</p>
