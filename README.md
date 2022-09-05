@@ -8,7 +8,7 @@
 - Giampaolo Marino - [@giamp109](https://github.com/giamp109)
 ## DESCRIZIONE GENERALE  
 
-**Credenziali login:** <br>
+**CREDENZIALI LOGIN:** <br>
 *nome utente:* utente <br>
 *password:* Password
 
