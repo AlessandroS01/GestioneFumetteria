@@ -39,8 +39,8 @@ l'amministratore può accedere al menu e navigare tra le seguenti sezioni e comp
     - Visualizzazione delle vendite in una giornata;
     - Visualizzazione dell'incasso totale di una giornata.
 
-Per lo sviluppo della GUI è stato utilizzato `PyQt5` che è un set completo di collegamenti Python per Qt v5. Di seguito verranno dettagliate le varie operazioni che consente di eseguire il Software. (per installare PyQt5 andare su prompt dei comandi e digitare `pip install pyqt5`)
-Tutti i dati del software vengono memorizzati all'interno dei file. 
+Per lo sviluppo della GUI è stato utilizzato `PyQt5` che è un set completo di collegamenti Python per Qt v5. Di seguito verranno dettagliate le varie operazioni che consente di eseguire il Software. 
+Tutti i dati del software vengono memorizzati all'interno dei file. (per installare PyQt5 andare su prompt dei comandi e digitare `pip install pyqt5`)
 ## Gestione Fumetteria - Home
 
 <p align="center">
