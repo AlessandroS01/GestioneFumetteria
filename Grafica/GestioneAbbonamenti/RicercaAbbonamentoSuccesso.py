@@ -311,11 +311,20 @@ class RicercaAbbonamentoSuccesso(object):
         abbonamentoVecchio = self.abbonamentoTrovato.getAbbonamento()
         dataDatetime = datetime.now()
 
-        giornoScadenza = dataDatetime.day
-        meseScadenza = dataDatetime.month
-        annoScadenza = dataDatetime.year + 1
+        if datetime.strptime(abbonamento.getDataScadenza(), '%d/%m/%Y').date() < dataDatetime.date():
+            giornoScadenza = dataDatetime.day
+            meseScadenza = dataDatetime.month
+            annoScadenza = dataDatetime.year + 1
 
-        dataScadenzaRinnovata = str(giornoScadenza) + "/" + str(meseScadenza) + "/" + str(annoScadenza)
+            dataScadenzaRinnovata = str(giornoScadenza) + "/" + str(meseScadenza) + "/" + str(annoScadenza)
+
+        else:
+            dataScadenza = datetime.strptime(abbonamento.getDataScadenza(), '%d/%m/%Y')
+            giornoScadenza = dataScadenza.day
+            meseScadenza = dataScadenza.month
+            annoScadenza = dataScadenza.year + 1
+
+            dataScadenzaRinnovata = str(giornoScadenza) + "/" + str(meseScadenza) + "/" + str(annoScadenza)
 
         abbonamentoRinnovato = str(abbonamento.getCliente().toString() + "-" + abbonamento.getDataEmissione() + "-"
                                    + dataScadenzaRinnovata + "-" + abbonamento.getCodiceIdentificativo())
