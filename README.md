@@ -46,7 +46,7 @@ Tutti i dati del software vengono memorizzati all'interno dei file.
 ## Gestione Fumetteria - Home
 
 <p align="center">
-  <img style="border-radius:8px" src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/Homep.png?raw=true">
+  <img style="border-radius:20px" src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/Homep.png?raw=true">
 </p>
 
 Qui sopra è mostrata la schermata `Home` raggiungibile dopo aver effettuato il `Login`. Da questa schermata l'Amministratore della fumetteria può navigare tra le diverse sezioni e effettuare tutte le operazioni.
