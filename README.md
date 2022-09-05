@@ -1,4 +1,5 @@
 
+
 # GESTIONE FUMETTERIA
 
 ## AUTORI
@@ -76,3 +77,13 @@ Nella sezione Gestione Account è possibile:
 - **Modificare il nome utente:** cliccando su modifica nome utente, e inserendo le informazioni necessarie si puo modificare il nome utente con cui si effettua il login al software. 
 - **Modificare la password:** cliccando su modifica password, e inserendo le informazioni necessarie si puo modificare la passwrod con cui si effettua il login al software.
 
+## Gestione Fumetteria - Gestione Abbonamenti 
+
+Qui sopra è mostrata la schermata `Gestione Abbonamenti` raggiungibile dopo aver cliccato su Gestione Abbonamenti nella `Home`
+
+<p align="center">
+  <img  src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/GestioneAbbonamenti.png?raw=true">
+</p>
+
+Nella sezione Gestione Abbonamenti è possibile: 
+- Visualizzare tutti i clienti abbonati: cliccando su visualizza clienti abbonati verrà aperta una finestra con una tabella con tutte le informazioni relative agli abbonamenti (attivi e non attivi).
