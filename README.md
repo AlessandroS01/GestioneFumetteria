@@ -46,7 +46,7 @@ Tutti i dati del software vengono memorizzati all'interno dei file.
 ## Gestione Fumetteria - Home
 
 <p align="center">
-  <img  src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/Homep.png?raw=true">
+  <img style="border-radius:8px" src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/Homep.png?raw=true">
 </p>
 
 Qui sopra è mostrata la schermata `Home` raggiungibile dopo aver effettuato il `Login`. Da questa schermata l'Amministratore della fumetteria può navigare tra le diverse sezioni e effettuare tutte le operazioni.
@@ -54,7 +54,7 @@ Qui sopra è mostrata la schermata `Home` raggiungibile dopo aver effettuato il 
 ## Gestione Fumetteria - Gestione Magazzino
 
 <p align="center">
-  <img  src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/GestioneMagazzinoPrincipale.png?raw=true">
+  <img style="border-radius:8px" src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/GestioneMagazzinoPrincipale.png?raw=true">
 </p>
 
 Qui sopra è mostrata la schermata `Gestione magazzino` raggiungibile dopo aver cliccato su Gestione Magazzino nella `Home`
@@ -68,7 +68,7 @@ Nella sezione Gestione Magazzino è possibile:
 ## Gestione Fumetteria - Gestione Account
 
 <p align="center">
-  <img  src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/Gestione%20Account.png?raw=true">
+  <img style="border-radius:8px" src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/Gestione%20Account.png?raw=true">
 </p>
 
 Qui sopra è mostrata la schermata `Gestione Account` raggiungibile dopo aver cliccato su Gestione Account nella `Home`
@@ -82,7 +82,7 @@ Nella sezione Gestione Account è possibile:
 Qui sopra è mostrata la schermata `Gestione Abbonamenti` raggiungibile dopo aver cliccato su Gestione Abbonamenti nella `Home`
 
 <p align="center">
-  <img  src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/GestioneAbbonamenti.png?raw=true">
+  <img style="border-radius:8px" src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/GestioneAbbonamenti.png?raw=true">
 </p>
 
 Nella sezione Gestione Abbonamenti è possibile: 
