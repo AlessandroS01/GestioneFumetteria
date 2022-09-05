@@ -8,8 +8,8 @@
 - Giampaolo Marino - [@giamp109](https://github.com/giamp109)
 ## DESCRIZIONE GENERALE  
 
-**Credenziali login:** 
-*nome utente:* utente
+**Credenziali login:** <br>
+*nome utente:* utente <br>
 *password:* Password
 
 Il software è stato sviluppato in Python ed è provvisto di interfaccia grafica. Attraverso il `Login`
