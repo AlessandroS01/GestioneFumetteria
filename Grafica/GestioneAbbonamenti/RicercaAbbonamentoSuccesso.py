@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from PyQt5 import QtCore, QtGui, QtWidgets
 
 
@@ -6,7 +8,7 @@ class RicercaAbbonamentoSuccesso(object):
     def setupUi(self, Frame, abbonamento):
         self.abbonamentoTrovato = abbonamento
         Frame.setObjectName("Frame")
-        Frame.resize(403, 380)
+        Frame.resize(403, 417)
         Frame.setStyleSheet("QFrame{\n"
                             "background-color: rgb(255, 255, 255);\n"
                             "}")
@@ -27,7 +29,7 @@ class RicercaAbbonamentoSuccesso(object):
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
         self.pushButtonLogout = QtWidgets.QPushButton(Frame)
-        self.pushButtonLogout.setGeometry(QtCore.QRect(10, 340, 141, 31))
+        self.pushButtonLogout.setGeometry(QtCore.QRect(10, 380, 141, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
@@ -69,8 +71,30 @@ class RicercaAbbonamentoSuccesso(object):
                                                      "}")
         self.pushButtonModificaCliente.setCheckable(False)
         self.pushButtonModificaCliente.setObjectName("pushButton_6")
+
+        self.pushButtonRinnova = QtWidgets.QPushButton(Frame)
+        self.pushButtonRinnova.setGeometry(QtCore.QRect(20, 320, 361, 31))
+        font = QtGui.QFont()
+        font.setFamily("Helvetica")
+        font.setPointSize(12)
+        font.setBold(True)
+        font.setWeight(75)
+        self.pushButtonRinnova.setFont(font)
+        self.pushButtonRinnova.setFocusPolicy(QtCore.Qt.NoFocus)
+        self.pushButtonRinnova.setStyleSheet("QPushButton{\n"
+                                             "border: 2px solid black;\n"
+                                             "border-radius: 10px;\n"
+                                             "}\n"
+                                             "QPushButton:hover{\n"
+                                             "\n"
+                                             "background-color: #14626c;\n"
+                                             "color:white;\n"
+                                             "}")
+        self.pushButtonRinnova.setCheckable(False)
+        self.pushButtonRinnova.setObjectName("pushButton_7")
+
         self.pushButtonRicerca = QtWidgets.QPushButton(Frame)
-        self.pushButtonRicerca.setGeometry(QtCore.QRect(160, 340, 141, 31))
+        self.pushButtonRicerca.setGeometry(QtCore.QRect(160, 380, 141, 31))
         font = QtGui.QFont()
         font.setFamily("Helvetica")
         font.setPointSize(12)
@@ -215,6 +239,7 @@ class RicercaAbbonamentoSuccesso(object):
         self.pushButtonRicerca.clicked.connect(self.openRicercaAbbonamento)
         self.pushButtonLogout.clicked.connect(self.openLogin)
         self.pushButtonModificaCliente.clicked.connect(self.openModificaClientePrincipale)
+        self.pushButtonRinnova.clicked.connect(self.clickRinnovoAbbonamento)
 
         self.retranslateUi(Frame)
         QtCore.QMetaObject.connectSlotsByName(Frame)
@@ -224,6 +249,7 @@ class RicercaAbbonamentoSuccesso(object):
         Frame.setWindowTitle(_translate("Frame", "Fumetteria - Abbonamento Trovato"))
         self.label_4.setText(_translate("Frame", "ABBONAMENTO TROVATO"))
         self.pushButtonLogout.setText(_translate("Frame", " Logout"))
+        self.pushButtonRinnova.setText(_translate("Frame", " Rinnova Abbonamento"))
         self.pushButtonModificaCliente.setText(_translate("Frame", "Modifica"))
         self.pushButtonRicerca.setText(_translate("Frame", " Indietro"))
         self.label.setText(_translate("Frame", "La ricerca è andata a buon fine. Cliccare il pulsante\n"
@@ -276,4 +302,33 @@ class RicercaAbbonamentoSuccesso(object):
         self.ui = ModificaClientePrincipale()
         self.ui.setupUi(self.modificaClientePrincipale, self.abbonamentoTrovato)
         self.modificaClientePrincipale.show()
+        self.frame.close()
+
+    # Metodo utilizzato per rinnovare al cliente la durata del suo
+    # abbonamento.
+    def clickRinnovoAbbonamento(self):
+        abbonamento = self.abbonamentoTrovato
+        abbonamentoVecchio = self.abbonamentoTrovato.getAbbonamento()
+        dataDatetime = datetime.strptime(self.abbonamentoTrovato.getDataScadenza(), '%d/%m/%Y').date()
+
+        giornoScadenza = dataDatetime.day
+        meseScadenza = dataDatetime.month
+        annoScadenza = dataDatetime.year + 1
+
+        dataScadenzaRinnovata = str(giornoScadenza) + "/" + str(meseScadenza) + "/" + str(annoScadenza)
+
+        abbonamentoRinnovato = str(abbonamento.getCliente().toString() + "-" + abbonamento.getDataEmissione() + "-"
+                                   + dataScadenzaRinnovata + "-" + abbonamento.getCodiceIdentificativo())
+
+        self.abbonamentoTrovato.sovrascriviDati(abbonamentoVecchio, abbonamentoRinnovato)
+
+        self.openRinnovoAbbonamento()
+
+    # Metodo che fa visualizzare a schermo l'interfaccia ModificaClienteSuccesso.
+    def openRinnovoAbbonamento(self):
+        from Grafica.GestioneAbbonamenti.ModificaCliente.ModificaClienteSuccesso import ModificaClienteSuccesso
+        self.modificaClienteSuccesso = QtWidgets.QFrame()
+        self.ui = ModificaClienteSuccesso()
+        self.ui.setupUi(self.modificaClienteSuccesso)
+        self.modificaClienteSuccesso.show()
         self.frame.close()
