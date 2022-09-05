@@ -1,4 +1,5 @@
 
+
 # GESTIONE FUMETTERIA
 
 ## AUTORI
@@ -38,6 +39,11 @@ l'amministratore può accedere al menu e navigare tra le seguenti sezioni e comp
     - Registrazione di un abbonamento 
     - Visualizzazione delle vendite in una giornata
     - Visualizzazione dell'incasso totale di una giornata
-<p align = "center">    
-<img align="center" src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/Homep.png?raw=true">
+
+Per lo sviluppo della GUI è stato utilizzato `PyQt5` che è un set completo di collegamenti Python per Qt v5. Di seguito verranno dettagliate le varie operazioni che consente di eseguire il Software.
+
+## Gestione Fumetteria - Home
+
+<p align="center">
+  <img  src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/Homep.png?raw=true">
 </p>
