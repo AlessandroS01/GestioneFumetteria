@@ -1,4 +1,14 @@
 
+
+# GESTIONE FUMETTERIA
+
+## AUTORI
+
+- Davide Santurbano - [@Ser4ld](https://www.github.com/Ser4ld)
+- Alessandro Seghini - [@AlessandroS01](https://github.com/AlessandroS01)
+- Giampaolo Marino - [@giamp109](https://github.com/giamp109)
+
+
 ## DESCRIZIONE GENERALE  
 
 Il software è stato sviluppato in Python ed è provvisto di interfaccia grafica. Attraverso il `Login`
@@ -13,7 +23,8 @@ l'amministratore può accedere al menu e navigare tra le seguenti sezioni e comp
 (La modifica di un prodotto e l'inserimento dell'offerta avviene successivamente alla ricerca).
 
 - `Gestione Account`
-    - modifica nome utente e password. 
+    - modifica nome utente; 
+    - modifica password. 
 
 - `Gestione Abbonamenti`
     - Visualizzazione di tutti i clienti Abbonamenti;
@@ -25,10 +36,10 @@ l'amministratore può accedere al menu e navigare tra le seguenti sezioni e comp
     - Visualizzazione delle statistiche relative agli abbonamenti (visualizzazione di quanti abbonamenti sono stati emessi durante una giornata).
 
 - `Gestione Vendite`
-    - Registrazione di un acquisto
-    - Registrazione di un abbonamento 
-    - Visualizzazione delle vendite in una giornata
-    - Visualizzazione dell'incasso totale di una giornata
+    - Registrazione di un acquisto;
+    - Registrazione di un abbonamento; 
+    - Visualizzazione delle vendite in una giornata;
+    - Visualizzazione dell'incasso totale di una giornata.
 
 Per lo sviluppo della GUI è stato utilizzato `PyQt5` che è un set completo di collegamenti Python per Qt v5. Di seguito verranno dettagliate le varie operazioni che consente di eseguire il Software.
 Tutti i dati del software vengono memorizzati all'interno dei file. 
@@ -51,4 +62,14 @@ Nella sezione Gestione Magazzino è possibile:
 - **Ricercare i prodotti presenti nel magazzino:** la ricerca all'interno del magazzino avviene tramite il codice seriale del prodotto. Una volta inserito il codice seriale, se il prodotto è presente nel magazzino viene aperta una schermata con tutti i dettagli, in caso contrario viene stampato un messaggio di errore.
 - **Inserire e modificare i prodotti:** una volta cliccato su aggiungi prodotto si apre una finestra dove è possibile inserire tutte le informazioni riguardanti il prodotto e completare l'operazione. Per modificare un prodotto bisogna invece effettuare prima la ricerca e poi successivamente cliccare sul pulsante modifica e scegliere le informazioni che si vogliono modificare.
 - **Aggiungere un offerta per un prodotto:** per aggiungere un offerta bisogna effettuare prima la ricerca, poi successivamente cliccare su aggiungi offerta, se il prodotto presenta già un offerta verrà visualizzato un messaggio di errore, in caso contrario sarà possibile scegliere il tipo di offerta che si vuole aggiungere (generale o abbonati), il prezzo che verrà applicato al prodotto con l'offerta e la data di scadenza dell'offerta. Nel caso in cui un prodotto presenta già un offerta è possibile modificarla effettuando la ricerca e cliccando su modifica prodotto.
+
+## Gestione Fumetteria - Gestione Account
+
+<p align="center">
+  <img  src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/Gestione%20Account.png?raw=true">
+</p>
+
+Nella sezione Gestione Account è possibile: 
+- **Modificare il nome utente:** cliccando su modifica nome utente, e inserendo le informazioni necessarie si puo modificare il nome utente con cui si effettua il login al software. 
+- **Modificare la password:** cliccando su modifica password, e inserendo le informazioni necessarie si puo modificare la passwrod con cui si effettua il login al software.
 
