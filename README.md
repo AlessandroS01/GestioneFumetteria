@@ -92,4 +92,3 @@ Nella sezione Gestione Abbonamenti è possibile:
 - **Modificare il prezzo dell'abbonamento:** cliccando su `modifica prezzo abbonamento` sarà possibile impostare un nuovo prezzo per l'abbonamento.
 - **Ricercare un abbonamento:** cliccando su `ricerca abbonamento` sarà possibile effettuare una ricerca tramite il codice abbonamento e nel caso in cui l'abbonamento esista verranno visualizzate tute le informazioni relative all'abbonamento e al cliente che usufruisce di quest ultimo, in caso contrario verrà visualizzato un messaggio di errore.
 - **Modificare i dati di un cliente che usufruisce di un abbonamento**: per effettuare questa operazione è necessario prima effettuare una ricerca, una volta trovato l'abbonamento verranno visualizzate tutte le informazioni relative all'abbonamento e al cliente. In questa schermata cliccando su `modifica` si potrà scegliere quali informazioni riguardanti il cliente si vuole modificare e procedere con la modifica.
-
