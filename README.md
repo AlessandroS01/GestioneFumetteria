@@ -1,5 +1,4 @@
 
-
 # GESTIONE FUMETTERIA
 
 ## AUTORI
@@ -57,6 +56,8 @@ Qui sopra è mostrata la schermata `Home` raggiungibile dopo aver effettuato il 
   <img  src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/GestioneMagazzinoPrincipale.png?raw=true">
 </p>
 
+Qui sopra è mostrata la schermata `Gestione magazzino` raggiungibile dopo aver cliccato su Gestione Magazzino nella `Home`
+
 Nella sezione Gestione Magazzino è possibile:
 - **Visualizzare il magazzino:** viene aperta una schermata dove è presente una tabella con tutti i prodotti presenti nel magazzino. 
 - **Ricercare i prodotti presenti nel magazzino:** la ricerca all'interno del magazzino avviene tramite il codice seriale del prodotto. Una volta inserito il codice seriale, se il prodotto è presente nel magazzino viene aperta una schermata con tutti i dettagli, in caso contrario viene stampato un messaggio di errore.
@@ -68,6 +69,8 @@ Nella sezione Gestione Magazzino è possibile:
 <p align="center">
   <img  src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/Gestione%20Account.png?raw=true">
 </p>
+
+Qui sopra è mostrata la schermata `Gestione Account` raggiungibile dopo aver cliccato su Gestione Account nella `Home`
 
 Nella sezione Gestione Account è possibile: 
 - **Modificare il nome utente:** cliccando su modifica nome utente, e inserendo le informazioni necessarie si puo modificare il nome utente con cui si effettua il login al software. 
