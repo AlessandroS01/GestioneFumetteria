@@ -309,7 +309,7 @@ class RicercaAbbonamentoSuccesso(object):
     def clickRinnovoAbbonamento(self):
         abbonamento = self.abbonamentoTrovato
         abbonamentoVecchio = self.abbonamentoTrovato.getAbbonamento()
-        dataDatetime = datetime.strptime(self.abbonamentoTrovato.getDataScadenza(), '%d/%m/%Y').date()
+        dataDatetime = datetime.now()
 
         giornoScadenza = dataDatetime.day
         meseScadenza = dataDatetime.month
