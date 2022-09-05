@@ -6,8 +6,6 @@
 - Davide Santurbano - [@Ser4ld](https://www.github.com/Ser4ld)
 - Alessandro Seghini - [@AlessandroS01](https://github.com/AlessandroS01)
 - Giampaolo Marino - [@giamp109](https://github.com/giamp109)
-
-
 ## DESCRIZIONE GENERALE  
 
 Il software è stato sviluppato in Python ed è provvisto di interfaccia grafica. Attraverso il `Login`
@@ -46,7 +44,7 @@ Tutti i dati del software vengono memorizzati all'interno dei file.
 ## Gestione Fumetteria - Home
 
 <p align="center">
-  <img style="border-radius:20px" src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/Homep.png?raw=true">
+  <img  src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/Homep.png?raw=true">
 </p>
 
 Qui sopra è mostrata la schermata `Home` raggiungibile dopo aver effettuato il `Login`. Da questa schermata l'Amministratore della fumetteria può navigare tra le diverse sezioni e effettuare tutte le operazioni.
@@ -54,7 +52,7 @@ Qui sopra è mostrata la schermata `Home` raggiungibile dopo aver effettuato il 
 ## Gestione Fumetteria - Gestione Magazzino
 
 <p align="center">
-  <img style="border-radius:8px" src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/GestioneMagazzinoPrincipale.png?raw=true">
+  <img  src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/GestioneMagazzinoPrincipale.png?raw=true">
 </p>
 
 Qui sopra è mostrata la schermata `Gestione magazzino` raggiungibile dopo aver cliccato su Gestione Magazzino nella `Home`
@@ -68,7 +66,7 @@ Nella sezione Gestione Magazzino è possibile:
 ## Gestione Fumetteria - Gestione Account
 
 <p align="center">
-  <img style="border-radius:8px" src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/Gestione%20Account.png?raw=true">
+  <img  src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/Gestione%20Account.png?raw=true">
 </p>
 
 Qui sopra è mostrata la schermata `Gestione Account` raggiungibile dopo aver cliccato su Gestione Account nella `Home`
@@ -82,7 +80,7 @@ Nella sezione Gestione Account è possibile:
 Qui sopra è mostrata la schermata `Gestione Abbonamenti` raggiungibile dopo aver cliccato su Gestione Abbonamenti nella `Home`
 
 <p align="center">
-  <img style="border-radius:8px" src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/GestioneAbbonamenti.png?raw=true">
+  <img  src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/GestioneAbbonamenti.png?raw=true">
 </p>
 
 Nella sezione Gestione Abbonamenti è possibile: 
@@ -92,3 +90,19 @@ Nella sezione Gestione Abbonamenti è possibile:
 - **Modificare il prezzo dell'abbonamento:** cliccando su `modifica prezzo abbonamento` sarà possibile impostare un nuovo prezzo per l'abbonamento.
 - **Ricercare un abbonamento:** cliccando su `ricerca abbonamento` sarà possibile effettuare una ricerca tramite il codice abbonamento e nel caso in cui l'abbonamento esista verranno visualizzate tute le informazioni relative all'abbonamento e al cliente che usufruisce di quest ultimo, in caso contrario verrà visualizzato un messaggio di errore.
 - **Modificare i dati di un cliente che usufruisce di un abbonamento**: per effettuare questa operazione è necessario prima effettuare una ricerca, una volta trovato l'abbonamento verranno visualizzate tutte le informazioni relative all'abbonamento e al cliente. In questa schermata cliccando su `modifica` si potrà scegliere quali informazioni riguardanti il cliente si vuole modificare e procedere con la modifica.
+- **Rinnovare un abbonamento:** per effettuare il rinnovo di un abbonamento è necessario effetuare prima una ricerca e una volta trovato l'abbonamento verranno visualizzate tutte le informazioni relative ad esso e al cliente. In questa schermata cliccando su `rinnova abbonamento` verrà automaticamente aggiornata la data di scadenza.
+- **Visualizzare le statistiche relative agli abbonamenti:** cliccando su `visualizza abbonamenti` verrà visualizzata una schermata nella quale sarà possibile inserire la data. Una volta inserita, verrà visualizzata una tabella con tutte le informazioni relative agli abbonamenti emessi in tale data.
+
+## Gestione Fumetteria - Gestione Vendite
+
+Qui sopra è mostrata la schermata `Gestione Vendite` raggiungibile dopo aver cliccato su Gestione Vendite nella `Home`
+
+<p align="center">
+  <img  src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/GestioneVenditePrincipale.png?raw=true">
+</p>
+
+Nella sezione Gestione Vendite è possibile: 
+- **Registrare un acquisto:** cliccando su `registrazione acquisto` verrà visualizzata una finestra nella quale sarà possibile inserire un codice abbonamento, utilizzato per applicare eventuali offerte per i clienti abbonati (l'inserimento del codice è facoltativo). Una volta inserito il codice (o dopo aver proseguito senza inserirlo) si aprirà una schermata contenente una tabella con tutti i prodotti e le relative informazioni. In questa schermata sarà possibile effettuare una ricerca dinamica all'interno della tabella e selezionare i prodotti acquistati dal cliente. Una volta selezionati, cliccando su `aggiungi acquisto`, si aprirà una schermata con le seguenti informazioni: data corrente, lista di prodotti selezionati con relativa quantità e prezzo con annesse eventuali offerte. Da questa schermata, cliccando su `registrazione scontrino`, verrà effettuata correttamente la registrazione dell'acquisto. 
+- **Acquistare un abbonamento:** cliccando su `acquisto abbonamento` verrà visualizzata una schermata nella quale poter inserire tutte le informazioni relative al cliente che sta effettuando l'acquisto. Da quest schermata, cliccando su `inserisci`, nel caso in cui il cliente non abbia già un abbonamento sarà registrato l'abbonamento acquistato.
+- **Visualizzare le vendite in una determinata giornata:** cliccando su `visualizza vendite giornata` verrà visualizzata una finestra nella quale inserire una data. Una volta inserita, verrà visualizzata una tabella contenente tutti i prodotti e le relative quantità vendute in quella data.
+- **Visualizzare l'incasso totale di una giornata:** cliccando su `visualizza incasso giornata` verrà visualizzata una finestra nella quale inserire una data. Una volta inserita, verrà visualizzato l'incasso totale in quella data.
