@@ -39,4 +39,4 @@ l'amministratore può accedere al menu e navigare tra le seguenti sezioni e comp
     - Visualizzazione delle vendite in una giornata
     - Visualizzazione dell'incasso totale di una giornata
     
-<img align="center" width="100" height="100" src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/Homep.png?raw=true">
+<img align="center"  src="https://github.com/AlessandroS01/GestioneFumetteria/blob/main/Mockup%20png/Homep.png?raw=true">
